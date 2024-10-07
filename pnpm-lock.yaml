@@ -8,6 +8,12 @@ importers:
 
   .:
     devDependencies:
+      '@antfu/eslint-config':
+        specifier: ^3.7.3
+        version: 3.7.3(@typescript-eslint/utils@8.8.0(eslint@9.12.0)(typescript@5.6.2))(@vue/compiler-sfc@3.5.11)(eslint@9.12.0)(typescript@5.6.2)(vitest@2.1.2(@types/node@22.7.4)(terser@5.34.1))
+      eslint:
+        specifier: ^9.12.0
+        version: 9.12.0
       typescript:
         specifier: ^5.6.2
         version: 5.6.2
@@ -18,15 +24,9 @@ importers:
         specifier: link:..\stdtyp
         version: link:../stdtyp
     devDependencies:
-      '@antfu/eslint-config':
-        specifier: ^3.7.3
-        version: 3.7.3(@typescript-eslint/utils@8.8.0(eslint@9.12.0)(typescript@5.6.2))(@vue/compiler-sfc@3.5.11)(eslint@9.12.0)(typescript@5.6.2)(vitest@2.1.2(@types/node@22.7.4)(terser@5.34.1))
       '@types/node':
         specifier: ^22.7.4
         version: 22.7.4
-      eslint:
-        specifier: ^9.12.0
-        version: 9.12.0
       terser:
         specifier: ^5.34.1
         version: 5.34.1
