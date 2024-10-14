@@ -7,11 +7,15 @@
   "keywords": [],
   "scripts": {
     "lint": "eslint .",
-    "format": "eslint . --fix"
+    "format": "eslint . --fix",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.7.3",
     "eslint": "^9.12.0",
-    "typescript": "^5.6.2"
+    "typescript": "^5.6.2",
+    "vitepress": "^1.4.1"
   }
 }
