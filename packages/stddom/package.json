@@ -1,0 +1,39 @@
+{
+  "name": "@webshrine/stddom",
+  "type": "module",
+  "version": "0.0.0",
+  "private": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "jsdelivr": "./dist/index.iife.js",
+  "types": "./dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
+  "files": [
+    "CHANGELOG.md",
+    "LICENSE.md",
+    "README.md",
+    "dist",
+    "package.json",
+    "src"
+  ],
+  "scripts": {
+    "test": "vitest --watch",
+    "test:coverage": "vitest --coverage",
+    "dev": "vite --host",
+    "build": "tsc && vite build",
+    "bench": "vitest bench --watch",
+    "deps:check_updates": "ncu",
+    "deps:update": "ncu -u && pnpm i",
+    "release": "npm run build && ..."
+  },
+  "dependencies": {
+    "clsx": "^2.1.1"
+  }
+}
