@@ -8,13 +8,20 @@ it('basic success', () => {
   const [syncParse, syncParseErr] = cope(positiveExecution)
 
   expect(syncParse).toEqual({ asd: 123 })
-  expect(syncParseErr).toBeNull()
+  expect(syncParseErr).toBeUndefined()
 })
 
 it('basic fail', () => {
   const [syncParse, syncParseErr] = cope(failingExecution)
 
-  expect(syncParse).toBeNull()
+  expect(syncParse).toBeUndefined()
+  expect(syncParseErr).toBeInstanceOf(SyntaxError)
+})
+
+it('basic with default', () => {
+  const [syncParse = { qwe: 789 }, syncParseErr] = cope(failingExecution)
+
+  expect(syncParse).toEqual({ qwe: 789 })
   expect(syncParseErr).toBeInstanceOf(SyntaxError)
 })
 
@@ -25,7 +32,7 @@ it('async success', async () => {
   })
 
   expect(syncParse).toEqual({ asd: 123 })
-  expect(syncParseErr).toBeNull()
+  expect(syncParseErr).toBeUndefined()
 })
 
 it('async fail', async () => {
@@ -34,6 +41,6 @@ it('async fail', async () => {
     return failingExecution()
   })
 
-  expect(syncParse).toBeNull()
+  expect(syncParse).toBeUndefined()
   expect(syncParseErr).toBeInstanceOf(SyntaxError)
 })
