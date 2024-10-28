@@ -1,6 +1,5 @@
 // Interfaces
-import type { ToPrimitiveHint } from './constants'
-import type { Primitive } from './reexport'
+import type { Primitive, ToPrimitiveHint } from './aliases'
 
 /**
  * #interface #atom #serialisation

@@ -1,4 +1,4 @@
-import type { Constructor, GuardFn, OmitByValue, ValuesType } from '@webshrine/stdtyp'
+import type { Constructor, FnGuard, OmitByValue, UnionToIntersection, ValuesType } from '@webshrine/stdtyp'
 
 /**
  * TODO
@@ -36,9 +36,6 @@ export abstract class Mixin {
   }
 }
 
-type UnionToIntersection<U> =
-  (U extends any ? (x: U) => void : never) extends ((x: infer I) => void) ? I : never
-
 type MixinRecord = Record<string, Constructor>
 type MixinArray = ReadonlyArray<Constructor>
 
@@ -52,7 +49,7 @@ type MixedConstructorParamsFromArray<Ctors extends Readonly<MixinArray>> = {
   [K in keyof Ctors]: ConstructorParameters<Ctors[K]>
 }
 
-const isParametersAMixinArray = ((v: any) => Array.isArray(v)) as GuardFn<MixinArray>
+const isParametersAMixinArray = ((v: any) => Array.isArray(v)) as FnGuard<MixinArray>
 
 export function mixin<
   Constructors extends MixinRecord | MixinArray,

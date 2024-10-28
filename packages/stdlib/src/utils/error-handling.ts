@@ -1,4 +1,4 @@
-import type { AnyPromise, NullaryAsyncFn, NullaryFn } from '@webshrine/stdtyp'
+import type { AnyPromise, FnNullary, FnNullaryAsync } from '@webshrine/stdtyp'
 
 export type CopeOk<T> = [T, undefined]
 
@@ -21,20 +21,21 @@ export const err = <E extends Error>(error: E): CopeErr<E> => [undefined, error]
  * }
  * // process result
  * ```
- * @example ```ts // ignore insignificant error
- * // prepare executions
- * cope(()=>{ window.scrollTo(someElement.offsetHeight) })
- * // guaranteed executions
- * ```
  *
  * @example ```ts // With default value
  * const [result = 'default value', syncParseErr] = cope(...)
  * result // is always defined
  * ```
+ *
+ * @example ```ts // ignore insignificant error
+ * // prepare executions
+ * cope(()=>{ window.scrollTo(someElement.offsetHeight) })
+ * // guaranteed executions
+ * ```
  */
 export function cope<
   Throws extends Error = Error,
-  Executor extends NullaryFn | NullaryAsyncFn = NullaryFn | NullaryAsyncFn,
+  Executor extends FnNullary | FnNullaryAsync = FnNullary | FnNullaryAsync,
   Result extends ReturnType<Executor> = ReturnType<Executor>,
 >(executor: Executor): Result extends AnyPromise ? Promise<CopeResult<Awaited<Result>, Throws>> : CopeResult<Result, Throws> {
   try {
