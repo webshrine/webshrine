@@ -1,4 +1,4 @@
-import type { AnyPromise, FnNullary, FnNullaryAsync } from '@webshrine/stdtyp'
+import type { AnyPromise, FnAsyncNullary, FnNullary } from '@webshrine/stdtyp'
 
 export type CopeOk<T> = [T, undefined]
 
@@ -35,7 +35,7 @@ export const err = <E extends Error>(error: E): CopeErr<E> => [undefined, error]
  */
 export function cope<
   Throws extends Error = Error,
-  Executor extends FnNullary | FnNullaryAsync = FnNullary | FnNullaryAsync,
+  Executor extends FnNullary | FnAsyncNullary = FnNullary | FnAsyncNullary,
   Result extends ReturnType<Executor> = ReturnType<Executor>,
 >(executor: Executor): Result extends AnyPromise ? Promise<CopeResult<Awaited<Result>, Throws>> : CopeResult<Result, Throws> {
   try {
