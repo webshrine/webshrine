@@ -1,4 +1,4 @@
-import type { AnyArray, AnyRecord, Falsy, Fn, FnGuard, Nullish, Numeric, Primitive } from '@webshrine/stdtyp'
+import type { AnyArray, AnyObject, Falsy, Fn, FnGuard, Nullish, Numeric, Primitive } from '@webshrine/stdtyp'
 
 import {
   isArray as lodashIsArray,
@@ -31,8 +31,8 @@ export const isPrimitive = utIsPrimitive as FnGuard<Primitive>
 export const isEmpty = lodashIsEmpty
 export const isError = lodashIsError as FnGuard<Error>
 
-export const isObject = lodashIsObject as FnGuard<AnyRecord>
-export const isPlainObject = lodashIsPlainObject as FnGuard<AnyRecord>
+export const isObject = lodashIsObject as FnGuard<AnyObject>
+export const isPlainObject = lodashIsPlainObject as FnGuard<AnyObject>
 
 export const isNumber = lodashIsNumber as FnGuard<number>
 export const isNumberOdd = ((n: number) => n % 2 === 1) as FnGuard<number>

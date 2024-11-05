@@ -7,7 +7,7 @@ import { klona as klonaJson } from 'klona/json'
  * Clones String, Number, null, Array, Object
  * @see https://github.com/lukeed/klona
  */
-// TODO refactor it to support all data, dont focus on json
+// TODO refactor it to support all data, don't focus on json
 export const copy = klonaJson
 
 /**
