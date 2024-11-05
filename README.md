@@ -1,5 +1,8 @@
 # ⛩️ Webshrine
 
+> [!IMPORTANT]
+> WIP - This project is currently not ready for use!
+
 ### 💿 Usage
 
 <details><summary>Usage variants graph</summary>
@@ -25,7 +28,7 @@ pnpm i @webshrine/stdlib # types, core
 pnpm i -D @webshrine/stdtyp # types
 pnpm i @webshrine/stdlib @webshrine/stddom # types, core, DOM
 ```
-<details open><summary>Other package managers</summary>
+<details><summary>Other package managers</summary>
 
 #### NPM
 ```bash
