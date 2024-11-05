@@ -53,6 +53,7 @@
   /// CUSTOM
   "cSpell.words": [
     "clsx",
+    "eventemitter",
     "fnames",
     "iife",
     "klona",
@@ -60,6 +61,7 @@
     "omitdeep",
     "Primitivizable",
     "stddom",
+    "stdlib",
     "stdtyp",
     "vitepress",
     "webshrine"

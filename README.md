@@ -1,23 +1,57 @@
-# Webshrine
+# ⛩️ Webshrine
 
-### Packages relations
+### 💿 Usage
+
+<details><summary>Usage variants graph</summary>
 
 ```mermaid
-graph TD;
-stdtyp;
-stdtyp-->stdlib;
-stdtyp-->stddom;
+erDiagram
+stdtyp ||--|| stdlib : "Fully reexports"
+stdtyp ||--|| stddom : "Partially uses"
+stdtyp ||--|| "Use types" : ""
+stdlib ||--|| "Use types, core logics" : ""
+stdlib ||--|| "Use types, core logics, DOM helpers" : ""
+stddom ||--|| "Use types, core logics, DOM helpers" : ""
+stddom ||--|| "Use types, core logics, DOM helpers" : ""
+"Use types" ||--|| "Your project" : ""
+"Use types, core logics" ||--|| "Your project" : ""
+"Use types, core logics, DOM helpers" ||--|| "Your project" : ""
 ```
 
-### Unites packages
-- lodash
-- lodash-omitdeep
-- eventemitter3
-- klona
-- type-utilities
-- clsx
+</details>
 
-### Rules
+```bash
+pnpm i @webshrine/stdlib # types, core
+pnpm i -D @webshrine/stdtyp # types
+pnpm i @webshrine/stdlib @webshrine/stddom # types, core, DOM
+```
+<details open><summary>Other package managers</summary>
+
+#### NPM
+```bash
+npm i @webshrine/stdlib # types, core
+npm i -D @webshrine/stdtyp # types
+npm i @webshrine/stdlib @webshrine/stddom # types, core, DOM
+```
+
+#### Yarn
+```bash
+yarn add @webshrine/stdlib # types, core
+yarn add -D @webshrine/stdtyp # types
+yarn add @webshrine/stdlib @webshrine/stddom # types, core, DOM
+```
+</details>
+
+### 📦 Unites third-party packages
+- **lodash** - famous utils lib
+- **type-utilities** - famous type utils lib
+- **eventemitter3** - well-known EventEmitter
+- **lodash-omitdeep** - recursive lodash.omit
+- **klona** - fastest lodash.cloneDeep util
+- **clsx** - CSS class merging helper
+
+## 🚫 (MOVE TO DOCS)
+### 📏 Rules
 
 #### FnCompare
 - must return -1 | 0 | 1
@@ -29,18 +63,13 @@ stdtyp-->stddom;
 #### FnMatch
 - has two parameter
 
-export type FnTransform<Input = any, Output = Input> = Fn<[input: Input], Output>
-
-export type FnFormat<Input, Output> = FnTransform<Input, Output | null>
 #### FnTransform
-- has one parameter
 - must return value
 
 #### FnFormat
-- don't have to mutate argument
 - the same as FnTransform, but may return null as a result of failed argument transformation
 
-### Code style
+### 📝 Code style
 
 #### FnGuard, FnMatch
 - name starts with "is" (e.g `isString`, `isEqual`)
