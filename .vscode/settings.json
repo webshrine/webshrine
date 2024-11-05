@@ -57,9 +57,11 @@
     "iife",
     "klona",
     "Nullary",
+    "omitdeep",
     "Primitivizable",
     "stddom",
     "stdtyp",
+    "vitepress",
     "webshrine"
   ],
   "typescript.preferences.autoImportSpecifierExcludeRegexes": [

@@ -24,7 +24,7 @@
     "src"
   ],
   "scripts": {
-    "test": "vitest --watch",
+    "test": "vitest --watch --typecheck",
     "test:coverage": "vitest --coverage",
     "dev": "vite --host",
     "build": "tsc && vite build",
@@ -34,14 +34,15 @@
     "release": "npm run build && ..."
   },
   "dependencies": {
+    "@types/lodash": "^4.17.10",
     "@webshrine/stdtyp": "link:..\\stdtyp",
     "eventemitter3": "^5.0.1",
     "klona": "^2.0.6",
     "lodash": "^4.17.21",
+    "lodash-omitdeep": "^1.3.5",
     "utility-types": "^3.11.0"
   },
   "devDependencies": {
-    "@types/lodash": "^4.17.10",
     "@types/node": "^22.7.4",
     "terser": "^5.34.1",
     "vite": "^5.4.8",
