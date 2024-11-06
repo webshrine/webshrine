@@ -18,16 +18,12 @@ export type AnyArrayOptional = AnyArray | undefined
  * function process<T extends AnyRecord>(data: T) { ... }
  * ```
  */
-export type AnyObject = Record<RecordKey, any>
+export type AnyObject = Record<ObjectKey, any>
 
 /**
- * Any array alias,
- * focused to be used in generic types in environment with "any-phobic" eslint rules
- * @example ```ts
- * type ListOfStrings = Record<RecordKey, string>
- * ```
+ * Alias for any object key
  */
-export type RecordKey = string | number | symbol
+export type ObjectKey = string | number | symbol
 
 export type Numeric = number | bigint
 
