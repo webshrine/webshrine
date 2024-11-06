@@ -1,4 +1,4 @@
-import type { AnyArrayOptional, AnyObject, Decrement } from '..'
+import type { AnyArrayOptional, AnyObject, Decrement, ObjectKey } from '..'
 
 export type IterateParameters<Item = any> = [value: Item, index: number, array: Item[]]
 
@@ -14,24 +14,24 @@ export type NullaryConstructor<Instance> = Constructor<Instance>
 //   [K in keyof T as `${Prefix}${string & K}`]: T[K]
 // }
 
-export type IfString<Value, Then = Value, Else = never> = Value extends string ? Then : Else
+type IfString<Value, Then = Value, Else = never> = Value extends string ? Then : Else
+
+type NormalizeObjectKey<K extends ObjectKey> = K extends string
+  ? K
+  : K extends number ? `${K}` : never
 
 /**
  * Return all keys of `T`, converting number keys to strings and ignore Symbol keys
  * Instead of `keyof T`, returns only strings
  */
-export type Keys<T extends AnyObject> = {
-  [K in keyof T]: K extends string
-  ? K
-  : K extends number ? `${K}` : never
-}[keyof T]
+export type Keys<T extends AnyObject> = NormalizeObjectKey<keyof T>
 
 /** The same as `Keys<T>`, but recursively for all nested objects */
-export type KeysDeep<T extends AnyObject, Depth extends number | null = 20> = Depth extends -1
+export type KeysDeep<T extends AnyObject, Depth extends number = 20> = Depth extends -1
   ? never
   : {
-    [K in keyof T]: (K extends string ? K : never) | (T[K] extends AnyObject
-      ? KeysDeep<T[K], Depth extends number ? Decrement[Depth] : null>
+    [K in keyof T]: NormalizeObjectKey<K> | (T[K] extends AnyObject
+      ? KeysDeep<T[K], Decrement[Depth]>
       : never)
   }[keyof T]
 
@@ -56,9 +56,7 @@ export type Paths<T extends AnyObject> = {
 // }
 // export type OmitDeep<T extends AnyObject, K extends KeysDeep<T>> = {
 export type OmitDeep<T extends AnyObject, K extends string> = {
-  [P in keyof T]: P extends K
-  ? undefined
-  : T[P] extends AnyObject ? OmitDeep<T[P], K> : T[P]
+  [P in Exclude<keyof T, K>]: T[P] extends AnyObject ? OmitDeep<T[P], K> : T[P]
 }
 
 export type Split<T extends string, Separator extends string> =
