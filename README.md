@@ -74,14 +74,17 @@ yarn add @webshrine/stdlib @webshrine/stddom # types, core, DOM
 
 ### 📝 Code style
 
-#### FnGuard, FnMatch
-- name starts with "is" (e.g `isString`, `isEqual`)
+#### FnGuard
+- naming pattern 'is(Name)' (e.g `isPrimitive`)
+
+#### FnMatch
+- naming pattern 'are(Name)' (e.g `areEqual`)
 
 #### FnReduce
-- name starts with "reduce" (e.g `reduceNumbersToSumNumber`)
+- naming pattern 'reduce(Name)' (e.g `reduceNumbersToSumNumber`)
 
 #### FnCompare
-- name starts with "compare" (e.g `compareNumber`)
+- naming pattern 'compare(Name)' (e.g `compareNumber`)
 
 #### FnTransform
 - if it's a function, that executes recursively, should be named by '(name)Deep' pattern (e.g `omitDeep`)
