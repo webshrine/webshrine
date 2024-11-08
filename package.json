@@ -11,8 +11,8 @@
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
-    "deps:check_updates": "ncu -ws && cd pltf/desktop/src-tauri && cargo update --dry-run",
-    "deps:upgrade": "ncu -ws -u && pnpm i && cd pltf/desktop/src-tauri && cargo update"
+    "deps:check_updates": "ncu -ws",
+    "deps:upgrade": "ncu -ws -u && pnpm i"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.7.3",
