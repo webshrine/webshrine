@@ -3,6 +3,7 @@ import PACKAGE from '../../package.json'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base: '/webshrine/',
   title: `⛩️ ${PACKAGE.name.replace(/^\w/, s => s.toUpperCase())}`,
   description: PACKAGE.description,
   themeConfig: {
