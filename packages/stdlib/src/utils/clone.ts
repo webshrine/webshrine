@@ -3,11 +3,9 @@ import { klona } from 'klona'
 import { klona as klonaJson } from 'klona/json'
 
 /**
- * Clones JSON-compatible data recursively, faster than `clone`
- * Clones String, Number, null, Array, Object
+ * Clones `Primitive` values, plain objects and arrays recursively
  * @see https://github.com/lukeed/klona
  */
-// TODO refactor it to support all data, don't focus on json
 export const copy = klonaJson
 
 /**
