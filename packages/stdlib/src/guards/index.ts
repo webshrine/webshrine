@@ -7,7 +7,6 @@ import {
   isEmpty as lodashIsEmpty,
   isError as lodashIsError,
   isFunction as lodashIsFunction,
-  isNumber as lodashIsNumber,
   isObject as lodashIsObject,
   isPlainObject as lodashIsPlainObject,
   isString as lodashIsString,
@@ -34,7 +33,7 @@ export const isError = lodashIsError as FnGuard<Error>
 export const isObject = lodashIsObject as FnGuard<AnyObject>
 export const isPlainObject = lodashIsPlainObject as FnGuard<AnyObject>
 
-export const isNumber = lodashIsNumber as FnGuard<number>
+export const isNumber = ((n: any) => typeof n === 'number') as FnGuard<number>
 export const isNumberOdd = ((n: number) => n % 2 === 1) as FnGuard<number>
 export const isNumberEven = ((n: number) => n % 2 === 0) as FnGuard<number>
 export const isNumberPositive = ((n: number) => n > 0) as FnGuard<number>
@@ -42,6 +41,7 @@ export const isNumberNegative = ((n: number) => n < 0) as FnGuard<number>
 export const isNumberZero = ((n: number) => n === 0) as FnGuard<number>
 export const isNumberInteger = ((n: number) => n % 1 === 0) as FnGuard<number>
 export const isNumberFractional = ((n: number) => n % 1 !== 0) as FnGuard<number>
+export const isNumberSafe = ((n: number) => Number.isSafeInteger(n)) as FnGuard<number>
 
 export const isBigInt = ((n: any) => typeof n === 'bigint') as FnGuard<bigint>
 export const isBigIntOdd = ((n: bigint) => n % 2n === 1n) as FnGuard<bigint>
