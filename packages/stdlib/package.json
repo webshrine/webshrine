@@ -20,14 +20,15 @@
     "LICENSE.md",
     "README.md",
     "dist",
-    "package.json",
-    "src"
+    "package.json"
   ],
   "scripts": {
     "test": "vitest --watch --typecheck",
     "test:coverage": "vitest --coverage",
     "dev": "vite --host",
-    "build": "tsc && vite build",
+    "check_types": "tsc",
+    "build_soft": "vite build",
+    "build_strict": "npm run check_types && vite build",
     "bench": "vitest bench --watch",
     "deps:check_updates": "ncu",
     "deps:update": "ncu -u && pnpm i",
@@ -36,7 +37,7 @@
   "dependencies": {
     "@types/lodash": "^4.17.10",
     "@webshrine/stdtyp": "link:..\\stdtyp",
-    "cope": "^1.0.6",
+    "cope": "^1.0.9",
     "eventemitter3": "^5.0.1",
     "klona": "^2.0.6",
     "lodash": "^4.17.21",

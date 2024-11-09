@@ -59,6 +59,7 @@
     "klona",
     "Nullary",
     "omitdeep",
+    "omitters",
     "Primitivizable",
     "stddom",
     "stdlib",
@@ -68,5 +69,8 @@
   ],
   "typescript.preferences.autoImportSpecifierExcludeRegexes": [
     "node:test"
-  ]
+  ],
+  "[markdown]": {
+    "files.trimTrailingWhitespace": false
+  }
 }
