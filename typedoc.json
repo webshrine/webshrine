@@ -1,0 +1,10 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["./packages/stdlib/src/index.ts"],
+  "plugin": ["typedoc-plugin-markdown", "typedoc-vitepress-theme"],
+  "entryFileName": "index.md",
+  "docsRoot": "./docs",
+  "out": "./docs/api",
+  "hidePageHeader": true,
+  "skipErrorChecking": true
+}

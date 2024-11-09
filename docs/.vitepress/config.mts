@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress'
 import PACKAGE from '../../package.json'
+import typedocSidebar from '../api/typedoc-sidebar.json'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -11,9 +12,17 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Examples', link: '/examples' },
+      { text: 'API', link: '/api/' },
     ],
 
     sidebar: [
+      {
+        text: 'Basic aspects',
+        items: [
+          { text: 'Error handling', link: '/guide/error-handling.md' },
+          // { text: 'Examples', link: '/examples' },
+        ],
+      },
       {
         text: 'Libraries',
         items: [
@@ -23,11 +32,8 @@ export default defineConfig({
         ],
       },
       {
-        text: 'Basic aspects',
-        items: [
-          { text: 'Error handling', link: '/guide/error-handling.md' },
-          // { text: 'Examples', link: '/examples' },
-        ],
+        text: 'API',
+        items: typedocSidebar,
       },
     ],
 
