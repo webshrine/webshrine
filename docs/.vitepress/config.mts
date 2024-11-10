@@ -1,29 +1,29 @@
 import type { DefaultTheme } from 'vitepress'
 import { defineConfig } from 'vitepress'
 import PACKAGE from '../../package.json'
-import typedocSidebar from '../api/gen/typedoc-sidebar.json'
-import { capitalCase, item, sidebarItem, sidebarItemLinked } from './helpers.mts'
+import GeneratedApiSidebar from '../api/gen/typedoc-sidebar.json'
+import { capitalCase, item, sidebarItem, sidebarItemRootless } from './helpers.mts'
 
 const DefaultSidebar: DefaultTheme.Sidebar = [
-  sidebarItemLinked('Guide', null, () => [
+  sidebarItemRootless('Guide', null, () => [
     item('Installation'),
   ]),
-  sidebarItem('Basic aspects', { link: '/guide' }, () => [
+  sidebarItemRootless('Basic aspects', { link: '/guide' }, () => [
     item('Error handling'),
   ]),
 ]
 const CodeStyleSidebar: DefaultTheme.Sidebar = [
-  sidebarItemLinked('Code style', null, () => [
+  sidebarItem('Code style', null, () => [
     item('Main', '/'),
   ]),
 ]
 const ApiSidebar: DefaultTheme.Sidebar = [
-  sidebarItem('Globals', { link: 'api/gen' }, () => [
+  sidebarItemRootless('Globals', { link: 'api/gen' }, () => [
     item('stdlib', '/stdlib/src'),
     item('stdtyp', '/stdtyp/src'),
   ]),
-  sidebarItemLinked('stdlib', null, typedocSidebar.find(i => i.text === 'stdlib')?.items?.[0].items || []),
-  sidebarItemLinked('stdtyp', null, typedocSidebar.find(i => i.text === 'stdtyp')?.items?.[0].items || []),
+  sidebarItem('stdlib', null, GeneratedApiSidebar.find(i => i.text === 'stdlib')?.items?.[0].items || []),
+  sidebarItem('stdtyp', null, GeneratedApiSidebar.find(i => i.text === 'stdtyp')?.items?.[0].items || []),
 ]
 
 // https://vitepress.dev/reference/site-config

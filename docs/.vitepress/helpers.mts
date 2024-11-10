@@ -10,7 +10,7 @@ export const capitalCase = (str: string) => str.charAt(0).toUpperCase() + str.sl
 export const kebabCase = (str: string) => str.replace(/([a-z])([A-Z])/g, '$1-$2').replace(/\W+/g, '-').toLowerCase()
 
 let currentSidebarItemContext: { basePath: string } | null = null
-export function sidebarItemLinked(
+export function sidebarItem(
   text: string,
   options: Omit<DefaultTheme.SidebarItem, 'items' | 'text'> | null,
   createItems: (() => DefaultTheme.SidebarItem[]) | DefaultTheme.SidebarItem[],
@@ -36,13 +36,13 @@ export function sidebarItemLinked(
   }
 }
 
-export function sidebarItem(
+export function sidebarItemRootless(
   text: string,
   options: Omit<DefaultTheme.SidebarItem, 'items' | 'text'> | null,
   createItems: (() => DefaultTheme.SidebarItem[]) | DefaultTheme.SidebarItem[],
 ) {
-  const item = sidebarItemLinked(text, options, createItems)
-  delete item.link
+  const item = sidebarItem(text, options, createItems)
+  item.link = item.items[0].link
   return item
 }
 
