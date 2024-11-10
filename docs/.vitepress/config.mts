@@ -1,7 +1,7 @@
 import type { DefaultTheme } from 'vitepress'
 import { defineConfig } from 'vitepress'
 import PACKAGE from '../../package.json'
-import typedocSidebar from '../api/typedoc-sidebar.json'
+import typedocSidebar from '../api/gen/typedoc-sidebar.json'
 import { capitalCase, item, sidebarItem } from './helpers.mts'
 
 const DefaultSidebar: DefaultTheme.Sidebar = [
@@ -27,7 +27,7 @@ const config = defineConfig({
     nav: [
       item('Guide'),
       item('Code style'),
-      item('API'),
+      item('API', '/api/gen'),
     ],
     sidebar: {
       '/': DefaultSidebar,
