@@ -22,7 +22,7 @@ type NormalizeObjectKey<K extends ObjectKey> = K extends string
 
 /**
  * Return all keys of `T`, converting number keys to strings and ignore Symbol keys
- * Instead of `keyof T`, returns only strings
+ * Instead of `keyof T`, returns only strings and stringified numbers
  */
 export type Keys<T extends AnyObject> = NormalizeObjectKey<keyof T>
 

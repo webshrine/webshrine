@@ -99,6 +99,13 @@ export type FnWrapper<Func extends Fn = Fn, Parameters extends AnyArrayOptional 
   ? FnParametrized<[callback: Func, ...Parameters], Func>
   : FnParametrized<[callback: Func], Func>
 
+// TODO: uncomment on demand
+// /** Mutator function */
+// export type FnMutator<Target, Parameters extends AnyArrayOptional = AnyArrayOptional> =
+//   Parameters extends any[]
+//   ? FnProcedure<[target: Target, ...Parameters]>
+//   : FnProcedure<[target: Target]>
+
 /** Guard function */
 export type FnGuard<Target> = (value: any) => value is Target
 
