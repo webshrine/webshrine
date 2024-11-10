@@ -139,5 +139,7 @@
 
 html, .VPSidebar {
   scrollbar-width: thin;
+}
+.VPSidebar {
   scrollbar-gutter: stable;
 }

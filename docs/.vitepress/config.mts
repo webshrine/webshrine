@@ -2,10 +2,10 @@ import type { DefaultTheme } from 'vitepress'
 import { defineConfig } from 'vitepress'
 import PACKAGE from '../../package.json'
 import typedocSidebar from '../api/gen/typedoc-sidebar.json'
-import { capitalCase, item, sidebarItem } from './helpers.mts'
+import { capitalCase, item, sidebarItem, sidebarItemLinked } from './helpers.mts'
 
 const DefaultSidebar: DefaultTheme.Sidebar = [
-  sidebarItem('Guide', null, () => [
+  sidebarItemLinked('Guide', null, () => [
     item('Installation'),
   ]),
   sidebarItem('Basic aspects', { link: '/guide' }, () => [
@@ -13,11 +13,18 @@ const DefaultSidebar: DefaultTheme.Sidebar = [
   ]),
 ]
 const CodeStyleSidebar: DefaultTheme.Sidebar = [
-  sidebarItem('Code style', null, () => [
+  sidebarItemLinked('Code style', null, () => [
     item('Main', '/'),
   ]),
 ]
-const ApiSidebar: DefaultTheme.Sidebar = [sidebarItem('API', null, typedocSidebar)]
+const ApiSidebar: DefaultTheme.Sidebar = [
+  sidebarItem('Globals', { link: 'api/gen' }, () => [
+    item('stdlib', '/stdlib/src'),
+    item('stdtyp', '/stdtyp/src'),
+  ]),
+  sidebarItemLinked('stdlib', null, typedocSidebar.find(i => i.text === 'stdlib')?.items?.[0].items || []),
+  sidebarItemLinked('stdtyp', null, typedocSidebar.find(i => i.text === 'stdtyp')?.items?.[0].items || []),
+]
 
 // https://vitepress.dev/reference/site-config
 const config = defineConfig({

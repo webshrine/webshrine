@@ -1,6 +1,9 @@
 {
   "$schema": "https://typedoc.org/schema.json",
-  "entryPoints": ["./packages/stdlib/src/index.ts"],
+  "entryPoints": [
+    "./packages/stdtyp/src/index.ts",
+    "./packages/stdlib/src/index.ts"
+  ],
   "plugin": ["typedoc-plugin-markdown", "typedoc-vitepress-theme"],
   "entryFileName": "index.md",
   "docsRoot": "./docs",
