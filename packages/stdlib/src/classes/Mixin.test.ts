@@ -1,4 +1,4 @@
-import { Mixin } from './Mixin.create'
+import { Mixin } from './Mixin'
 
 const createFooConstructor = () => {
   return class Foo {
