@@ -22,7 +22,7 @@
 
 #### Defined in
 
-[packages/stdlib/src/classes/Autoincrement.ts:27](https://github.com/webshrine/webshrine/blob/0e16c5948921e0c95cce645760c4a8b0855b196b/packages/stdlib/src/classes/Autoincrement.ts#L27)
+[packages/stdlib/src/classes/Autoincrement.ts:27](https://github.com/webshrine/webshrine/blob/8cedc3f2efca3108f17475a5ce8404715d0d24a5/packages/stdlib/src/classes/Autoincrement.ts#L27)
 
 ## Properties
 
@@ -32,7 +32,7 @@
 
 #### Defined in
 
-[packages/stdlib/src/classes/Autoincrement.ts:27](https://github.com/webshrine/webshrine/blob/0e16c5948921e0c95cce645760c4a8b0855b196b/packages/stdlib/src/classes/Autoincrement.ts#L27)
+[packages/stdlib/src/classes/Autoincrement.ts:27](https://github.com/webshrine/webshrine/blob/8cedc3f2efca3108f17475a5ce8404715d0d24a5/packages/stdlib/src/classes/Autoincrement.ts#L27)
 
 ***
 
@@ -42,7 +42,7 @@
 
 #### Defined in
 
-[packages/stdlib/src/classes/Autoincrement.ts:25](https://github.com/webshrine/webshrine/blob/0e16c5948921e0c95cce645760c4a8b0855b196b/packages/stdlib/src/classes/Autoincrement.ts#L25)
+[packages/stdlib/src/classes/Autoincrement.ts:25](https://github.com/webshrine/webshrine/blob/8cedc3f2efca3108f17475a5ce8404715d0d24a5/packages/stdlib/src/classes/Autoincrement.ts#L25)
 
 ## Methods
 
@@ -60,4 +60,4 @@
 
 #### Defined in
 
-[packages/stdlib/src/classes/Autoincrement.ts:29](https://github.com/webshrine/webshrine/blob/0e16c5948921e0c95cce645760c4a8b0855b196b/packages/stdlib/src/classes/Autoincrement.ts#L29)
+[packages/stdlib/src/classes/Autoincrement.ts:29](https://github.com/webshrine/webshrine/blob/8cedc3f2efca3108f17475a5ce8404715d0d24a5/packages/stdlib/src/classes/Autoincrement.ts#L29)

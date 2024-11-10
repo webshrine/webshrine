@@ -40,7 +40,7 @@ Returns the new throttled function.
 
 ### Defined in
 
-[packages/stdlib/src/wrappers/index.ts:14](https://github.com/webshrine/webshrine/blob/0e16c5948921e0c95cce645760c4a8b0855b196b/packages/stdlib/src/wrappers/index.ts#L14)
+[packages/stdlib/src/wrappers/index.ts:14](https://github.com/webshrine/webshrine/blob/8cedc3f2efca3108f17475a5ce8404715d0d24a5/packages/stdlib/src/wrappers/index.ts#L14)
 
 ## throttle(func, wait, options)
 
@@ -64,4 +64,4 @@ Returns the new throttled function.
 
 ### Defined in
 
-[packages/stdlib/src/wrappers/index.ts:14](https://github.com/webshrine/webshrine/blob/0e16c5948921e0c95cce645760c4a8b0855b196b/packages/stdlib/src/wrappers/index.ts#L14)
+[packages/stdlib/src/wrappers/index.ts:14](https://github.com/webshrine/webshrine/blob/8cedc3f2efca3108f17475a5ce8404715d0d24a5/packages/stdlib/src/wrappers/index.ts#L14)

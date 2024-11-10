@@ -1,43 +1,47 @@
+import type { DefaultTheme } from 'vitepress'
 import { defineConfig } from 'vitepress'
 import PACKAGE from '../../package.json'
 import typedocSidebar from '../api/typedoc-sidebar.json'
+import { capitalCase, item, sidebarItem } from './helpers.mts'
+
+const DefaultSidebar: DefaultTheme.Sidebar = [
+  sidebarItem('Guide', null, () => [
+    item('Installation'),
+  ]),
+  sidebarItem('Basic aspects', { link: '/guide' }, () => [
+    item('Error handling'),
+  ]),
+]
+const CodeStyleSidebar: DefaultTheme.Sidebar = [
+  sidebarItem('Code style', null, () => [
+    item('Main', '/'),
+  ]),
+]
+const ApiSidebar: DefaultTheme.Sidebar = [sidebarItem('API', null, typedocSidebar)]
 
 // https://vitepress.dev/reference/site-config
-export default defineConfig({
-  title: `⛩️ ${PACKAGE.name.replace(/^\w/, s => s.toUpperCase())}`,
+const config = defineConfig({
+  title: `⛩️ ${capitalCase(PACKAGE.name)}`,
   description: PACKAGE.description,
   themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/examples' },
-      { text: 'API', link: '/api/' },
+      item('Guide'),
+      item('Code style'),
+      item('API'),
     ],
-
-    sidebar: [
-      {
-        text: 'Basic aspects',
-        items: [
-          { text: 'Error handling', link: '/guide/error-handling.md' },
-          // { text: 'Examples', link: '/examples' },
-        ],
-      },
-      {
-        text: 'Libraries',
-        items: [
-          { text: 'stdtyp', link: '/libs/stdtyp' },
-          { text: 'stdlib', link: '/libs/stdlib' },
-          { text: 'stddom', link: '/libs/stddom' },
-        ],
-      },
-      {
-        text: 'API',
-        items: typedocSidebar,
-      },
-    ],
-
+    sidebar: {
+      '/': DefaultSidebar,
+      '/code-style/': CodeStyleSidebar,
+      '/api/': ApiSidebar,
+    },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/webshrine/webshrine' },
     ],
   },
 })
+
+// DEBUG
+// logPaths('Nav paths:', config.themeConfig?.nav)
+// logPaths('Sidebar paths:', config.themeConfig?.sidebar)
+
+export default config
