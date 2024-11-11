@@ -17,13 +17,10 @@ const CodeStyleSidebar: DefaultTheme.Sidebar = [
     item('Main', '/'),
   ]),
 ]
+
 const ApiSidebar: DefaultTheme.Sidebar = [
-  sidebarItemRootless('Globals', { link: 'api/gen' }, () => [
-    item('stdlib', '/stdlib/src'),
-    item('stdtyp', '/stdtyp/src'),
-  ]),
-  sidebarItem('stdlib', null, GeneratedApiSidebar.find(i => i.text === 'stdlib')?.items?.[0].items || []),
-  sidebarItem('stdtyp', null, GeneratedApiSidebar.find(i => i.text === 'stdtyp')?.items?.[0].items || []),
+  sidebarItem('stdlib', { link: 'api/gen/stdlib/src' }, GeneratedApiSidebar.find(i => i.text === 'stdlib')?.items?.[0].items || []),
+  sidebarItem('stdtyp', { link: 'api/gen/stdtyp/src' }, GeneratedApiSidebar.find(i => i.text === 'stdtyp')?.items?.[0].items || []),
 ]
 
 // https://vitepress.dev/reference/site-config
@@ -34,7 +31,7 @@ const config = defineConfig({
     nav: [
       item('Guide'),
       item('Code style'),
-      item('API', '/api/gen'),
+      item('API', '/api'),
     ],
     sidebar: {
       '/': DefaultSidebar,
