@@ -1,8 +1,5 @@
-import type { FnMatch } from '@webshrine/stdtyp'
-
-import {
-  isEqual as lodashIsEqual,
+export {
+  eq as areSame,
+  isEqual as areEqual,
 } from 'lodash'
 
-export const areSameValue: FnMatch = (a, b) => a === b
-export const areEqual = lodashIsEqual as FnMatch
