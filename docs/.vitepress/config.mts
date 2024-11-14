@@ -8,8 +8,11 @@ const DefaultSidebar: DefaultTheme.Sidebar = [
   sidebarItemRootless('Guide', null, () => [
     item('Installation'),
   ]),
-  sidebarItemRootless('Basic aspects', { link: '/guide' }, () => [
+  sidebarItemRootless('Basic aspects', null, () => [
     item('Error handling'),
+  ]),
+  sidebarItemRootless('Migration', null, () => [
+    item('Other packages'),
   ]),
 ]
 const CodeStyleSidebar: DefaultTheme.Sidebar = [
@@ -31,7 +34,7 @@ const config = defineConfig({
     nav: [
       item('Guide'),
       item('Code style'),
-      item('API', '/api'),
+      item('API'),
     ],
     sidebar: {
       '/': DefaultSidebar,
