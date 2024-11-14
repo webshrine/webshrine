@@ -1,5 +1,4 @@
 import type { FnNullary } from '.'
-import type { ObjectKey } from '..'
 
 /** Allows `T` to be `T` or `null` */
 export type Nullable<T> = T | null
@@ -22,7 +21,7 @@ export type MaybeArray<T> = T | T[]
  * const literal2: MaybeSomeLiterals = 'other literal' // still ok and IDE can suggest source literals
  * ```
  */
-export type MaybeLiteral<T extends ObjectKey> = T | (string & {})
+export type MaybeLiteral<T extends PropertyKey> = T | (string & {})
 
 // TODO: Uncomment on demand
 // export type MaybeKeyof<T extends AnyObject> = MaybeLiteral<keyof T>

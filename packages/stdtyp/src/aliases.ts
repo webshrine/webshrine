@@ -18,10 +18,7 @@ export type AnyArrayOptional = AnyArray | undefined
  * function process<T extends AnyRecord>(data: T) { ... }
  * ```
  */
-export type AnyObject = Record<ObjectKey, any>
-
-/** Alias for any object key */
-export type ObjectKey = string | number | symbol
+export type AnyObject = Record<PropertyKey, any>
 
 /** Unification type for number and bigint */
 export type Numeric = number | bigint

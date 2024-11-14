@@ -1,4 +1,4 @@
-import type { AnyArrayOptional, AnyObject, Decrement, ObjectKey } from '..'
+import type { AnyArrayOptional, AnyObject, Decrement } from '..'
 
 export type IterateParameters<Item = any> = [value: Item, index: number, array: Item[]]
 
@@ -16,7 +16,7 @@ export type NullaryConstructor<Instance> = Constructor<Instance>
 
 type IfString<Value, Then = Value, Else = never> = Value extends string ? Then : Else
 
-type NormalizeObjectKey<K extends ObjectKey> = K extends string
+type StringifyKey<K extends PropertyKey> = K extends string
   ? K
   : K extends number ? `${K}` : never
 
@@ -24,13 +24,13 @@ type NormalizeObjectKey<K extends ObjectKey> = K extends string
  * Return all keys of `T`, converting number keys to strings and ignore Symbol keys
  * Instead of `keyof T`, returns only strings and stringified numbers
  */
-export type Keys<T extends AnyObject> = NormalizeObjectKey<keyof T>
+export type Keys<T extends AnyObject> = StringifyKey<keyof T>
 
 /** The same as `Keys<T>`, but recursively for all nested objects */
 export type KeysDeep<T extends AnyObject, Depth extends number = 20> = Depth extends -1
   ? never
   : {
-    [K in keyof T]: NormalizeObjectKey<K> | (T[K] extends AnyObject
+    [K in keyof T]: StringifyKey<K> | (T[K] extends AnyObject
       ? KeysDeep<T[K], Decrement[Depth]>
       : never)
   }[keyof T]
