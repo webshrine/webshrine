@@ -7,6 +7,7 @@ import {
   isEmpty as lodashIsEmpty,
   isError as lodashIsError,
   isFunction as lodashIsFunction,
+  isNative as lodashIsNative,
   isObject as lodashIsObject,
   isPlainObject as lodashIsPlainObject,
   isString as lodashIsString,
@@ -29,6 +30,7 @@ export const isNullish = utIsNullish as FnGuard<Nullish>
 export const isPrimitive = utIsPrimitive as FnGuard<Primitive>
 export const isEmpty = lodashIsEmpty
 export const isError = lodashIsError as FnGuard<Error>
+export const isNative = lodashIsNative as FnGuard<Fn>
 
 export const isObject = lodashIsObject as FnGuard<AnyObject>
 export const isPlainObject = lodashIsPlainObject as FnGuard<AnyObject>
