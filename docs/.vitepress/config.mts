@@ -31,6 +31,9 @@ const config = defineConfig({
   title: `⛩️ ${capitalCase(PACKAGE.name)}`,
   description: PACKAGE.description,
   themeConfig: {
+    search: {
+      provider: 'local',
+    },
     nav: [
       item('Guide'),
       item('Code style'),
