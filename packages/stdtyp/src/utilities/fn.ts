@@ -78,20 +78,27 @@ export type FnTransform<
 /** Summarizer funcConcatTwoArrays */
 export type FnReduce<Input = any, Result = any> = FnParametrized<[a: Input, b: Input], Result>
 
-/** Basic iteration function */
-export type FnIterate<Item = any, Result = void> = FnParametrized<IterateParameters<Item>, Result>
+/**
+ * General iteration function
+ * If `Id` wasn't provided, returns universal iterate function type
+ */
+export type FnIterate<
+  Item = any,
+  Id = PropertyKey,
+  Result = void,
+> = (...params: IterateParameters<Item, Id>) => Result
 
 /** Procedure iteration function */
-export type FnProcedureIterate<Item = any> = FnIterate<Item, void>
+export type FnProcedureIterate<Item = any, Id = PropertyKey> = FnIterate<Item, Id, void>
 
 /** Predicate iteration function */
-export type FnPredicateIterate<Item = any> = FnIterate<Item, boolean>
+export type FnPredicateIterate<Item = any, Id = PropertyKey> = FnIterate<Item, Id, boolean>
 
 /** Transform iteration function */
-export type FnTransformIterate<Input = any, Output = Input> = FnIterate<Input, Output>
+export type FnTransformIterate<Input = any, Id = PropertyKey, Output = Input> = FnIterate<Input, Id, Output>
 
 /** Reduce iteration function */
-export type FnReduceIterate<Item = any, Result = any> = Fn<[previousValue: Result | undefined, ...IterateParameters<Item>], Result>
+export type FnReduceIterate<Item = any, Id = PropertyKey, Result = any> = Fn<[previousValue: Result | undefined, ...IterateParameters<Item, Id>], Result>
 
 /** Wrapper function */
 export type FnWrapper<Func extends Fn = Fn, Parameters extends AnyArrayOptional = AnyArrayOptional> =

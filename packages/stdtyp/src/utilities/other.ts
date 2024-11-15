@@ -1,6 +1,16 @@
 import type { AnyArrayOptional, AnyObject, Decrement } from '..'
 
-export type IterateParameters<Item = any> = [value: Item, index: number, array: Item[]]
+/**
+ * General parameters of iteration function
+ * If `Id` wasn't provided, returns universal iterate parameters
+ */
+export type IterateParameters<
+  Item = any,
+  Id = PropertyKey,
+  ParentObject = Record<PropertyKey, Item>,
+> = Id extends number
+  ? [item: Item, index: Id, array: Item[]]
+  : [value: Item, key: Id, object: ParentObject]
 
 export type Constructor<
   Instance = any,
