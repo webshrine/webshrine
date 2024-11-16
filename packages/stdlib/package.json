@@ -35,7 +35,7 @@
     "release": "npm run build && ..."
   },
   "dependencies": {
-    "@types/lodash": "^4.17.10",
+    "@types/lodash": "^4.17.13",
     "@webshrine/stdtyp": "link:..\\stdtyp",
     "cope": "^1.0.9",
     "eventemitter3": "^5.0.1",
@@ -45,10 +45,10 @@
     "utility-types": "^3.11.0"
   },
   "devDependencies": {
-    "@types/node": "^22.7.4",
-    "terser": "^5.34.1",
-    "vite": "^5.4.8",
-    "vite-plugin-dts": "^4.2.3",
-    "vitest": "^2.1.2"
+    "@types/node": "^22.9.0",
+    "terser": "^5.36.0",
+    "vite": "^5.4.11",
+    "vite-plugin-dts": "^4.3.0",
+    "vitest": "^2.1.5"
   }
 }
