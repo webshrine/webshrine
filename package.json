@@ -14,7 +14,7 @@
     "docs:build": "npm run docs:prepare && vitepress build docs",
     "docs:preview": "npm run docs:prepare && vitepress preview docs",
     "deps:check_updates": "ncu -ws",
-    "deps:upgrade": "ncu -ws -u && pnpm i"
+    "deps:update": "ncu -ws -u && ncu -u && pnpm i"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.7.3",
