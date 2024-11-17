@@ -64,14 +64,14 @@ export const isNumericFractional = ((v: Numeric) => typeof v === 'number' ? isNu
 export const isString = lodashIsString as FnGuard<string>
 export const isStringEmpty = ((s: string) => s === '') as FnGuard<''>
 export const isStringEmptyOrWhiteSpace = ((s: string) => s === '' || /^\s+$/.test(s)) as FnGuard<string>
-export const isStringNumericDecimal = ((s: string) => /^\d+\.\d+$|^\d+$/.test(s)) as FnGuard<string>
-export const isStringNumericDecimalLiteral = ((s: string) => /^[\d_]+$/.test(s)) as FnGuard<string>
-export const isStringNumericBinary = ((s: string) => /^[01]+$/.test(s)) as FnGuard<string>
-export const isStringNumericBinaryLiteral = ((s: string) => /^0b[01_]+$/.test(s)) as FnGuard<string>
-export const isStringNumericOctal = ((s: string) => /^[0-7]+$/.test(s)) as FnGuard<string>
-export const isStringNumericOctalLiteral = ((s: string) => /^0o[0-7_]+$/.test(s)) as FnGuard<string>
-export const isStringNumericHexadecimal = ((s: string) => /^[\dA-F]+$/i.test(s)) as FnGuard<string>
-export const isStringNumericHexadecimalLiteral = ((s: string) => /^0x[\dA-F_]+$/i.test(s)) as FnGuard<string>
-export const isStringNumericAny = ((s: string) => isStringNumericDecimal(s) || isStringNumericBinary(s) || isStringNumericOctal(s) || isStringNumericHexadecimal(s)) as FnGuard<string>
-export const isStringNumericAnyLiteral = ((s: string) => isStringNumericDecimalLiteral(s) || isStringNumericBinaryLiteral(s) || isStringNumericOctalLiteral(s) || isStringNumericHexadecimalLiteral(s)) as FnGuard<string>
+export const isStringNumberableDecimal = ((s: string) => /^\d+\.\d+$|^\d+$/.test(s)) as FnGuard<string>
+export const isStringNumberableDecimalLiteral = ((s: string) => /^[\d_]+$/.test(s)) as FnGuard<string>
+export const isStringNumberableBinary = ((s: string) => /^[01]+$/.test(s)) as FnGuard<string>
+export const isStringNumberableBinaryLiteral = ((s: string) => /^0b[01_]+$/.test(s)) as FnGuard<string>
+export const isStringNumberableOctal = ((s: string) => /^[0-7]+$/.test(s)) as FnGuard<string>
+export const isStringNumberableOctalLiteral = ((s: string) => /^0o[0-7_]+$/.test(s)) as FnGuard<string>
+export const isStringNumberableHexadecimal = ((s: string) => /^[\dA-F]+$/i.test(s)) as FnGuard<string>
+export const isStringNumberableHexadecimalLiteral = ((s: string) => /^0x[\dA-F_]+$/i.test(s)) as FnGuard<string>
+export const isStringNumberableAny = ((s: string) => isStringNumberableDecimal(s) || isStringNumberableBinary(s) || isStringNumberableOctal(s) || isStringNumberableHexadecimal(s)) as FnGuard<string>
+export const isStringNumberableAnyLiteral = ((s: string) => isStringNumberableDecimalLiteral(s) || isStringNumberableBinaryLiteral(s) || isStringNumberableOctalLiteral(s) || isStringNumberableHexadecimalLiteral(s)) as FnGuard<string>
 export const isStringDate = ((s: string) => !Number.isNaN(Date.parse(s))) as FnGuard<string>
