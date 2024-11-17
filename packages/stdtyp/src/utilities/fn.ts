@@ -1,5 +1,5 @@
 import type { IterateParameters } from '.'
-import type { AnyArray, AnyArrayOptional } from '..'
+import type { AnyArray, AnyArrayOptional, AnyObject } from '..'
 
 type ConcatTwoArrays<A extends AnyArray, B extends AnyArrayOptional> = B extends AnyArray ? [...A, ...B] : A
 
@@ -87,6 +87,18 @@ export type FnIterate<
   Id = PropertyKey,
   Result = void,
 > = (...params: IterateParameters<Item, Id>) => Result
+
+export type FnIterateDeep<
+  Item = any,
+  Id = PropertyKey,
+  ParentObject = AnyObject | AnyArray | undefined,
+  Result = void,
+> = (
+  value: Item,
+  key: Id,
+  object: ParentObject,
+  level: number,
+) => Result
 
 /** Procedure iteration function */
 export type FnProcedureIterate<Item = any, Id = PropertyKey> = FnIterate<Item, Id, void>
