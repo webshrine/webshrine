@@ -19,7 +19,7 @@ import {
  * areSame('a', Object('a')); // => false
  * areSame(NaN, NaN); // => true
  */
-export const areSame = eq satisfies FnMatch
+export const areSame: FnMatch = (a, b) => eq(a, b)
 
 /**
  * Performs a deep comparison between two values to determine if they are
@@ -38,4 +38,4 @@ export const areSame = eq satisfies FnMatch
  * areEqual(object, other); // => true
  * object === other; // => false
  */
-export const areEqual = isEqual satisfies FnMatch
+export const areEqual: FnMatch = (a, b) => isEqual(a, b)
