@@ -1,28 +1,12 @@
 # Installation
 
-```bash
-pnpm i @webshrine/stdlib # types, core
-pnpm i -D @webshrine/stdtyp # types
-pnpm i @webshrine/stdlib @webshrine/stddom # types, core, DOM
+```sh
+npm i @webshrine/stdlib # types, core // [!=npm auto]
+npm i -D @webshrine/stdtyp # types // [!=npm auto]
 ```
-<details><summary>Other package managers</summary>
+<!-- npm i @webshrine/stdlib @webshrine/stddom # types, core, DOM -->
 
-#### NPM
-```bash
-npm i @webshrine/stdlib # types, core
-npm i -D @webshrine/stdtyp # types
-npm i @webshrine/stdlib @webshrine/stddom # types, core, DOM
-```
-
-#### Yarn
-```bash
-yarn add @webshrine/stdlib # types, core
-yarn add -D @webshrine/stdtyp # types
-yarn add @webshrine/stdlib @webshrine/stddom # types, core, DOM
-```
-</details>
-
-```mermaid
+<!-- ```mermaid
 erDiagram
 stdtyp ||--|| stdlib : "Fully reexports"
 stdtyp ||--|| stddom : "Partially uses"
@@ -34,4 +18,4 @@ stddom ||--|| "Use types, core logics, DOM helpers" : ""
 "Use types" ||--|| "Your project" : ""
 "Use types, core logics" ||--|| "Your project" : ""
 "Use types, core logics, DOM helpers" ||--|| "Your project" : ""
-```
+``` -->

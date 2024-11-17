@@ -43,7 +43,7 @@ const config = defineConfig({
       provider: 'local',
     },
     nav: [
-      item('Guide'),
+      item('Guide', 'guide/installation'),
       item('Code style'),
       item('API'),
     ],

@@ -36,7 +36,7 @@ if (parsingError)
 ### Default value
 You can use native syntax
 ```ts
-const [result = 'default value', syncParseErr] = cope(...)
+const [result = 'default value', syncParseErr] = cope(/* ... */)
 result // is always defined
 ```
 

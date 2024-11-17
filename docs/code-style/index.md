@@ -27,7 +27,7 @@
 - naming pattern 'are(Name)' (e.g `areEqual`)
 
 #### FnReduce
-- naming pattern 'reduce(Name)' (e.g `reduceNumbersToSumNumber`)
+- naming pattern 'reduce(Source)To(Target)' (e.g `reduceNumbersToSumNumber`)
 
 #### FnCompare
 - naming pattern 'compare(Name)' (e.g `compareNumber`)
