@@ -46,9 +46,9 @@ yarn add @webshrine/stdlib @webshrine/stddom # types, core, DOM
 </details>
 
 ### 📦 Unites third-party packages
-- **lodash** - famous utils lib
-- **type-utilities** - famous type utils lib
-- **eventemitter3** - well-known EventEmitter
-- **lodash-omitdeep** - recursive lodash.omit
-- **klona** - fastest lodash.cloneDeep util
-- **clsx** - CSS class merging helper
+- [lodash](https://www.npmjs.com/package/lodash) - famous utils lib
+- [utility-types](https://www.npmjs.com/package/utility-types) - famous type utils lib
+- [eventemitter3](https://www.npmjs.com/package/eventemitter3) - well-known EventEmitter
+- lodash-omitdeep - recursive lodash.omit
+- [klona](https://www.npmjs.com/package/klona) - fastest lodash.cloneDeep util
+- [clsx](https://www.npmjs.com/package/clsx) - CSS class merging helper
