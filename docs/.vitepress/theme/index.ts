@@ -1,7 +1,8 @@
 import type { Theme } from 'vitepress'
-import DefaultTheme from 'vitepress/theme'
-// https://vitepress.dev/guide/custom-theme
+import DefaultTheme from 'vitepress/theme' // https://vitepress.dev/guide/custom-theme
+import { enhanceAppWithTabs } from 'vitepress-plugin-tabs/client'
 import { h } from 'vue'
+
 import './style.css'
 import './scrollbar.css'
 
@@ -12,7 +13,7 @@ export default {
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
     })
   },
-  enhanceApp({ app, router, siteData }) {
-    // ...
+  enhanceApp({ app }) {
+    enhanceAppWithTabs(app)
   },
 } satisfies Theme

@@ -1,5 +1,7 @@
 import type { DefaultTheme } from 'vitepress'
 import { defineConfig } from 'vitepress'
+import { npmCommandsMarkdownPlugin } from 'vitepress-plugin-npm-commands'
+import { tabsMarkdownPlugin } from 'vitepress-plugin-tabs'
 import PACKAGE from '../../package.json'
 import GeneratedApiSidebar from '../api/gen/typedoc-sidebar.json'
 import { capitalCase, item, sidebarItem, sidebarItemRootless } from './helpers.mts'
@@ -30,6 +32,12 @@ const ApiSidebar: DefaultTheme.Sidebar = [
 const config = defineConfig({
   title: `⛩️ ${capitalCase(PACKAGE.name)}`,
   description: PACKAGE.description,
+  markdown: {
+    config(md) {
+      md.use(tabsMarkdownPlugin)
+      md.use(npmCommandsMarkdownPlugin)
+    },
+  },
   themeConfig: {
     search: {
       provider: 'local',
