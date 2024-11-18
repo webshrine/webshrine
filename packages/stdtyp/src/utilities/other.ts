@@ -1,5 +1,10 @@
 import type { AnyArrayOptional, AnyObject, Decrement } from '..'
 
+export type Collection<
+  Item = any,
+  Key extends PropertyKey = PropertyKey,
+> = Item[] | Record<Key, Item>
+
 /**
  * General parameters of iteration function
  * If `Id` wasn't provided, returns universal iterate parameters
