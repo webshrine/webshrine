@@ -1,75 +1,72 @@
-import type { AnyArray, AnyObject, FnIterate, FnIterateDeep, KeysDeep, MaybeLiteral, ValuesType } from '@webshrine/stdtyp'
-import { isObject } from '@/guards'
+import type { AnyArray, AnyObject, Collection, FnIterate, FnIterateDeep, Key } from '@webshrine/stdtyp'
+import { isCollection } from '@/guards'
 
-export const forEachValue = <T extends AnyObject>(
-  object: T,
-  cb: FnIterate<T[keyof T], string, T>,
+export const forEachItem = <T extends AnyArray>(
+  array: T,
+  cb: FnIterate<T[number], number>,
+) => {
+  for (let index = 0, max = array.length; index < max; index++)
+    cb(array[index], index, array)
+}
+
+export const forEachValue = (
+  object: Record<Key, any>,
+  cb: FnIterate<any, string>,
 ) => {
   for (const key in object)
     cb(object[key], key, object)
 }
 
-export const forEachItem = <T extends AnyArray>(
-  array: T,
-  cb: FnIterate<T[number], number, T>,
+export const forEachSymbol = (
+  object: AnyObject,
+  cb: FnIterate<any, symbol>,
 ) => {
-  for (let index = 0; index < array.length; index++)
-    cb(array[index], index, array)
+  forEachItem(
+    Object.getOwnPropertySymbols(object),
+    symbol => cb(object[symbol], symbol, object),
+  )
 }
 
-export const forEach = <
-  T extends AnyObject | AnyArray,
-  Item = T extends AnyArray ? T[number] : T[keyof T],
-  Id = T extends AnyArray ? number : keyof T,
->(
-  collection: T,
-  cb: FnIterate<Item, Id>,
+export const forEach = (
+  collection: Collection,
+  cb: FnIterate<any, Key>,
 ) => {
-  // @ts-expect-error cb is universal
-  Array.isArray(collection) ? forEachItem(collection, cb) : forEachValue(collection, cb)
+  Array.isArray(collection)
+    ? forEachItem(collection, cb)
+    : forEachValue(collection, cb)
 }
 
-function forEachDeepIterate<Parent = any>(
-  callback: FnIterateDeep,
-  node: Parent,
+function forEachDeepIterate(
+  callback: FnIterateDeep<any, Key>,
+  node: Collection | any,
   level: number,
 ) {
-  if (Array.isArray(node)) {
+  if (isCollection(node)) {
     const nextLevel = level + 1
-    for (let index = 0; index <= node.length; index++) {
-      callback(node[index], index, node, nextLevel)
-      forEachDeepIterate(callback, node[index], nextLevel)
-    }
-  }
-  else if (isObject(node)) {
-    const nextLevel = level + 1
-    for (const key in node) {
-      callback(node[key], key, node, nextLevel)
-      forEachDeepIterate(callback, node[key], nextLevel)
-    }
+    forEach(node, (value, key) => {
+      callback(value, key, node, level)
+      forEachDeepIterate(callback, value, nextLevel)
+    })
   }
 }
 
 /**
  * Iterates each item of recursive structure
- * @example ```ts
+ *
+ * @example
  * const obj = {
- *  a: 1,
- *  b: { ba: 2 },
- *  c: [{ caa: 3 }, { cab: 4 }],
+ *   a: 1,
+ *   b: { ba: 2 },
+ *   [Symbol('')]: 3,
+ *   c: [{ caa: 4 }, { cab: 5 }],
  * }
  * forEachDeep(obj, (value, key, parent, level) => {
- *  ...Will iterate keys: a, b, ba, c, 0, caa, 1, cab
+ *   ...Will iterate keys: a, b, ba, c, 0, caa, 1, cab
  * })
- * ```
  */
-export function forEachDeep<T extends AnyObject | AnyArray>(
+export function forEachDeep<T extends Collection>(
   data: T,
-  callback: FnIterateDeep<
-    ValuesType<T>,
-    number | MaybeLiteral<KeysDeep<T>>,
-    T
-  >,
+  callback: FnIterateDeep<any, Key>,
 ) {
   forEachDeepIterate(callback, data, 0)
 }
