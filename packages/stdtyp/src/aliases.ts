@@ -24,6 +24,12 @@ export type AnyObject = Record<PropertyKey, any>
 export type Numeric = number | bigint
 
 /**
+ * Simple object keys
+ * The same as `PropertyKey` but without `symbol` type
+ */
+export type Key = number | string
+
+/**
  * Used for define return values for comparator functions,
  * that usually used in `Array.prototype.sort` method
  *
