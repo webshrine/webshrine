@@ -11,11 +11,16 @@ export type Collection<
  */
 export type IterateParameters<
   Item = any,
-  Id = PropertyKey,
-  ParentObject = Record<PropertyKey, Item>,
-> = Id extends number
-  ? [item: Item, index: Id, array: Item[]]
-  : [value: Item, key: Id, object: ParentObject]
+  Key extends PropertyKey = PropertyKey,
+  ParentObject extends Collection = Collection<Item, Key>,
+> = [value: Item, key: Key, parent: ParentObject]
+// export type IterateParameters<
+//   Item = any,
+//   Id extends PropertyKey = PropertyKey,
+//   ParentObject extends Collection = Collection<Item, Id>,
+// > = Id extends number
+//   ? [item: Item, index: Id, array: Item[]]
+//   : [value: Item, key: Id, object: ParentObject]
 
 export type Constructor<
   Instance = any,

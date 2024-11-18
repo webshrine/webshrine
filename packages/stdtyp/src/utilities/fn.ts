@@ -84,7 +84,7 @@ export type FnReduce<Input = any, Result = any> = FnParametrized<[a: Input, b: I
  */
 export type FnIterate<
   Item = any,
-  Id = PropertyKey,
+  Id extends PropertyKey = PropertyKey,
   Result = void,
 > = (...params: IterateParameters<Item, Id>) => Result
 
@@ -101,16 +101,16 @@ export type FnIterateDeep<
 ) => Result
 
 /** Procedure iteration function */
-export type FnProcedureIterate<Item = any, Id = PropertyKey> = FnIterate<Item, Id, void>
+export type FnProcedureIterate<Item = any, Id extends PropertyKey = PropertyKey> = FnIterate<Item, Id, void>
 
 /** Predicate iteration function */
-export type FnPredicateIterate<Item = any, Id = PropertyKey> = FnIterate<Item, Id, boolean>
+export type FnPredicateIterate<Item = any, Id extends PropertyKey = PropertyKey> = FnIterate<Item, Id, boolean>
 
 /** Transform iteration function */
-export type FnTransformIterate<Input = any, Id = PropertyKey, Output = Input> = FnIterate<Input, Id, Output>
+export type FnTransformIterate<Input = any, Id extends PropertyKey = PropertyKey, Output = Input> = FnIterate<Input, Id, Output>
 
 /** Reduce iteration function */
-export type FnReduceIterate<Item = any, Id = PropertyKey, Result = any> = Fn<[previousValue: Result | undefined, ...IterateParameters<Item, Id>], Result>
+export type FnReduceIterate<Item = any, Id extends PropertyKey = PropertyKey, Result = any> = Fn<[previousValue: Result | undefined, ...IterateParameters<Item, Id>], Result>
 
 /** Wrapper function */
 export type FnWrapper<Func extends Fn = Fn, Parameters extends AnyArrayOptional = AnyArrayOptional> =
