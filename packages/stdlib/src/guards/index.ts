@@ -1,7 +1,6 @@
 import type { AnyArray, AnyObject, Collection, Falsy, Fn, FnGuard, Nullish, Numeric, Primitive } from '@webshrine/stdtyp'
 
 import {
-  isArray as lodashIsArray,
   isBoolean as lodashIsBoolean,
   isDate as lodashIsDate,
   isEmpty as lodashIsEmpty,
@@ -20,7 +19,7 @@ import {
   isPrimitive as utIsPrimitive,
 } from 'utility-types'
 
-export const isArray = lodashIsArray as FnGuard<AnyArray>
+export const isArray = Array.isArray as FnGuard<AnyArray>
 export const isBoolean = lodashIsBoolean as FnGuard<boolean>
 export const isDate = lodashIsDate as FnGuard<Date>
 export const isFunction = lodashIsFunction as FnGuard<Fn>
@@ -36,7 +35,7 @@ export const isObject = lodashIsObject as FnGuard<AnyObject>
 export const isPlainObject = lodashIsPlainObject as FnGuard<AnyObject>
 export const isCollection = (v => isArray(v) || isPlainObject(v)) as FnGuard<Collection>
 
-export const isNumber = ((n: any) => typeof n === 'number') as FnGuard<number>
+export const isNumber = (n => typeof n === 'number') as FnGuard<number>
 export const isNumberOdd = ((n: number) => n % 2 === 1) as FnGuard<number>
 export const isNumberEven = ((n: number) => n % 2 === 0) as FnGuard<number>
 export const isNumberPositive = ((n: number) => n > 0) as FnGuard<number>
@@ -46,14 +45,14 @@ export const isNumberInteger = ((n: number) => n % 1 === 0) as FnGuard<number>
 export const isNumberFractional = ((n: number) => n % 1 !== 0) as FnGuard<number>
 export const isNumberSafe = ((n: number) => Number.isSafeInteger(n)) as FnGuard<number>
 
-export const isBigInt = ((n: any) => typeof n === 'bigint') as FnGuard<bigint>
+export const isBigInt = (n => typeof n === 'bigint') as FnGuard<bigint>
 export const isBigIntOdd = ((n: bigint) => n % 2n === 1n) as FnGuard<bigint>
 export const isBigIntEven = ((n: bigint) => n % 2n === 0n) as FnGuard<bigint>
 export const isBigIntPositive = ((n: bigint) => n > 0n) as FnGuard<bigint>
 export const isBigIntNegative = ((n: bigint) => n < 0n) as FnGuard<bigint>
 export const isBigIntZero = ((n: bigint) => n === 0n) as FnGuard<bigint>
 
-export const isNumeric = ((v: any) => isNumber(v) || isBigInt(v)) as FnGuard<Numeric>
+export const isNumeric = (v => isNumber(v) || isBigInt(v)) as FnGuard<Numeric>
 export const isNumericOdd = ((v: Numeric) => typeof v === 'number' ? isNumberOdd(v) : isBigIntOdd(v)) as FnGuard<Numeric>
 export const isNumericEven = ((v: Numeric) => typeof v === 'number' ? isNumberEven(v) : isBigIntEven(v)) as FnGuard<Numeric>
 export const isNumericPositive = ((v: Numeric) => typeof v === 'number' ? isNumberPositive(v) : isBigIntPositive(v)) as FnGuard<Numeric>
