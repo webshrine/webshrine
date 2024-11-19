@@ -7,8 +7,8 @@ import GeneratedApiSidebar from '../api/gen/typedoc-sidebar.json'
 import { capitalCase, item, sidebarItem, sidebarItemRootless } from './helpers.mts'
 
 const DefaultSidebar: DefaultTheme.Sidebar = [
-  sidebarItemRootless('Guide', null, () => [
-    item('Installation'),
+  sidebarItem('Guide', null, () => [
+    item('Get Started', '/'),
   ]),
   sidebarItemRootless('Basic aspects', null, () => [
     item('Error handling'),
@@ -43,7 +43,7 @@ const config = defineConfig({
       provider: 'local',
     },
     nav: [
-      item('Guide', 'guide/installation'),
+      item('Guide'),
       item('Code style'),
       item('API'),
     ],
