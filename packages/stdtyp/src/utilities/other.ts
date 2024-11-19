@@ -1,8 +1,8 @@
-import type { AnyArrayOptional, AnyObject, Decrement } from '..'
+import type { AnyArrayOptional, AnyObject, CollectionKey, Decrement } from '..'
 
 export type Collection<
   Item = any,
-  Key extends PropertyKey = PropertyKey,
+  Key extends CollectionKey = CollectionKey,
 > = Item[] | Record<Key, Item>
 
 /**
@@ -12,7 +12,7 @@ export type Collection<
 export type IterateParameters<
   Item = any,
   Key extends PropertyKey = PropertyKey,
-  ParentObject extends Collection = Collection<Item, Key>,
+  ParentObject extends Collection = Collection<Item, CollectionKey>,
 > = [value: Item, key: Key, parent: ParentObject]
 // export type IterateParameters<
 //   Item = any,

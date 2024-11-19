@@ -26,8 +26,9 @@ export type Numeric = number | bigint
 /**
  * Simple object keys
  * The same as `PropertyKey` but without `symbol` type
+ * Used to describe collection key
  */
-export type Key = number | string
+export type CollectionKey = number | string
 
 /**
  * Used for define return values for comparator functions,

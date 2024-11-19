@@ -1,4 +1,4 @@
-import type { AnyArray, AnyObject, Collection, FnIterate, FnIterateDeep, Key } from '@webshrine/stdtyp'
+import type { AnyArray, AnyObject, Collection, CollectionKey, FnIterate, FnIterateDeep } from '@webshrine/stdtyp'
 import { isCollection } from '@/guards'
 import { symbols } from '@/transformers'
 
@@ -11,7 +11,7 @@ export const forEachItem = <T extends AnyArray>(
 }
 
 export const forEachValue = (
-  object: Record<Key, any>,
+  object: Record<CollectionKey, any>,
   cb: FnIterate<any, string>,
 ) => {
   for (const key in object)
@@ -30,7 +30,7 @@ export const forEachSymbol = (
 
 export const forEach = (
   collection: Collection,
-  cb: FnIterate<any, Key>,
+  cb: FnIterate<any, CollectionKey>,
 ) => {
   Array.isArray(collection)
     ? forEachItem(collection, cb)
@@ -38,7 +38,7 @@ export const forEach = (
 }
 
 function forEachDeepIterate(
-  callback: FnIterateDeep<any, Key>,
+  callback: FnIterateDeep<any, CollectionKey>,
   node: Collection | any,
   level: number,
 ) {
@@ -67,7 +67,7 @@ function forEachDeepIterate(
  */
 export function forEachDeep<T extends Collection>(
   data: T,
-  callback: FnIterateDeep<any, Key>,
+  callback: FnIterateDeep<any, CollectionKey>,
 ) {
   forEachDeepIterate(callback, data, 0)
 }

@@ -1,4 +1,4 @@
-import type { Key } from '@webshrine/stdtyp'
+import type { CollectionKey } from '@webshrine/stdtyp'
 import { forEach, forEachDeep, forEachItem, forEachSymbol, forEachValue } from './forEach'
 
 describe('forEachItem', () => {
@@ -25,7 +25,7 @@ describe('forEachValue', () => {
       b: 2,
       c: 3,
     }
-    const keys: Key[] = []
+    const keys: CollectionKey[] = []
     const values: any[] = []
     const parents: any[] = []
     forEachValue(obj, (val, key, parent) => {
@@ -42,7 +42,7 @@ describe('forEachValue', () => {
 describe('forEach', () => {
   it('array', () => {
     const arr = ['1', '2', '3']
-    const indexes: Key[] = []
+    const indexes: CollectionKey[] = []
     const values: any[] = []
     const parents: any[] = []
     forEach(arr, (val, index, parent) => {
@@ -61,7 +61,7 @@ describe('forEach', () => {
       b: 2,
       c: 3,
     }
-    const keys: Key[] = []
+    const keys: CollectionKey[] = []
     const values: any[] = []
     const parents: any[] = []
     forEach(obj, (val, key, parent) => {
@@ -107,7 +107,7 @@ describe('forEachDeep', () => {
       c: [{ caa: 4 }, { cab: 5 }],
       d: [[[6]]],
     }
-    const keys: Key[] = []
+    const keys: CollectionKey[] = []
     const levels: number[] = []
     const values: any[] = []
     const parents: any[] = []
