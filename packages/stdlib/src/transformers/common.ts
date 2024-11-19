@@ -1,4 +1,4 @@
-import type { AnyArray, AnyObject, KeysDeep } from '@webshrine/stdtyp'
+import type { AnyArray, AnyObject, Collection, CollectionKey, KeysDeep } from '@webshrine/stdtyp'
 import { forEachDeep } from '@/utils'
 
 // TODO: Think about support Collection also
@@ -35,3 +35,5 @@ export const keysDeep = <T extends AnyObject>(object: T) => {
 
   return [...keysSet] as KeysDeep<T>[]
 }
+
+export const collectionKeys = (collection: Collection): CollectionKey[] => Array.isArray(collection) ? indexes(collection) : keys(collection)
