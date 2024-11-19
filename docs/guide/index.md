@@ -2,7 +2,12 @@
 
 ## Installation
 
+### Common usage
 ```bash
-npm i @webshrine/stdlib # types, core // [!=npm auto]
-npm i -D @webshrine/stdtyp # types // [!=npm auto]
+npm i @webshrine/stdlib // [!=npm auto]
+```
+
+### Only types usage
+```bash
+npm i -D @webshrine/stdtyp // [!=npm auto]
 ```
