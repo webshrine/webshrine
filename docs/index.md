@@ -10,12 +10,12 @@ hero:
     - theme: brand
       text: Get Started
       link: /guide
-    - theme: alt
-      text: Examples
-      link: /examples
-    - theme: alt
-      text: Recipes
-      link: /recipes
+    # - theme: alt
+    #   text: Examples
+    #   link: /examples
+    # - theme: alt
+    #   text: Recipes
+    #   link: /recipes
 
 features:
   - title: Feature Rich
