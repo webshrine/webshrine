@@ -1,5 +1,6 @@
 import type { AnyArray, AnyObject, Collection, FnIterate, FnIterateDeep, Key } from '@webshrine/stdtyp'
 import { isCollection } from '@/guards'
+import { symbols } from '@/transformers'
 
 export const forEachItem = <T extends AnyArray>(
   array: T,
@@ -22,7 +23,7 @@ export const forEachSymbol = (
   cb: FnIterate<any, symbol>,
 ) => {
   forEachItem(
-    Object.getOwnPropertySymbols(object),
+    symbols(object),
     symbol => cb(object[symbol], symbol, object),
   )
 }
