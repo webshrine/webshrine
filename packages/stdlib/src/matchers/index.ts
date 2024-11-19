@@ -21,6 +21,8 @@ import {
  */
 export const areSame: FnMatch = (a, b) => eq(a, b)
 
+export const areSameStrict: FnMatch = (a, b) => a === b
+
 /**
  * Performs a deep comparison between two values to determine if they are
  * equivalent.

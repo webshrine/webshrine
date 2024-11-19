@@ -9,6 +9,7 @@
 | omit(...)       | omit(clone(...))                       |
 | pick(...)       | pick(clone(...))                       |
 | cloneDeep(...)  | clone(...) \| copy(...)                |
+| uniq(...)       | uniqueItems(...) \| unique(...)        |
 
 ## Type-utilities
 [NPM](https://www.npmjs.com/package/utility-types)
