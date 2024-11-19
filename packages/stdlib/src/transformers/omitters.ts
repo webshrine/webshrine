@@ -1,4 +1,3 @@
-import type { _RTFnTransform } from '@/transformers/helpers'
 import type { AnyObject, FnPredicate, Keys, KeysDeep, MaybeLiteral, OmitDeep, PartialDeep } from '@webshrine/stdtyp'
 import {
   omit as lodashOmit,

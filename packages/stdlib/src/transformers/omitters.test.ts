@@ -1,5 +1,5 @@
 import { describe } from 'vitest'
-import { omitDeep } from './omitters'
+import { omit, omitBy, omitDeep } from './omitters'
 
 const DATA = {
   num: 0,
@@ -57,6 +57,29 @@ const DATA = {
     },
   },
 } as const
+
+describe('omit', () => {
+  it('basic', () => {
+    expect(
+      omit(DATA, ['arr2', 'num', 'str'] as const),
+    ).toEqual({
+      // [Symbol.iterator]: 12313
+      bul: true,
+      obj: structuredClone(DATA.obj),
+    })
+  })
+})
+
+describe('omitBy', () => {
+  it('basic', () => {
+    expect(
+      omitBy(DATA, (v, key) => key.includes('u')),
+    ).toEqual({
+      str: 'lvl 1',
+      obj: structuredClone(DATA.obj),
+    })
+  })
+})
 
 describe('omitDeep', () => {
   it('basic', () => {

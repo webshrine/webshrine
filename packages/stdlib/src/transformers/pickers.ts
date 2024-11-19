@@ -1,16 +1,31 @@
-import type { _RTFnTransform } from '@/transformers/helpers'
-import type { AnyObject, FnPredicate } from '@webshrine/stdtyp'
-import {
-  pick as lodashPick,
-  pickBy as lodashPickBy,
-} from 'lodash'
+import type { AnyObject, FnPredicateIterate, MaybeLiteral } from '@webshrine/stdtyp'
 
-export const pick = <Input extends AnyObject, Keys extends keyof Input>(
+export const pick = <Input extends AnyObject, Key extends keyof Input>(
   object: Input,
-  keys: Keys,
-): _RTFnTransform<Input, Pick<Input, Keys>> => lodashPick(object, keys)
+  keys: ReadonlyArray<MaybeLiteral<Key>>,
+) => {
+  const result = {}
+
+  for (const key of keys) {
+    if (Object.prototype.hasOwnProperty.call(object, key))
+      // @ts-expect-error Complex type flow
+      result[key] = object[key]
+  }
+
+  return result as Pick<Input, Key>
+}
 
 export const pickBy = <Input extends AnyObject, Output extends Partial<Input> = Partial<Input>>(
   object: Input,
-  predicate: FnPredicate<[value: Input, key: string]>,
-): _RTFnTransform<Input, Output> => lodashPickBy(object, predicate) as Output
+  guard: FnPredicateIterate<[value: any, key: string]>,
+) => {
+  const result = {}
+
+  for (const key in object) {
+    if (guard(object[key], key, object))
+      // @ts-expect-error Complex type flow
+      result[key] = object[key]
+  }
+
+  return result as Output
+}
