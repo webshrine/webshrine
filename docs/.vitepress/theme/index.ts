@@ -4,7 +4,7 @@ import { enhanceAppWithTabs } from 'vitepress-plugin-tabs/client'
 import { h } from 'vue'
 
 import './style.css'
-import './scrollbar.css'
+import './custom/index.css'
 
 export default {
   extends: DefaultTheme,
