@@ -19,6 +19,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^3.9.2",
     "eslint": "^9.15.0",
+    "eslint-plugin-jsdoc": "^50.5.0",
     "typedoc": "^0.26.11",
     "typedoc-plugin-markdown": "^4.2.10",
     "typedoc-vitepress-theme": "^1.0.2",
