@@ -75,6 +75,7 @@ export interface Valuable<Value> {
  * #interface #atom #serialisation
  */
 export interface SerializableToPrimitive {
+
   /** @throws TypeError */
   [Symbol.toPrimitive]: (hint: ToPrimitiveHint) => Primitive
 }

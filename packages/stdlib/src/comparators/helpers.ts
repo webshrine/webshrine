@@ -1,5 +1,8 @@
 import type { CompareResultValue, FnCompare } from '@webshrine/stdtyp'
 
+/**
+ *
+ */
 export const invertComparator = <T>(compareFn: FnCompare<T>): FnCompare<T> => (a, b) => compareFn(b, a) as CompareResultValue
 
 export const enum CompareResult {
@@ -9,7 +12,7 @@ export const enum CompareResult {
 }
 
 /**
- * Converts any number to `CompareResultValue` value, using the number sign
+ * Converts any number to `CompareResultValue` value, using the number sign.
  * @returns CompareResultValue
  */
 export function normalizeCompareResult(value: number): CompareResultValue {
@@ -21,7 +24,7 @@ export function normalizeCompareResult(value: number): CompareResultValue {
 }
 
 /**
- * The same as `normalizeCompareResult`, but also converts boolean values
+ * The same as `normalizeCompareResult`, but also converts boolean values.
  * @returns CompareResultValue
  */
 export function toCompareResult(value: number | boolean): CompareResultValue {

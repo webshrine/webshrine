@@ -8,7 +8,6 @@ import {
 /**
  * Performs a [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
  * comparison between two values to determine if they are equivalent.
- *
  * @example
  * var object = { 'user': 'fred' };
  * var other = { 'user': 'fred' };
@@ -21,6 +20,9 @@ import {
  */
 export const areSame: FnMatch = (a, b) => eq(a, b)
 
+/**
+ *
+ */
 export const areSameStrict: FnMatch = (a, b) => a === b
 
 /**
@@ -32,7 +34,6 @@ export const areSameStrict: FnMatch = (a, b) => a === b
  * sets, strings, symbols, and typed arrays. `Object` objects are compared
  * by their own, not inherited, enumerable properties. Functions and DOM
  * nodes are **not** supported.
- *
  * @example
  * var object = { 'user': 'fred' };
  * var other = { 'user': 'fred' };

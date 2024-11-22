@@ -1,5 +1,8 @@
 import type { AnyObject, FnPredicateIterate, MaybeLiteral } from '@webshrine/stdtyp'
 
+/**
+ *
+ */
 export const pick = <Input extends AnyObject, Key extends keyof Input>(
   object: Input,
   keys: ReadonlyArray<MaybeLiteral<Key>>,
@@ -15,6 +18,9 @@ export const pick = <Input extends AnyObject, Key extends keyof Input>(
   return result as Pick<Input, Key>
 }
 
+/**
+ *
+ */
 export const pickBy = <Input extends AnyObject, Output extends Partial<Input> = Partial<Input>>(
   object: Input,
   guard: FnPredicateIterate<[value: any, key: string]>,

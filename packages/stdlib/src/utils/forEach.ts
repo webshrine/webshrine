@@ -2,6 +2,9 @@ import type { AnyArray, AnyObject, Collection, CollectionKey, FnIterate, FnItera
 import { isCollection } from '@/guards'
 import { symbols } from '@/transformers'
 
+/**
+ *
+ */
 export const forEachItem = <T extends AnyArray>(
   array: T,
   cb: FnIterate<T[number], number>,
@@ -10,6 +13,9 @@ export const forEachItem = <T extends AnyArray>(
     cb(array[index], index, array)
 }
 
+/**
+ *
+ */
 export const forEachValue = (
   object: Record<CollectionKey, any>,
   cb: FnIterate<any, string>,
@@ -18,6 +24,9 @@ export const forEachValue = (
     cb(object[key], key, object)
 }
 
+/**
+ *
+ */
 export const forEachSymbol = (
   object: AnyObject,
   cb: FnIterate<any, symbol>,
@@ -28,6 +37,9 @@ export const forEachSymbol = (
   )
 }
 
+/**
+ *
+ */
 export const forEach = (
   collection: Collection,
   cb: FnIterate<any, CollectionKey>,
@@ -52,8 +64,7 @@ function forEachDeepIterate(
 }
 
 /**
- * Iterates each item of recursive structure
- *
+ * Iterates each item of recursive structure.
  * @example
  * const obj = {
  *   a: 1,

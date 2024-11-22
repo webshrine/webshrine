@@ -8,31 +8,49 @@ import {
   omitDeepBy as lodashODOmitDeepBy,
 } from 'lodash-omitdeep'
 
+/**
+ *
+ */
 export const omit = <Input extends AnyObject, Key extends Keys<Input>>(
   object: Input,
   keys: ReadonlyArray<MaybeLiteral<Key>>,
 ) => lodashOmit(object, keys) as Omit<Input, Key>
 
+/**
+ *
+ */
 export const omitStrict = <Input extends AnyObject, Key extends Keys<Input>>(
   object: Input,
   keys: ReadonlyArray<Key>,
 ) => omit(object, keys)
 
+/**
+ *
+ */
 export const omitDeep = <Input extends AnyObject, Key extends KeysDeep<Input>>(
   object: Input,
   keys: ReadonlyArray<MaybeLiteral<Key>>,
 ) => lodashODOmitDeep(object, keys) as OmitDeep<Input, Key>
 
+/**
+ *
+ */
 export const omitDeepStrict = <Input extends AnyObject, Key extends KeysDeep<Input>>(
   object: Input,
   keys: ReadonlyArray<Key>,
 ) => omitDeep(object, keys)
 
+/**
+ *
+ */
 export const omitBy = <Input extends AnyObject, Output extends Partial<Input> = Partial<Input>>(
   object: Input,
   predicate: FnPredicate<[value: any, key: string]>,
 ) => lodashOmitBy(object, predicate) as Output
 
+/**
+ *
+ */
 export const omitDeepBy = <Input extends AnyObject, Output extends PartialDeep<Input> = PartialDeep<Input>>(
   object: Input,
   predicate: FnPredicate<[value: any, key: string]>,
