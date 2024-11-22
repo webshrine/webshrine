@@ -3,9 +3,11 @@ import jsdoc from 'eslint-plugin-jsdoc'
 
 export default antfu(
   {
+    type: 'lib',
     rules: {
       'no-restricted-syntax': 'off',
       'antfu/top-level-function': 'off',
+      'ts/explicit-function-return-type': 'off',
     },
   },
   jsdoc.configs['flat/contents-typescript-error'],
@@ -30,6 +32,7 @@ export default antfu(
       }],
       'jsdoc/require-throws': 'error',
       'jsdoc/text-escaping': 'off',
+      'jsdoc/no-blank-blocks': 'warn',
     },
   },
 )
