@@ -10,6 +10,7 @@
 | pick(...)       | pick(clone(...))                       |
 | cloneDeep(...)  | clone(...) \| copy(...)                |
 | uniq(...)       | uniqueItems(...) \| unique(...)        |
+<!-- |                 |                                        | -->
 
 ## Type-utilities
 [NPM](https://www.npmjs.com/package/utility-types)
@@ -19,3 +20,15 @@
 | DeepPartial     | PartialDeep                            |
 | DeepReadonly    | ReadonlyDeep                           |
 | DeepRequired    | RequiredDeep                           |
+<!-- |                 |                                        | -->
+
+## Jest
+[NPM](https://www.npmjs.com/package/jest)
+| jest                  | @websrhine/stdlib                |
+| --------------------- | -------------------------------- |
+| expect(a).toBe(b)     | areSameStrict(a, b)              |
+<!-- |                       |                                  | -->
+::: warning
+You don't have to migrate from `jest`,
+this table provided to show associations in similar patterns
+:::
