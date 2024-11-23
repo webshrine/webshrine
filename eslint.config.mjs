@@ -1,6 +1,49 @@
 import antfu from '@antfu/eslint-config'
 import jsdoc from 'eslint-plugin-jsdoc'
 
+const TYPEDOC_JSDOC_TAGS = [
+  'alpha',
+  'beta',
+  'category',
+  'categoryDescription',
+  'defaultValue',
+  'deprecated',
+  'document',
+  'enum',
+  'event',
+  'eventProperty',
+  'example',
+  'experimental',
+  'group',
+  'groupDescription',
+  'hidden',
+  'hideconstructor',
+  'ignore',
+  'interface',
+  'internal',
+  'module',
+  'namespace',
+  'overload',
+  'override',
+  'packageDocumentation',
+  'param',
+  'private',
+  'privateRemarks',
+  'property',
+  'protected',
+  'public',
+  'readonly',
+  'remarks',
+  'returns',
+  'satisfies',
+  'sealed',
+  'see',
+  'template',
+  'throws',
+  'typeParam',
+  'virtual',
+]
+
 export default antfu(
   {
     type: 'lib',
@@ -33,6 +76,9 @@ export default antfu(
       'jsdoc/require-throws': 'error',
       'jsdoc/text-escaping': 'off',
       'jsdoc/no-blank-blocks': 'warn',
+      'jsdoc/check-tag-names': ['error', {
+        definedTags: TYPEDOC_JSDOC_TAGS,
+      }],
     },
   },
 )
