@@ -14,7 +14,8 @@ const DefaultSidebar: DefaultTheme.Sidebar = [
   sidebarItemRootless('Basic aspects', null, () => [
     item('Error handling'),
   ]),
-  sidebarItemRootless('Migration', null, () => [
+  sidebarItem('Migration', null, () => [
+    item('Associations'),
     item('Other packages'),
   ]),
 ]
