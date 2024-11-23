@@ -1,9 +1,30 @@
+/* eslint-disable eqeqeq */
 import type { FnMatch } from '@webshrine/stdtyp'
 
 import {
   eq,
   isEqual,
 } from 'lodash'
+
+/**
+ * Performs a strict equality comparison between two values.
+ * The same as `a === b` comparison.
+ * @example
+ * areSame(1, 1); // => true
+ * areSame(1, '1'); // => false
+ * areSame({}, {}); // => false
+ */
+export const areSame: FnMatch = (a, b) => a === b
+
+/**
+ * Performs a equality comparison between two values.
+ * The same as `a == b` comparison.
+ * @example
+ * areSimilar(1, 1); // => true
+ * areSimilar(1, '1'); // => true
+ * areSimilar({}, {}); // => false
+ */
+export const areSimilar: FnMatch = (a, b) => a == b
 
 /**
  * Performs a [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
@@ -31,10 +52,10 @@ export const areSameValueZero: FnMatch = eq
  * by their own, not inherited, enumerable properties. Functions and DOM
  * nodes are **not** supported.
  * @example
- * var object = { 'user': 'fred' };
- * var other = { 'user': 'fred' };
+ * const object = { 'user': 'fred' };
+ * const other = { 'user': 'fred' };
  *
  * areEqual(object, other); // => true
  * object === other; // => false
  */
-export const areEqual: FnMatch = (a, b) => isEqual(a, b)
+export const areEqual: FnMatch = isEqual
