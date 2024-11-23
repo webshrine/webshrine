@@ -25,6 +25,7 @@ const CodeStyleSidebar: DefaultTheme.Sidebar = [
 ]
 
 const ApiSidebar: DefaultTheme.Sidebar = [
+  sidebarItem('Overview', { link: 'api' }, []),
   sidebarItem('stdlib', { link: 'api/gen/stdlib/src' }, GeneratedApiSidebar.find(i => i.text === 'stdlib')?.items?.[0].items || []),
   sidebarItem('stdtyp', { link: 'api/gen/stdtyp/src' }, GeneratedApiSidebar.find(i => i.text === 'stdtyp')?.items?.[0].items || []),
 ]
