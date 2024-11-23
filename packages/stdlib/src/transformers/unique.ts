@@ -1,5 +1,5 @@
 import type { AnyArray, AnyObject, Collection, FnMatch } from '@webshrine/stdtyp'
-import { areSameStrict } from '@/matchers'
+import { areSame } from '@/matchers'
 
 /**
  *
@@ -36,7 +36,7 @@ export const uniqueValuesBy = <T extends AnyObject>(object: T, matcher: FnMatch<
 /**
  *
  */
-export const uniqueValues = <T extends AnyObject>(object: T): Partial<T> => uniqueValuesBy(object, areSameStrict)
+export const uniqueValues = <T extends AnyObject>(object: T): Partial<T> => uniqueValuesBy(object, areSame)
 
 /**
  *
@@ -50,5 +50,5 @@ export const uniqueBy = <T extends Collection>(
   collection: T,
   matcher: FnMatch<T[number] | T[keyof T]>,
 ) => Array.isArray(collection)
-  ? uniqueItemsBy(collection, matcher)
-  : uniqueValuesBy(collection, matcher)
+    ? uniqueItemsBy(collection, matcher)
+    : uniqueValuesBy(collection, matcher)

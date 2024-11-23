@@ -8,22 +8,18 @@ import {
 /**
  * Performs a [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
  * comparison between two values to determine if they are equivalent.
+ * @experimental
  * @example
- * var object = { 'user': 'fred' };
- * var other = { 'user': 'fred' };
+ * const object = { 'user': 'fred' };
+ * const other = { 'user': 'fred' };
  *
- * areSame(object, object); // => true
- * areSame(object, other); // => false
- * areSame('a', 'a'); // => true
- * areSame('a', Object('a')); // => false
- * areSame(NaN, NaN); // => true
+ * areSameValueZero(object, object); // => true
+ * areSameValueZero(object, other); // => false
+ * areSameValueZero('a', 'a'); // => true
+ * areSameValueZero('a', Object('a')); // => false
+ * areSameValueZero(NaN, NaN); // => true
  */
-export const areSame: FnMatch = (a, b) => eq(a, b)
-
-/**
- *
- */
-export const areSameStrict: FnMatch = (a, b) => a === b
+export const areSameValueZero: FnMatch = eq
 
 /**
  * Performs a deep comparison between two values to determine if they are
