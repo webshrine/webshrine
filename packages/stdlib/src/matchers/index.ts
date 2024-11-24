@@ -4,7 +4,7 @@ import type { FnMatch } from '@webshrine/stdtyp'
 import {
   eq,
   isEqual,
-} from 'lodash'
+} from 'lodash-es'
 
 /**
  * Performs a strict equality comparison between two values.

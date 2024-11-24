@@ -33,12 +33,12 @@
     "release": "npm run build && ..."
   },
   "dependencies": {
-    "@types/lodash": "^4.17.13",
+    "@types/lodash-es": "^4.17.12",
     "@webshrine/stdtyp": "link:..\\stdtyp",
     "cope": "^1.0.9",
     "eventemitter3": "^5.0.1",
     "klona": "^2.0.6",
-    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
     "utility-types": "^3.11.0"
   },
   "devDependencies": {

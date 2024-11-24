@@ -3,7 +3,7 @@ import type { AnyArray, AnyObject, Collection, Falsy, Fn, FnGuard, Nullish, Nume
 import {
   isBoolean as lodashIsBoolean,
   isDate as lodashIsDate,
-  isEmpty as lodashIsEmpty,
+  // isEmpty as lodashIsEmpty,
   isError as lodashIsError,
   isFunction as lodashIsFunction,
   isNative as lodashIsNative,
@@ -11,7 +11,7 @@ import {
   isPlainObject as lodashIsPlainObject,
   isString as lodashIsString,
   isSymbol as lodashIsSymbol,
-} from 'lodash'
+} from 'lodash-es'
 
 import {
   isFalsy as utIsFalsy,
@@ -27,7 +27,7 @@ export const isSymbol = lodashIsSymbol as FnGuard<symbol>
 export const isFalsy = utIsFalsy as FnGuard<Falsy>
 export const isNullish = utIsNullish as FnGuard<Nullish>
 export const isPrimitive = utIsPrimitive as FnGuard<Primitive>
-export const isEmpty = lodashIsEmpty
+// export const isEmpty = lodashIsEmpty // FIXME: broken after switch to lodash-es
 export const isError = lodashIsError as FnGuard<Error>
 export const isNative = lodashIsNative as FnGuard<Fn>
 

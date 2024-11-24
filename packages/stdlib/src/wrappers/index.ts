@@ -4,4 +4,4 @@ export {
   negate,
   once,
   throttle,
-} from 'lodash'
+} from 'lodash-es'

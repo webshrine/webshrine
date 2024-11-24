@@ -1,5 +1,5 @@
 export * from 'cope'
-export { noop } from 'lodash'
+export { noop } from 'lodash-es'
 
 /**
  *
