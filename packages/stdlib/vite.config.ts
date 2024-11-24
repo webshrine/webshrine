@@ -10,8 +10,8 @@ const LIB_NAME_CAMEL_CASE = LIB_NAME.replace(/-./g, char => char[1].toUpperCase(
 
 const fileName: Partial<Record<LibraryFormats, string>> = {
   es: `index.js`,
-  cjs: `index.cjs`,
-  iife: `index.iife.js`,
+  // cjs: `index.cjs`,
+  // iife: `index.iife.js`,
 }
 
 export default defineConfig({
