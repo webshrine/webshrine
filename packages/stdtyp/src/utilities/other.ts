@@ -79,6 +79,10 @@ export type OmitDeep<T extends AnyObject, K extends string> = {
   [P in Exclude<keyof T, K>]: T[P] extends AnyObject ? OmitDeep<T[P], K> : T[P]
 }
 
+export type PickDeep<T extends AnyObject, K extends string> = {
+  [P in Extract<keyof T, K>]: T[P] extends AnyObject ? PickDeep<T[P], K> : T[P]
+}
+
 export type Split<T extends string, Separator extends string> =
   string extends T ? string[] :
   T extends '' ? [] :
