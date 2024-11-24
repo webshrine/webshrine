@@ -1,5 +1,5 @@
 import type { AnyObject, Collection, FnPredicateIterate, KeysDeep, MaybeLiteral, PartialDeep, PickDeep } from '@webshrine/stdtyp'
-import { isCollection } from '@/guards'
+import { createDeepObjectTransformer } from './helpers'
 
 /**
  *
@@ -20,33 +20,14 @@ export const pickBy = <Input extends AnyObject, Output extends Partial<Input> = 
 }
 
 /**
- *
+ * Implements `Pick` Typescript utility.
  */
 export const pick = <Input extends AnyObject, Key extends keyof Input>(
   object: Input,
   keys: ReadonlyArray<MaybeLiteral<Key>>,
 ) => pickBy(object, (_, key) => keys.includes(key)) as Pick<Input, Key>
 
-const pickDeepByProcess = (
-  collection: Collection,
-  guard: FnPredicateIterate<any, string>,
-): Collection => {
-  if (!Array.isArray(collection)) {
-    const result = pickBy(collection, guard)
-
-    for (const key in result) {
-      if (isCollection(result[key]))
-        result[key] = pickDeepByProcess(result[key], guard)
-    }
-
-    return result
-  }
-
-  return collection.map(
-    item => isCollection(item) ? pickDeepByProcess(item, guard) : item,
-  )
-}
-
+const pickDeepByProcess = createDeepObjectTransformer(pickBy)
 const pickDeepProcess = (
   collection: Collection,
   keys: ReadonlyArray<string>,
