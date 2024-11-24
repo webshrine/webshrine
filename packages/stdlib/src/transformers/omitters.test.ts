@@ -73,7 +73,7 @@ describe('omit', () => {
 describe('omitBy', () => {
   it('basic', () => {
     expect(
-      omitBy(DATA, (v, key) => key.includes('u')),
+      omitBy(DATA, (_, key) => key.includes('u')),
     ).toEqual({
       str: 'lvl 1',
       obj: structuredClone(DATA.obj),

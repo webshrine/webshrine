@@ -74,7 +74,7 @@ describe('pick', () => {
 describe('pickBy', () => {
   it('basic', () => {
     expect(
-      pickBy(DATA, (v, key) => key.includes('u')),
+      pickBy(DATA, (_, key) => key.includes('u')),
     ).toEqual({
       num: 0,
       bul: true,
