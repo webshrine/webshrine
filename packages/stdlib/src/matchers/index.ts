@@ -1,9 +1,10 @@
 /* eslint-disable eqeqeq */
 import type { FnMatch } from '@webshrine/stdtyp'
 
+import fastDeepEqual from 'fast-deep-equal/es6'
+
 import {
   eq,
-  isEqual,
 } from 'lodash-es'
 
 /**
@@ -58,4 +59,4 @@ export const areSameValueZero: FnMatch = eq
  * areEqual(object, other); // => true
  * object === other; // => false
  */
-export const areEqual: FnMatch = isEqual
+export const areEqual: FnMatch = fastDeepEqual
