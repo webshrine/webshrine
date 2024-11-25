@@ -23,9 +23,7 @@ export const once = (<T extends Fn>(fn: T): T => {
 }) satisfies FnWrapper
 
 /**
- * Creates a function that negates the result of the predicate `fn`. The
- * `func` predicate is invoked with the `this` binding and arguments of the
- * created function.
+ * Creates a function that negates the result of the predicate `fn`.
  * @example
  *
  * function isEven(n) {
