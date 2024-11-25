@@ -1,5 +1,6 @@
 import type { LibraryFormats } from 'vite'
 import path from 'node:path'
+import { visualizer } from 'rollup-plugin-visualizer'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 import packageJson from './package.json'
@@ -24,6 +25,16 @@ export default defineConfig({
     },
   },
   build: {
+    rollupOptions: {
+      plugins: [
+        // TODO: think about disabling it in ci building env
+        visualizer({
+          filename: 'bundle_visualized.html',
+          template: 'sunburst',
+          // open: true,
+        }),
+      ],
+    },
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
       name: LIB_NAME_CAMEL_CASE,

@@ -24,3 +24,4 @@ dist-ssr
 # Custom
 docs/api/gen
 docs/.vitepress/cache
+bundle_visualized.html
