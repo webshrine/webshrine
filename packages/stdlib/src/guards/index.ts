@@ -9,7 +9,6 @@ import {
   isNative as lodashIsNative,
   isObject as lodashIsObject,
   isPlainObject as lodashIsPlainObject,
-  isString as lodashIsString,
   isSymbol as lodashIsSymbol,
 } from 'lodash-es'
 
@@ -61,7 +60,7 @@ export const isNumericZero = ((v: Numeric) => typeof v === 'number' ? isNumberZe
 export const isNumericInteger = ((v: Numeric) => typeof v === 'number' ? isNumberInteger(v) : true) as FnGuard<Numeric>
 export const isNumericFractional = ((v: Numeric) => typeof v === 'number' ? isNumberFractional(v) : false) as FnGuard<Numeric>
 
-export const isString = lodashIsString as FnGuard<string>
+export const isString = (v => typeof v === 'string') as FnGuard<string>
 export const isStringEmpty = ((s: string) => s === '') as FnGuard<''>
 export const isStringEmptyOrWhiteSpace = ((s: string) => s === '' || /^\s+$/.test(s)) as FnGuard<string>
 export const isStringNumberableDecimal = ((s: string) => /^\d+\.\d+$|^\d+$/.test(s)) as FnGuard<string>
