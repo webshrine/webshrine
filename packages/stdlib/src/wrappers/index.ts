@@ -1,9 +1,8 @@
-import type { Fn, FnWrapper } from '@webshrine/stdtyp'
+import type { Fn, FnPredicate, FnWrapper } from '@webshrine/stdtyp'
 
 export {
   debounce,
   memoize,
-  negate,
   throttle,
 } from 'lodash-es'
 
@@ -22,3 +21,21 @@ export const once = (<T extends Fn>(fn: T): T => {
     return result
   }) as T
 }) satisfies FnWrapper
+
+/**
+ * Creates a function that negates the result of the predicate `fn`. The
+ * `func` predicate is invoked with the `this` binding and arguments of the
+ * created function.
+ * @example
+ *
+ * function isEven(n) {
+ *   return n % 2 == 0;
+ * }
+ * const isOdd = _.negate(isEven);
+ *
+ * _.filter([1, 2, 3, 4, 5, 6], isOdd);
+ * // => [1, 3, 5]
+ */
+export const negate = <T extends FnPredicate>(fn: T): T => {
+  return ((...args: any[]) => !fn(...args)) as T
+} // TODO: add async callback support
