@@ -3,7 +3,7 @@ import _debounce from 'debounce'
 import throttleit from 'throttleit'
 
 export {
-  memoize,
+  // memoize, // TODO: Find alternative package
 } from 'lodash-es'
 
 export const debounce = _debounce
