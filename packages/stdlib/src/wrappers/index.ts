@@ -1,10 +1,13 @@
 import type { Fn, FnPredicate, FnWrapper } from '@webshrine/stdtyp'
+import _debounce from 'debounce'
+import throttleit from 'throttleit'
 
 export {
-  debounce,
   memoize,
-  throttle,
 } from 'lodash-es'
+
+export const debounce = _debounce
+export const throttle = throttleit
 
 /**
  * Creates a function that is restricted to invoking func once. Repeat calls to the function return the value
