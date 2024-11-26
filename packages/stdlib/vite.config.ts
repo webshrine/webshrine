@@ -15,13 +15,15 @@ const fileName: Partial<Record<LibraryFormats, string>> = {
   // iife: `index.iife.js`,
 }
 
+const abs = (p: string) => path.resolve(__dirname, p)
+
 export default defineConfig({
   plugins: [
     dts({ entryRoot: 'src' }),
   ],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'),
+      '@': abs('src'),
     },
   },
   build: {
@@ -36,7 +38,7 @@ export default defineConfig({
       ],
     },
     lib: {
-      entry: path.resolve(__dirname, 'src/index.ts'),
+      entry: abs('src/index.ts'),
       name: LIB_NAME_CAMEL_CASE,
       fileName: format => fileName[format],
       formats: Object.keys(fileName) as LibraryFormats[],
