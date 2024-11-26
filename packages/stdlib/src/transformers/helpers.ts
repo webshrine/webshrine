@@ -1,19 +1,22 @@
-import type { AnyObject, Collection, FnPredicateIterate, FnTransform } from '@webshrine/stdtyp'
+import type { AnyArray, AnyObject, Collection, FnTransform } from '@webshrine/stdtyp'
 import { isCollection } from '@/guards'
 
 /**
  * @private
  */
-export const createDeepObjectTransformer = (
-  transformer: FnTransform<AnyObject, AnyObject, [FnPredicateIterate<any, string>]>,
+export const createDeepObjectTransformer = <T extends FnTransform<AnyObject, AnyObject, AnyArray>>(
+  transformer: T,
 ) => {
-  return function assemble(collection: Collection, guard: FnPredicateIterate<any, string>): Collection {
+  return function assemble(
+    collection: Collection,
+    parameter: Parameters<T>[1],
+  ): Collection {
     if (!Array.isArray(collection)) {
-      const result = transformer(collection, guard)
+      const result = transformer(collection, parameter)
 
       for (const key in result) {
         if (isCollection(result[key]))
-          result[key] = assemble(result[key], guard)
+          result[key] = assemble(result[key], parameter)
       }
 
       return result
@@ -21,7 +24,7 @@ export const createDeepObjectTransformer = (
 
     // TODO: replace by for to improve perf
     return collection.map(
-      item => isCollection(item) ? assemble(item, guard) : item,
+      item => isCollection(item) ? assemble(item, parameter) : item,
     )
   }
 }

@@ -1,13 +1,10 @@
-import type { AnyObject, Collection, FnPredicateIterate, Keys, KeysDeep, MaybeLiteral, OmitDeep, PartialDeep } from '@webshrine/stdtyp'
+import type { AnyObject, FnPredicateIterate, Keys, KeysDeep, MaybeLiteral, OmitDeep, PartialDeep } from '@webshrine/stdtyp'
 import { createDeepObjectTransformer } from './helpers'
 
 /**
  * Returns new object without specified keys, returned by `predicate`.
  */
-export const omitBy = <
-  Output extends AnyObject,
-  Input extends AnyObject = AnyObject,
->(
+export const omitBy = <Output extends AnyObject, Input extends AnyObject = AnyObject>(
   object: Input,
   guard: FnPredicateIterate<any, string>,
 ): Output => {
@@ -21,12 +18,6 @@ export const omitBy = <
   return result
 }
 
-const omitDeepByProcess = createDeepObjectTransformer(omitBy)
-const omitDeepProcess = (
-  collection: Collection,
-  keys: ReadonlyArray<string>,
-): Collection => omitDeepByProcess(collection, (_, key) => keys.includes(key))
-
 /**
  * Returns new object without specified keys.
  * - Implements `Omit` utility type from Typescript.
@@ -34,7 +25,17 @@ const omitDeepProcess = (
 export const omit = <Input extends AnyObject, Key extends Keys<Input>>(
   object: Input,
   keys: ReadonlyArray<MaybeLiteral<Key>>,
-) => omitBy<Omit<Input, Key>>(object, (_, key) => keys.includes(key))
+) => {
+  const result = { ...object }
+
+  for (const key of keys)
+    delete result[key]
+
+  return result
+}
+
+const omitDeepByProcess = createDeepObjectTransformer(omitBy)
+const omitDeepProcess = createDeepObjectTransformer(omit)
 
 /**
  * Returns new object without specified keys.
