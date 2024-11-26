@@ -14,12 +14,16 @@
     "docs:build": "npm run docs:prepare && vitepress build docs",
     "docs:preview": "npm run docs:prepare && vitepress preview docs",
     "deps:check_updates": "ncu -ws",
-    "deps:update": "ncu -ws -u && ncu -u && pnpm i"
+    "deps:update": "ncu -ws -u && ncu -u && pnpm i",
+    "publish:ci": "esno scripts/publish.ts"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.9.2",
+    "@types/node": "^22.9.0",
+    "consola": "^3.2.3",
     "eslint": "^9.15.0",
     "eslint-plugin-jsdoc": "^50.5.0",
+    "esno": "^4.8.0",
     "typedoc": "^0.26.11",
     "typedoc-plugin-markdown": "^4.2.10",
     "typedoc-vitepress-theme": "^1.0.2",
