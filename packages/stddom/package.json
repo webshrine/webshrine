@@ -24,14 +24,14 @@
     "src"
   ],
   "scripts": {
-    "test": "vitest --watch",
-    "test:coverage": "vitest --coverage",
-    "dev": "vite --host",
-    "build": "tsc && vite build",
-    "bench": "vitest bench --watch",
-    "deps:check_updates": "ncu",
-    "deps:update": "ncu -u && pnpm i",
-    "release": "npm run build && ..."
+    "_test": "vitest --watch",
+    "_test:coverage": "vitest --coverage",
+    "_dev": "vite --host",
+    "_build": "tsc && vite build",
+    "_bench": "vitest bench --watch",
+    "_deps:check_updates": "ncu",
+    "_deps:update": "ncu -u && pnpm i",
+    "_release": "npm run build && ..."
   },
   "dependencies": {
     "clsx": "^2.1.1"
