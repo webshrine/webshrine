@@ -7,7 +7,7 @@ import { isCollection } from '@/guards'
 export const createDeepObjectTransformer = <T extends FnTransform<AnyObject, AnyObject, AnyArray>>(
   transformer: T,
 ) => {
-  return function assemble(
+  return function transform(
     collection: Collection,
     parameter: Parameters<T>[1],
   ): Collection {
@@ -16,7 +16,7 @@ export const createDeepObjectTransformer = <T extends FnTransform<AnyObject, Any
 
       for (const key in result) {
         if (isCollection(result[key]))
-          result[key] = assemble(result[key], parameter)
+          result[key] = transform(result[key], parameter)
       }
 
       return result
@@ -24,7 +24,7 @@ export const createDeepObjectTransformer = <T extends FnTransform<AnyObject, Any
 
     // TODO: replace by for to improve perf
     return collection.map(
-      item => isCollection(item) ? assemble(item, parameter) : item,
+      item => isCollection(item) ? transform(item, parameter) : item,
     )
   }
 }
