@@ -7,12 +7,13 @@ const PKGS = ['stdlib', 'stdtyp']
 
 execSync('npm run build', { stdio: 'inherit' })
 
-let command = 'npm publish --access public'
+let command = 'pnpm publish -r --access public'
 
 if (version.includes('beta'))
   command += ' --tag beta'
 
-for (const name of PKGS) {
-  execSync(command, { stdio: 'inherit', cwd: path.join('packages', name, 'dist') })
-  consola.success(`Published @${scope}/${name}`)
-}
+execSync(command, { stdio: 'inherit' })
+// for (const name of PKGS) {
+//   execSync(command, { stdio: 'inherit', cwd: path.join('packages', name, 'dist') })
+//   consola.success(`Published @${scope}/${name}`)
+// }
