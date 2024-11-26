@@ -2,7 +2,7 @@
   "name": "@webshrine/stddom",
   "type": "module",
   "version": "0.0.0",
-  "private": false,
+  "private": true,
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
