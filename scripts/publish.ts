@@ -5,7 +5,7 @@ import { PACKAGES } from './constants'
 
 execSync('npm run build', { stdio: 'inherit' })
 
-let command = 'npm publish -r --dry-run --access public'
+let command = 'npm publish --access public'
 
 if (version.includes('beta'))
   command += ' --tag beta'
