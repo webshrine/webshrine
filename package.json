@@ -17,7 +17,7 @@
     "deps:check_updates": "ncu -ws",
     "deps:update": "ncu -ws -u && ncu -u && pnpm i",
     "publish:ci": "bun scripts/publish.ts",
-    "version:patch": "pnpm version patch -r"
+    "version:commit": "bun scripts/commitVersion.ts"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.9.2",

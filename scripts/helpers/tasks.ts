@@ -11,6 +11,12 @@ export function setVersionsForAllPackages(version: string) {
   })
 }
 
+export function gitCheckClean() {
+  const status = execSync('git status --porcelain', { encoding: 'utf8' })
+  if (status.trim() !== '')
+    throw new Error('Git working directory is not clean')
+}
+
 export function gitCommitAll(message: string) {
   execSync(`git add -A`)
   execSync(`git commit -m "${message}"`, { stdio: 'inherit' })
