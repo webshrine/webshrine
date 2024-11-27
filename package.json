@@ -5,6 +5,10 @@
   "description": "Standard libraries for unified web development",
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/webshrine/webshrine"
+  },
   "keywords": [],
   "scripts": {
     "lint": "eslint .",
