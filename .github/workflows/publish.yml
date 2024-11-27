@@ -26,9 +26,6 @@ jobs:
       - name: Install bun
         uses: oven-sh/setup-bun@v2
 
-      - run: git config --global user.email "_"
-      - run: git config --global user.name "Webshrine CI"
-
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
