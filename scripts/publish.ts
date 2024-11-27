@@ -12,6 +12,9 @@ let command = 'npm publish -r --dry-run --access public'
 if (version.includes('beta'))
   command += ' --tag beta'
 
+if (version.includes('alpha'))
+  command += ' --tag alpha'
+
 for (const name of PKGS) {
   execSync(command, { stdio: 'inherit', cwd: path.join('packages', name) })
   consola.success(`Published @${scope}/${name}`)
