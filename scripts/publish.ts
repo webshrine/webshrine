@@ -7,15 +7,12 @@ const PKGS = ['stdlib', 'stdtyp']
 
 execSync('npm run build', { stdio: 'inherit' })
 
-// let command = 'pnpm publish -r --dry-run --access public'
 let command = 'npm publish -r --dry-run --access public'
 
 if (version.includes('beta'))
   command += ' --tag beta'
 
-execSync(command, { stdio: 'inherit' })
 for (const name of PKGS) {
-  // execSync(command, { stdio: 'inherit', cwd: path.join('packages', name, 'dist') })
   execSync(command, { stdio: 'inherit', cwd: path.join('packages', name) })
   consola.success(`Published @${scope}/${name}`)
 }
