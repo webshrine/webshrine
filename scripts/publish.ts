@@ -2,6 +2,11 @@ import { execSync } from 'node:child_process'
 import { consola } from 'consola'
 import { name as scope, version } from '../package.json'
 import { PACKAGES } from './constants'
+import { gitCommitAll, gitSetTag, setVersionsForAllPackages } from './helpers/tasks'
+
+setVersionsForAllPackages(version)
+gitCommitAll(`Build: update version to \`${version}\``)
+gitSetTag(`v${version}`)
 
 execSync('npm run build', { stdio: 'inherit' })
 
