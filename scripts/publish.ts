@@ -3,6 +3,9 @@ import { consola } from 'consola'
 import { name as scope, version } from '../package.json'
 import { PACKAGES } from './constants'
 
+// list env vars
+consola.info(`env vars: ${Object.keys(process.env)}`)
+
 execSync('npm run build', { stdio: 'inherit' })
 
 let command = 'npm publish --access public'
