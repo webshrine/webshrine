@@ -75,5 +75,6 @@
   ],
   "[markdown]": {
     "files.trimTrailingWhitespace": false
-  }
+  },
+  "git.followTagsWhenSync": true
 }

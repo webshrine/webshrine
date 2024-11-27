@@ -38,7 +38,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-      - run: npm set "//registry.npmjs.org/:_authToken"=${{secrets.NPM_TOKEN}}
+      - run: npm set "//registry.npmjs.org/:_authToken" ${{secrets.NPM_TOKEN}}
 
       - run: pnpm run publish:ci
         env:
