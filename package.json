@@ -16,7 +16,8 @@
     "docs:preview": "npm run docs:prepare && vitepress preview docs",
     "deps:check_updates": "ncu -ws",
     "deps:update": "ncu -ws -u && ncu -u && pnpm i",
-    "publish:ci": "esno scripts/publish.ts"
+    "publish:ci": "esno scripts/publish.ts",
+    "version:patch": "pnpm version patch -r"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.9.2",
