@@ -1,6 +1,6 @@
 {
   "name": "webshrine",
-  "version": "0.0.0",
+  "version": "0.0.0-alpha-1",
   "packageManager": "pnpm@9.12.1",
   "description": "Standard libraries for unified web development",
   "author": "",
@@ -25,7 +25,6 @@
     "consola": "^3.2.3",
     "eslint": "^9.15.0",
     "eslint-plugin-jsdoc": "^50.5.0",
-    "esno": "^4.8.0",
     "typedoc": "^0.26.11",
     "typedoc-plugin-markdown": "^4.2.10",
     "typedoc-vitepress-theme": "^1.0.2",
