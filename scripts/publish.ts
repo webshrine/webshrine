@@ -1,9 +1,7 @@
 import { execSync } from 'node:child_process'
-import path from 'node:path'
 import { consola } from 'consola'
 import { name as scope, version } from '../package.json'
-
-const PKGS = ['stdlib', 'stdtyp']
+import { PACKAGES } from './constants'
 
 execSync('npm run build', { stdio: 'inherit' })
 
@@ -15,7 +13,7 @@ if (version.includes('beta'))
 if (version.includes('alpha'))
   command += ' --tag alpha'
 
-for (const name of PKGS) {
-  execSync(command, { stdio: 'inherit', cwd: path.join('packages', name) })
+for (const { name, path } of PACKAGES) {
+  execSync(command, { stdio: 'inherit', cwd: path })
   consola.success(`Published @${scope}/${name}`)
 }
