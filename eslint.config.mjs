@@ -58,6 +58,7 @@ export default antfu(
   jsdoc.configs['flat/stylistic-typescript-error'],
   {
     files: ['**/*.ts'],
+    ignores: ['scripts/**/*.ts'],
     plugins: {
       jsdoc,
     },
