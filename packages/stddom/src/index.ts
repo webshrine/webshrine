@@ -7,8 +7,7 @@ export {
 
 // }
 
-
-enum KeyboardKeyCodes {
+export enum KeyboardKeyCodes {
   Enter = 13,
   Escape = 27,
   Space = 32,
@@ -39,7 +38,7 @@ enum KeyboardKeyCodes {
   Period = 190,
   Slash = 191,
   Backslash2 = 226,
-  IntlBackslash = 220,
+  // IntlBackslash = 220,
   CapsLock = 20,
   PageUp = 33,
   PageDown = 34,
@@ -64,5 +63,5 @@ enum KeyboardKeyCodes {
   F11 = 122,
   F12 = 123,
   NumLock = 144,
-  NumpadEqual = 12
+  NumpadEqual = 12,
 }
