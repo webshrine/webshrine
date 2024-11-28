@@ -21,7 +21,8 @@
     "deps:check_updates": "ncu -ws",
     "deps:update": "ncu -ws -u && ncu -u && pnpm i",
     "publish:ci": "bun scripts/publish.ts",
-    "version:commit": "bun scripts/commitVersion.ts"
+    "version:commit": "bun scripts/commitVersion.ts",
+    "git:push_all": "git push origin main && git push origin --tags"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.9.2",
