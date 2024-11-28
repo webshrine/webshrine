@@ -14,6 +14,8 @@ if (version.includes('alpha'))
   command += ' --tag alpha'
 
 for (const { name, path } of PACKAGES) {
+  console.log('\n\n')
   execSync(command, { stdio: 'inherit', cwd: path })
   consola.success(`Published @${scope}/${name}`)
 }
+console.log('\n')
