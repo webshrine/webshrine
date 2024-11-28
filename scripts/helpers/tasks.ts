@@ -11,9 +11,13 @@ export function setVersionsForAllPackages(version: string) {
   })
 }
 
-export function gitCheckClean() {
+export function gitCheckClean(ignore: string[]) {
   const status = execSync('git status --porcelain', { encoding: 'utf8' })
-  if (status.trim() !== '')
+  const modifiedFiles = status.trim().split('\n').filter((line) => {
+    const [_, path] = line.trim().split(' ')
+    return !ignore.includes(path)
+  })
+  if (modifiedFiles.length)
     throw new Error('Git working directory is not clean')
 }
 
