@@ -14,12 +14,11 @@ export type MaybeArray<T> = T | T[]
 
 /**
  * Allows string to be acceptable with T literals types without loosing these literal
- * @example ```ts
+ * @example
  * type SomeLiterals = 'a' | 'b' | 'c'
  * type MaybeSomeLiterals = MaybeLiteral<SomeLiterals>
  * const literal1: MaybeSomeLiterals = 'a' // ok
  * const literal2: MaybeSomeLiterals = 'other literal' // still ok and IDE can suggest source literals
- * ```
  */
 export type MaybeLiteral<T extends PropertyKey> = T | (string & {})
 
