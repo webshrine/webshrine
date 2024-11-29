@@ -14,13 +14,6 @@ export type IterateParameters<
   Key extends PropertyKey = PropertyKey,
   ParentObject extends Collection = Collection<Item, CollectionKey>,
 > = [value: Item, key: Key, parent: ParentObject]
-// export type IterateParameters<
-//   Item = any,
-//   Id extends PropertyKey = PropertyKey,
-//   ParentObject extends Collection = Collection<Item, Id>,
-// > = Id extends number
-//   ? [item: Item, index: Id, array: Item[]]
-//   : [value: Item, key: Id, object: ParentObject]
 
 export type Constructor<
   Instance = any,
@@ -68,13 +61,6 @@ export type Paths<T extends AnyObject> = {
 //   ? F extends string ? `${F}${P}${Join<R, P>}` : `${F}${P}`
 //   : never
 
-// export type OmitDeep<T extends AnyObject, K extends KeyofDeep<T>> = {
-//   [P in Exclude<keyof T, K>]: T[P] extends AnyObject ? OmitDeep<T[P], K> : T[P]
-// }
-// export type OmitDeep<T extends AnyObject, K extends KeysDeep<T>, _O extends Omit<T, K> = Omit<T, K>> = {
-//   [P in keyof _O]: _O[P] extends AnyObject ? OmitDeep<_O[P], K, _O> : _O[P]
-// }
-// export type OmitDeep<T extends AnyObject, K extends KeysDeep<T>> = {
 export type OmitDeep<T extends AnyObject, K extends string> = {
   [P in Exclude<keyof T, K>]: T[P] extends AnyObject ? OmitDeep<T[P], K> : T[P]
 }
@@ -139,26 +125,4 @@ export type {
 //   build() {
 //     return this
 //   }
-// }
-
-// type OmitDeep<T extends AnyRecord, K extends KeyofDeep<T>, Depth extends number> = {
-//   done: Omit<T, K>
-//   recur: OmitDeep<
-//     Omit<T, K>,
-//     [-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20][Depth],
-//   >
-// }[Depth extends -1 ? 'done' : 'recur'];
-
-// type DeepOmitHelper<T, K extends keyof T> = {
-//   [P in K]: // extra level of indirection needed to trigger homomorhic behavior
-//   T[P] extends infer TP ? // distribute over unions
-//   TP extends Primitive ? TP : // leave primitives and functions alone
-//   TP extends any[] ? DeepOmitArray<TP, K> : // Array special handling
-//   DeepOmit<TP, K>
-//   : never
-// }
-// type DeepOmit<T extends AnyRecord, K extends KeyofDeep<T>> = T extends Primitive ? T : DeepOmitHelper<T, Exclude<keyof T, K>>
-
-// type DeepOmitArray<T extends any[], K> = {
-//   [P in keyof T]: DeepOmit<T[P], K>
 // }
