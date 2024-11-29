@@ -51,6 +51,7 @@ export default antfu(
       'no-restricted-syntax': 'off',
       'antfu/top-level-function': 'off',
       'ts/explicit-function-return-type': 'off',
+      'perfectionist/sort-named-exports': 'off',
     },
   },
   jsdoc.configs['flat/contents-typescript-error'],
