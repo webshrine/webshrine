@@ -47,13 +47,13 @@ type StringifyKey<K extends PropertyKey> = K extends string
 export type Keys<T extends AnyObject> = StringifyKey<keyof T>
 
 /** The same as `Keys<T>`, but recursively for all nested objects */
-export type KeysDeep<T extends AnyObject, Depth extends number = 20> = Depth extends -1
+export type KeysDeep<T extends Collection, Depth extends number = 20> = Depth extends -1
   ? never
-  : {
-    [K in keyof T]: StringifyKey<K> | (T[K] extends AnyObject
-      ? KeysDeep<T[K], Decrement[Depth]>
-      : never)
-  }[keyof T]
+  : T extends ReadonlyArray<infer I>
+  ? KeysDeep<Extract<I, Collection>, Decrement[Depth]>
+  : T extends Record<infer D, any>
+  ? StringifyKey<D> | KeysDeep<Extract<T[D], Collection>, Decrement[Depth]>
+  : never
 
 export type Paths<T extends AnyObject> = {
   [K in keyof T]: K extends string
