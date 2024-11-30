@@ -39,11 +39,11 @@ export type FnMethodPipe<
   Parameters extends AnyArrayOptional = AnyArrayOptional,
 > = Fn<Parameters, Context, Context>
 
-export type FnMethodPipeOnce<
-  MethodName extends string,
-  Context,
-  Parameters extends AnyArrayOptional = AnyArrayOptional,
-> = Fn<Parameters, Omit<Context, MethodName>, Context>
+// export type FnMethodPipeOnce<
+//   MethodName extends string,
+//   Context,
+//   Parameters extends AnyArrayOptional = AnyArrayOptional,
+// > = Fn<Parameters, Omit<Context, MethodName>, Context>
 
 /** Any async function */
 export type FnAsync<
