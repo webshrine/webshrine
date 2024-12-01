@@ -48,19 +48,6 @@ export type KeysDeep<T extends Collection, Depth extends number = 20> = Depth ex
   ? StringifyKey<D> | KeysDeep<Extract<T[D], Collection>, Decrement[Depth]>
   : never
 
-export type Paths<T extends AnyObject> = {
-  [K in keyof T]: K extends string
-  ? T[K] extends AnyObject ? `${K}.${IfString<Paths<T[K]>>}` : K
-  : never
-}[keyof T]
-
-// export type Join<T extends Array<string | number>, P extends string> = T extends [
-//   infer F extends string,
-//   ...infer R extends string[],
-// ]
-//   ? F extends string ? `${F}${P}${Join<R, P>}` : `${F}${P}`
-//   : never
-
 type OmitDeepRecursor<T, K extends string> =
   T extends ReadonlyArray<infer I>
   ? Array<OmitDeepRecursor<I, K>>
@@ -78,6 +65,19 @@ type PickDeepRecursor<T, K extends string> =
   : T
 
 export type PickDeep<T extends Collection, K extends string> = PickDeepRecursor<T, K>
+
+export type Paths<T extends AnyObject> = {
+  [K in keyof T]: K extends string
+  ? T[K] extends AnyObject ? `${K}.${IfString<Paths<T[K]>>}` : K
+  : never
+}[keyof T]
+
+// export type Join<T extends Array<string | number>, P extends string> = T extends [
+//   infer F extends string,
+//   ...infer R extends string[],
+// ]
+//   ? F extends string ? `${F}${P}${Join<R, P>}` : `${F}${P}`
+//   : never
 
 export type Split<T extends string, Separator extends string> =
   string extends T ? string[] :
