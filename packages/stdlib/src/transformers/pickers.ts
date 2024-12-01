@@ -1,4 +1,4 @@
-import type { AnyObject, FnPredicateIterate, KeysDeep, MaybeLiteral, PartialDeep, PickDeep } from '@webshrine/stdtyp'
+import type { AnyObject, Collection, FnPredicateIterate, KeysDeep, MaybeLiteral, PartialDeep, PickDeep } from '@webshrine/stdtyp'
 import { createDeepObjectTransformer } from './helpers'
 
 /**
@@ -43,7 +43,7 @@ const pickDeepProcess = createDeepObjectTransformer(pick)
 /**
  *
  */
-export const pickDeep = <Input extends AnyObject, Key extends KeysDeep<Input>>(
+export const pickDeep = <Input extends Collection, Key extends KeysDeep<Input>>(
   object: Input,
   keys: ReadonlyArray<MaybeLiteral<Key>>,
 ) => pickDeepProcess(object, keys) as PickDeep<Input, Key>
@@ -51,7 +51,7 @@ export const pickDeep = <Input extends AnyObject, Key extends KeysDeep<Input>>(
 /**
  *
  */
-export const pickDeepBy = <Input extends AnyObject, Output extends PartialDeep<Input> = PartialDeep<Input>>(
+export const pickDeepBy = <Input extends Collection, Output extends PartialDeep<Input> = PartialDeep<Input>>(
   object: Input,
   guard: FnPredicateIterate<any, string>,
 ) => pickDeepByProcess(object, guard) as Output

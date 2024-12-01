@@ -1,4 +1,4 @@
-import type { AnyObject, FnPredicateIterate, Keys, KeysDeep, MaybeLiteral, OmitDeep, PartialDeep } from '@webshrine/stdtyp'
+import type { AnyObject, Collection, FnPredicateIterate, Keys, KeysDeep, MaybeLiteral, OmitDeep, PartialDeep } from '@webshrine/stdtyp'
 import { createDeepObjectTransformer } from './helpers'
 
 /**
@@ -52,7 +52,7 @@ export const omitStrict = <Input extends AnyObject, Key extends Keys<Input>>(
  * - Implements `OmitDeep` utility type from library.
  * - Executes recursively on nested collections, but root is always object.
  */
-export const omitDeep = <Input extends AnyObject, Key extends KeysDeep<Input>>(
+export const omitDeep = <Input extends Collection, Key extends KeysDeep<Input>>(
   object: Input,
   keys: ReadonlyArray<MaybeLiteral<Key>>,
 ) => omitDeepProcess(object, keys) as OmitDeep<Input, Key>
@@ -63,7 +63,7 @@ export const omitDeep = <Input extends AnyObject, Key extends KeysDeep<Input>>(
  * - Executes recursively on nested collections, but root is always object.
  * - Controls that received keys list is exists in `object`
  */
-export const omitDeepStrict = <Input extends AnyObject, Key extends KeysDeep<Input>>(
+export const omitDeepStrict = <Input extends Collection, Key extends KeysDeep<Input>>(
   object: Input,
   keys: ReadonlyArray<Key>,
 ) => omitDeep(object, keys)
@@ -72,7 +72,7 @@ export const omitDeepStrict = <Input extends AnyObject, Key extends KeysDeep<Inp
  * Returns new object without specified keys, returned by `predicate`.
  * - Executes recursively on nested collections, but root is always object.
  */
-export const omitDeepBy = <Input extends AnyObject, Output extends PartialDeep<Input> = PartialDeep<Input>>(
+export const omitDeepBy = <Input extends Collection, Output extends PartialDeep<Input> = PartialDeep<Input>>(
   object: Input,
   guard: FnPredicateIterate<any, string>,
 ) => omitDeepByProcess(object, guard) as Output
