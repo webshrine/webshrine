@@ -2,7 +2,7 @@ import type { AnyObject, Collection, FnPredicateIterate, Keys, KeysDeep, MaybeLi
 import { createDeepObjectTransformer } from './helpers'
 
 /**
- *
+ * Returns new object by specified keys, returned by `predicate`.
  */
 export const pickBy = <Input extends AnyObject, Output extends Partial<Input> = Partial<Input>>(
   object: Input,
@@ -20,7 +20,8 @@ export const pickBy = <Input extends AnyObject, Output extends Partial<Input> = 
 }
 
 /**
- * Implements `Pick` Typescript utility.
+ * Returns new object by specified keys.
+ * - Implements `Pick` Typescript utility.
  */
 export const pick = <Input extends AnyObject, Key extends Keys<Input>>(
   object: Input,
@@ -40,7 +41,9 @@ export const pick = <Input extends AnyObject, Key extends Keys<Input>>(
 const pickDeepProcess = createDeepObjectTransformer(pick)
 
 /**
- *
+ * Returns new object by specified keys.
+ * - Implements `PickDeep` utility type from library.
+ * - Executes recursively on nested collections.
  */
 export const pickDeep = <Input extends Collection, Key extends KeysDeep<Input>>(
   object: Input,
@@ -50,7 +53,8 @@ export const pickDeep = <Input extends Collection, Key extends KeysDeep<Input>>(
 const pickDeepByProcess = createDeepObjectTransformer(pickBy)
 
 /**
- *
+ * Returns new object by specified keys, returned by `predicate`.
+ * - Executes recursively on nested collections.
  */
 export const pickDeepBy = <Input extends Collection, Output extends PartialDeep<Input> = PartialDeep<Input>>(
   object: Input,
@@ -58,7 +62,7 @@ export const pickDeepBy = <Input extends Collection, Output extends PartialDeep<
 ) => pickDeepByProcess(object, guard) as Output
 
 /**
- * Returns new object with specified keys.
+ * Returns new object by specified keys.
  * - Implements `Pick` utility type from Typescript.
  * - Controls that received keys list is exists.
  */
@@ -68,7 +72,7 @@ export const pickStrict = <Input extends AnyObject, Key extends Keys<Input>>(
 ) => pick(object, keys)
 
 /**
- * Returns new object with specified keys.
+ * Returns new object by specified keys.
  * - Implements `PickDeep` utility type from library.
  * - Executes recursively on nested collections.
  * - Controls that received keys list is exists.
