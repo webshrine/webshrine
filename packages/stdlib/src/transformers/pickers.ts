@@ -77,7 +77,7 @@ export const pickStrict = <Input extends AnyObject, Key extends Keys<Input>>(
  * - Executes recursively on nested collections.
  * - Controls that received keys list is exists.
  */
-export const omitDeepStrict = <Input extends Collection, Key extends KeysDeep<Input>>(
+export const pickDeepStrict = <Input extends Collection, Key extends KeysDeep<Input>>(
   object: Input,
   keys: ReadonlyArray<Key>,
 ) => pickDeep(object, keys)
