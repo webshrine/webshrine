@@ -1,6 +1,6 @@
 {
   "name": "webshrine",
-  "version": "0.0.0-beta.1",
+  "version": "0.0.1",
   "packageManager": "pnpm@9.12.1",
   "description": "Standard libraries for unified web development",
   "author": "",
