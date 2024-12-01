@@ -22,7 +22,7 @@ export const pickBy = <Input extends AnyObject, Output extends Partial<Input> = 
 /**
  * Implements `Pick` Typescript utility.
  */
-export const pick = <Input extends AnyObject, Key extends keyof Input>(
+export const pick = <Input extends AnyObject, Key extends Keys<Input>>(
   object: Input,
   keys: ReadonlyArray<MaybeLiteral<Key>>,
 ) => {
