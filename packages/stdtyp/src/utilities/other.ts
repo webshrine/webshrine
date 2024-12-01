@@ -61,7 +61,7 @@ export type Paths<T extends AnyObject> = {
 //   ? F extends string ? `${F}${P}${Join<R, P>}` : `${F}${P}`
 //   : never
 
-export type OmitDeepRecursor<T, K extends string> =
+type OmitDeepRecursor<T, K extends string> =
   T extends ReadonlyArray<infer I>
   ? Array<OmitDeepRecursor<I, K>>
   : T extends AnyObject
@@ -70,7 +70,7 @@ export type OmitDeepRecursor<T, K extends string> =
 
 export type OmitDeep<T extends Collection, K extends string> = OmitDeepRecursor<T, K>
 
-export type PickDeepRecursor<T, K extends string> =
+type PickDeepRecursor<T, K extends string> =
   T extends ReadonlyArray<infer I>
   ? Array<PickDeepRecursor<I, K>>
   : T extends AnyObject
