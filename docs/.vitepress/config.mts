@@ -9,7 +9,6 @@ import { capitalCase, item, sidebarItem, sidebarItemRootless } from './helpers.m
 const DefaultSidebar: DefaultTheme.Sidebar = [
   sidebarItem('Guide', null, () => [
     item('Get Started', '/'),
-    item('Terms'),
   ]),
   sidebarItemRootless('Basic aspects', null, () => [
     item('Error handling'),
@@ -19,6 +18,13 @@ const DefaultSidebar: DefaultTheme.Sidebar = [
     item('Other packages'),
   ]),
 ]
+
+const TermsSidebar: DefaultTheme.Sidebar = [
+  sidebarItem('Terms', null, () => [
+    item('Main', '/'),
+  ]),
+]
+
 const CodeStyleSidebar: DefaultTheme.Sidebar = [
   sidebarItem('Code style', null, () => [
     item('Main', '/'),
@@ -47,11 +53,13 @@ const config = defineConfig({
     },
     nav: [
       item('Guide'),
+      item('Terms'),
       item('Code style'),
       item('API'),
     ],
     sidebar: {
       '/': DefaultSidebar,
+      '/terms/': TermsSidebar,
       '/code-style/': CodeStyleSidebar,
       '/api/': ApiSidebar,
     },
