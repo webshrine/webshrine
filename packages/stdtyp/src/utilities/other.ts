@@ -70,9 +70,14 @@ export type OmitDeepRecursor<T, K extends string> =
 
 export type OmitDeep<T extends Collection, K extends string> = OmitDeepRecursor<T, K>
 
-export type PickDeep<T extends AnyObject, K extends string> = {
-  [P in Extract<keyof T, K>]: T[P] extends AnyObject ? PickDeep<T[P], K> : T[P]
-}
+export type PickDeepRecursor<T, K extends string> =
+  T extends ReadonlyArray<infer I>
+  ? Array<PickDeepRecursor<I, K>>
+  : T extends AnyObject
+  ? { [P in Extract<keyof T, K>]: PickDeepRecursor<T[P], K> }
+  : T
+
+export type PickDeep<T extends Collection, K extends string> = PickDeepRecursor<T, K>
 
 export type Split<T extends string, Separator extends string> =
   string extends T ? string[] :
