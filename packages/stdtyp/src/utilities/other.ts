@@ -61,9 +61,14 @@ export type Paths<T extends AnyObject> = {
 //   ? F extends string ? `${F}${P}${Join<R, P>}` : `${F}${P}`
 //   : never
 
-export type OmitDeep<T extends AnyObject, K extends string> = {
-  [P in Exclude<keyof T, K>]: T[P] extends AnyObject ? OmitDeep<T[P], K> : T[P]
-}
+export type OmitDeepRecursor<T, K extends string> =
+  T extends ReadonlyArray<infer I>
+  ? Array<OmitDeepRecursor<I, K>>
+  : T extends AnyObject
+  ? { [P in Exclude<keyof T, K>]: OmitDeepRecursor<T[P], K> }
+  : T
+
+export type OmitDeep<T extends Collection, K extends string> = OmitDeepRecursor<T, K>
 
 export type PickDeep<T extends AnyObject, K extends string> = {
   [P in Extract<keyof T, K>]: T[P] extends AnyObject ? PickDeep<T[P], K> : T[P]
