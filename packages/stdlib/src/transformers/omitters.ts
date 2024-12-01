@@ -34,8 +34,28 @@ export const omit = <Input extends AnyObject, Key extends Keys<Input>>(
   return result
 }
 
-const omitDeepByProcess = createDeepObjectTransformer(omitBy)
 const omitDeepProcess = createDeepObjectTransformer(omit)
+
+/**
+ * Returns new object without specified keys.
+ * - Implements `OmitDeep` utility type from library.
+ * - Executes recursively on nested collections.
+ */
+export const omitDeep = <Input extends Collection, Key extends KeysDeep<Input>>(
+  object: Input,
+  keys: ReadonlyArray<MaybeLiteral<Key>>,
+) => omitDeepProcess(object, keys) as OmitDeep<Input, Key>
+
+const omitDeepByProcess = createDeepObjectTransformer(omitBy)
+
+/**
+ * Returns new object without specified keys, returned by `predicate`.
+ * - Executes recursively on nested collections.
+ */
+export const omitDeepBy = <Input extends Collection, Output extends PartialDeep<Input> = PartialDeep<Input>>(
+  object: Input,
+  guard: FnPredicateIterate<any, string>,
+) => omitDeepByProcess(object, guard) as Output
 
 /**
  * Returns new object without specified keys.
@@ -51,28 +71,9 @@ export const omitStrict = <Input extends AnyObject, Key extends Keys<Input>>(
  * Returns new object without specified keys.
  * - Implements `OmitDeep` utility type from library.
  * - Executes recursively on nested collections.
- */
-export const omitDeep = <Input extends Collection, Key extends KeysDeep<Input>>(
-  object: Input,
-  keys: ReadonlyArray<MaybeLiteral<Key>>,
-) => omitDeepProcess(object, keys) as OmitDeep<Input, Key>
-
-/**
- * Returns new object without specified keys.
- * - Implements `OmitDeep` utility type from library.
- * - Executes recursively on nested collections.
  * - Controls that received keys list is exists.
  */
 export const omitDeepStrict = <Input extends Collection, Key extends KeysDeep<Input>>(
   object: Input,
   keys: ReadonlyArray<Key>,
 ) => omitDeep(object, keys)
-
-/**
- * Returns new object without specified keys, returned by `predicate`.
- * - Executes recursively on nested collections.
- */
-export const omitDeepBy = <Input extends Collection, Output extends PartialDeep<Input> = PartialDeep<Input>>(
-  object: Input,
-  guard: FnPredicateIterate<any, string>,
-) => omitDeepByProcess(object, guard) as Output
