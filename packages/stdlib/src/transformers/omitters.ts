@@ -40,7 +40,7 @@ const omitDeepProcess = createDeepObjectTransformer(omit)
 /**
  * Returns new object without specified keys.
  * - Implements `Omit` utility type from Typescript.
- * - Controls that received keys list is exists in `object`
+ * - Controls that received keys list is exists.
  */
 export const omitStrict = <Input extends AnyObject, Key extends Keys<Input>>(
   object: Input,
@@ -50,7 +50,7 @@ export const omitStrict = <Input extends AnyObject, Key extends Keys<Input>>(
 /**
  * Returns new object without specified keys.
  * - Implements `OmitDeep` utility type from library.
- * - Executes recursively on nested collections, but root is always object.
+ * - Executes recursively on nested collections.
  */
 export const omitDeep = <Input extends Collection, Key extends KeysDeep<Input>>(
   object: Input,
@@ -60,8 +60,8 @@ export const omitDeep = <Input extends Collection, Key extends KeysDeep<Input>>(
 /**
  * Returns new object without specified keys.
  * - Implements `OmitDeep` utility type from library.
- * - Executes recursively on nested collections, but root is always object.
- * - Controls that received keys list is exists in `object`
+ * - Executes recursively on nested collections.
+ * - Controls that received keys list is exists.
  */
 export const omitDeepStrict = <Input extends Collection, Key extends KeysDeep<Input>>(
   object: Input,
@@ -70,7 +70,7 @@ export const omitDeepStrict = <Input extends Collection, Key extends KeysDeep<In
 
 /**
  * Returns new object without specified keys, returned by `predicate`.
- * - Executes recursively on nested collections, but root is always object.
+ * - Executes recursively on nested collections.
  */
 export const omitDeepBy = <Input extends Collection, Output extends PartialDeep<Input> = PartialDeep<Input>>(
   object: Input,

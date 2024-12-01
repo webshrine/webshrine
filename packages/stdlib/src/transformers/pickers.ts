@@ -43,7 +43,7 @@ const pickDeepProcess = createDeepObjectTransformer(pick)
 /**
  * Returns new object with specified keys.
  * - Implements `Pick` utility type from Typescript.
- * - Controls that received keys list is exists in `object`
+ * - Controls that received keys list is exists.
  */
 export const pickStrict = <Input extends AnyObject, Key extends Keys<Input>>(
   object: Input,
@@ -61,8 +61,8 @@ export const pickDeep = <Input extends Collection, Key extends KeysDeep<Input>>(
 /**
  * Returns new object with specified keys.
  * - Implements `PickDeep` utility type from library.
- * - Executes recursively on nested collections, but root is always object.
- * - Controls that received keys list is exists in `object`
+ * - Executes recursively on nested collections.
+ * - Controls that received keys list is exists.
  */
 export const omitDeepStrict = <Input extends Collection, Key extends KeysDeep<Input>>(
   object: Input,
