@@ -63,6 +63,7 @@
     "omitdeep",
     "omitters",
     "Primitivizable",
+    "Recursor",
     "stddom",
     "stdlib",
     "stdtyp",
