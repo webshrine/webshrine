@@ -10,6 +10,8 @@ These tables provided to show associations of similar patterns
 | pick(...)       | pick(clone(...))                       |
 | cloneDeep(...)  | clone(...) \| copy(...)                |
 | uniq(...)       | uniqueItems(...) \| unique(...)        |
+| negate(...)     | negate(...)                            |
+| times(...)      | times(...) | timesMap(...)             |
 <!-- |                 |                                        | -->
 
 ## [Utility types](https://www.npmjs.com/package/utility-types)
