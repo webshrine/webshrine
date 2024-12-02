@@ -1,5 +1,5 @@
 import type { AnyArray, AnyObject, Collection, CollectionKey, KeysDeep } from '@webshrine/stdtyp'
-import { forEachDeep } from '@/utils'
+import { forEachDeep, timesMap } from '@/utils'
 
 // TODO: Think about support Collection also
 
@@ -23,7 +23,7 @@ const indexExtractor = (_: any, index: number) => index
  * @example
  * indexes(['a', 'b', 'c']) // [0, 1, 2]
  */
-export const indexes = (array: AnyArray) => Array.from(array).map(indexExtractor)
+export const indexes = (array: AnyArray) => timesMap(array.length, indexExtractor)
 
 /**
  * Returns an array of symbol keys for the given object.

@@ -1,4 +1,4 @@
-import type { AnyArray, AnyObject, Collection, CollectionKey, FnIterate, FnIterateDeep } from '@webshrine/stdtyp'
+import type { AnyArray, AnyObject, Collection, CollectionKey, FnIterate, FnIterateDeep, FnIterateTimes } from '@webshrine/stdtyp'
 import { isCollection } from '@/guards'
 import { symbols } from '@/transformers'
 
@@ -81,4 +81,36 @@ export function forEachDeep<T extends Collection>(
   callback: FnIterateDeep<any, CollectionKey>,
 ) {
   forEachDeepIterate(callback, data, 0)
+}
+
+/**
+ * Iterates over a given number of times, calling the provided callback function for each iteration.
+ * @example
+ * times(3, (number, index, count) => {
+ *  console.log(`№${number} #${index} of ${count}`)
+ * })
+ * // => '№1 #0 of 3'
+ * // => '№2 #1 of 3'
+ * // => '№3 #2 of 3'
+ */
+export function times(count: number, callback: FnIterateTimes) {
+  for (let index = 0; index < count; index++)
+    callback(index + 1, index, count)
+}
+
+/**
+ * Iterates over a given number of times, calling the provided callback function for each iteration.
+ * - Returns an array of the results of each iteration.
+ * @example
+ * timesMap(3, (number, index, count) => `№${number} #${index} of ${count}`)
+ * // => ['№1 #0 of 3', '№2 #1 of 3', '№3 #2 of 3']
+ */
+export function timesMap<T extends FnIterateTimes<any>>(
+  count: number,
+  callback: T,
+): ReturnType<T>[] {
+  const result: ReturnType<T>[] = []
+  for (let index = 0; index < count; index++)
+    result[index] = callback(index + 1, index, count)
+  return result
 }
