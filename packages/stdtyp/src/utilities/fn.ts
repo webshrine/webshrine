@@ -88,6 +88,9 @@ export type FnIterate<
   Result = void,
 > = (...params: IterateParameters<Item, Id>) => Result
 
+/** Iteration function of `times*` utils */
+export type FnIterateTimes<Result = void> = (number: number, index: number, count: number) => Result
+
 export type FnIterateDeep<
   Item = any,
   Id = PropertyKey,
