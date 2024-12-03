@@ -1,5 +1,9 @@
 export * from 'cope'
-export { noop } from 'lodash-es'
+
+/**
+ * A no-operation function that returns undefined regardless of the arguments it receives.
+ */
+export const noop = () => { }
 
 /**
  *
