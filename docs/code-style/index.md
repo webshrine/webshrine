@@ -35,4 +35,5 @@
 #### FnTransform
 - if it's a function, that executes recursively, should be named by '(name)Deep' pattern (e.g `omitDeep`)
 - if it's a function, that accepts executor callback, should be named by '(name)By' pattern (e.g `omitBy`)
-- if it's a cloning method, should be named by 'to(Name)ed' pattern (e.g `Array.prototype.toSpliced()`)
+- Doesn't have to mutate received data
+<!-- - if it's a cloning method, should be named by 'to(Name)ed' pattern (e.g `Array.prototype.toSpliced()`) -->

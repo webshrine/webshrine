@@ -116,17 +116,16 @@ export type FnTransformIterate<Input = any, Id extends PropertyKey = PropertyKey
 export type FnReduceIterate<Item = any, Id extends PropertyKey = PropertyKey, Result = any> = Fn<[previousValue: Result | undefined, ...IterateParameters<Item, Id>], Result>
 
 /** Wrapper function */
-export type FnWrapper<Func extends Fn = Fn, Parameters extends AnyArrayOptional = AnyArrayOptional> =
+export type FnWrapper<F extends Fn = Fn, Parameters extends AnyArrayOptional = AnyArrayOptional> =
   Parameters extends any[]
-  ? FnParametrized<[callback: Func, ...Parameters], Func>
-  : FnParametrized<[callback: Func], Func>
+  ? (func: F, ...args: Parameters) => F
+  : (func: F) => F
 
-// TODO: uncomment on demand
-// /** Mutator function */
-// export type FnMutator<Target, Parameters extends AnyArrayOptional = AnyArrayOptional> =
+// /** Mutating function */
+// export type FnMut<Target, Parameters extends AnyArrayOptional = AnyArrayOptional> =
 //   Parameters extends any[]
-//   ? FnProcedure<[target: Target, ...Parameters]>
-//   : FnProcedure<[target: Target]>
+//   ? Fn<[target: Target, ...Parameters], Target>
+//   : Fn<[target: Target], Target>
 
 /** Guard function */
 export type FnGuard<Target> = (value: any) => value is Target
