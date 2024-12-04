@@ -1,5 +1,4 @@
 import type { AnyArray, AnyObject, Collection, Falsy, Fn, FnGuard, Nullish, Numeric, Primitive } from '@webshrine/stdtyp'
-
 import {
   isBoolean as lodashIsBoolean,
   isDate as lodashIsDate,
@@ -8,7 +7,6 @@ import {
   isFunction as lodashIsFunction,
   isNative as lodashIsNative,
   isObject as lodashIsObject,
-  isPlainObject as lodashIsPlainObject,
   isSymbol as lodashIsSymbol,
 } from 'lodash-es'
 
@@ -17,6 +15,8 @@ import {
   isNullish as utIsNullish,
   isPrimitive as utIsPrimitive,
 } from 'utility-types'
+
+import { isPlainObject as _isPlainObject } from './isPlainObject'
 
 export const isArray = Array.isArray as FnGuard<AnyArray>
 export const isBoolean = lodashIsBoolean as FnGuard<boolean>
@@ -31,7 +31,7 @@ export const isError = lodashIsError as FnGuard<Error>
 export const isNative = lodashIsNative as FnGuard<Fn>
 
 export const isObject = lodashIsObject as FnGuard<AnyObject>
-export const isPlainObject = lodashIsPlainObject as FnGuard<AnyObject>
+export const isPlainObject = _isPlainObject as FnGuard<AnyObject>
 export const isCollection = (v => isArray(v) || isPlainObject(v)) as FnGuard<Collection>
 
 export const isNumber = (n => typeof n === 'number') as FnGuard<number>
