@@ -1,4 +1,4 @@
-import type { Fn, FnAsyncPredicate, FnPredicate, FnWrapper } from '@webshrine/stdtyp'
+import type { Fn, FnAsyncPredicate, FnCompare, FnPredicate, FnWrapper } from '@webshrine/stdtyp'
 import _debounce from 'debounce'
 import throttleit from 'throttleit'
 
@@ -43,3 +43,14 @@ export const negate = (<T extends FnPredicate | FnAsyncPredicate>(fn: T): T => {
     return typeof result === 'boolean' ? !result : result.then(r => !r)
   }) as T
 }) satisfies FnWrapper<FnPredicate | FnAsyncPredicate>
+
+/**
+ *  Creates a function that inverts comparison result of received comparing function.
+ * @example
+ * const ascending = compareNumber
+ * const descending = invert(ascending)
+ *
+ * [3, 1, 2].sort(ascending) // [1, 2, 3]
+ * [3, 1, 2].sort(descending) // [3, 2, 1]
+ */
+export const invert = <T>(compareFn: FnCompare<T>): FnCompare<T> => (a, b) => compareFn(b, a)

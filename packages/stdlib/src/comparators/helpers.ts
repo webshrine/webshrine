@@ -1,9 +1,4 @@
-import type { CompareResultValue, FnCompare } from '@webshrine/stdtyp'
-
-/**
- *
- */
-export const invertComparator = <T>(compareFn: FnCompare<T>): FnCompare<T> => (a, b) => compareFn(b, a) as CompareResultValue
+import type { CompareResultValue } from '@webshrine/stdtyp'
 
 export const enum CompareResult {
   EQUAL = 0,

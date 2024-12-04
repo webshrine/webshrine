@@ -1,5 +1,6 @@
 import type { AnyArray, FnCompare } from '@webshrine/stdtyp'
-import { CompareResult, invertComparator, normalizeCompareResult } from './helpers'
+import { invert } from '@/wrappers'
+import { CompareResult, normalizeCompareResult } from './helpers'
 
 export * from './helpers'
 
@@ -34,8 +35,8 @@ export const compareString: FnCompare<string> = (a, b) => normalizeCompareResult
  */
 export const compareDate: FnCompare<Date> = (a, b) => compareNumber(a.getTime(), b.getTime())
 
-export const compareNumberReverse = invertComparator(compareNumber)
-export const compareNumberAbsReverse = invertComparator(compareNumberAbs)
-export const compareArrayLengthReverse = invertComparator(compareArrayLength)
-export const compareStringReverse = invertComparator(compareString)
-export const compareDateReverse = invertComparator(compareDate)
+export const compareNumberReverse = invert(compareNumber)
+export const compareNumberAbsReverse = invert(compareNumberAbs)
+export const compareArrayLengthReverse = invert(compareArrayLength)
+export const compareStringReverse = invert(compareString)
+export const compareDateReverse = invert(compareDate)
