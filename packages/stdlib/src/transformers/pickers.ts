@@ -1,4 +1,5 @@
 import type { AnyObject, Collection, FnPredicateIterate, Keys, KeysDeep, MaybeLiteral, PartialDeep, PickDeep } from '@webshrine/stdtyp'
+import { hasOwn } from '@/utils'
 import { createDeepObjectTransformer } from './helpers'
 
 /**
@@ -30,7 +31,7 @@ export const pick = <Input extends AnyObject, Key extends Keys<Input>>(
   const result = {}
 
   for (const key of keys) {
-    if (Object.prototype.hasOwnProperty.call(object, key))
+    if (hasOwn(object, key))
       // @ts-expect-error Complex type flow
       result[key] = object[key]
   }
