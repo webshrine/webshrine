@@ -1,4 +1,36 @@
-import { negate } from '.'
+import { sleep } from '@/utils'
+import { negate, once } from '.'
+
+describe('once', () => {
+  it('sync', () => {
+    const callback = vi.fn(() => '123')
+    const onceCall = once(callback)
+
+    expect(onceCall()).toBe('123')
+    expect(onceCall()).toBe('123')
+    expect(onceCall()).toBe('123')
+    expect(callback).toBeCalledTimes(1)
+  })
+
+  it('async', async () => {
+    const callback = vi.fn(async () => {
+      await sleep(10)
+      return '123'
+    })
+    const onceCall = once(callback)
+
+    const prom = onceCall()
+    expect(prom).toBeInstanceOf(Promise)
+    expect(onceCall()).toBe(prom)
+
+    await sleep(15)
+
+    expect(onceCall()).toBe(prom)
+    expect(await onceCall()).toBe('123')
+    expect(await onceCall()).toBe('123')
+    expect(callback).toBeCalledTimes(1)
+  })
+})
 
 describe('negate', () => {
   it('sync', () => {
