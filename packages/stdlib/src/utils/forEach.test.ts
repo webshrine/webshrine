@@ -1,13 +1,13 @@
 import type { CollectionKey } from '@webshrine/stdtyp'
-import { forEach, forEachDeep, forEachItem, forEachSymbol, forEachValue } from './forEach'
+import { forEach, forEachDeep, forItems, forSymbols, forValues } from './forEach'
 
-describe('forEachItem', () => {
+describe('forItems', () => {
   it('basic', () => {
     const arr = ['1', '2', '3']
     const indexes: number[] = []
     const values: any[] = []
     const parents: any[] = []
-    forEachItem(arr, (val, index, parent) => {
+    forItems(arr, (val, index, parent) => {
       indexes.push(index)
       values.push(val)
       parents.push(parent)
@@ -18,7 +18,7 @@ describe('forEachItem', () => {
   })
 })
 
-describe('forEachValue', () => {
+describe('forValues', () => {
   it('basic', () => {
     const obj = {
       a: 1,
@@ -28,7 +28,7 @@ describe('forEachValue', () => {
     const keys: CollectionKey[] = []
     const values: any[] = []
     const parents: any[] = []
-    forEachValue(obj, (val, key, parent) => {
+    forValues(obj, (val, key, parent) => {
       keys.push(key)
       values.push(val)
       parents.push(parent)
@@ -75,7 +75,7 @@ describe('forEach', () => {
   })
 })
 
-describe('forEachSymbol', () => {
+describe('forSymbols', () => {
   it('basic', () => {
     const fst = Symbol('first')
     const snd = Symbol('second')
@@ -87,7 +87,7 @@ describe('forEachSymbol', () => {
     const symbols: symbol[] = []
     const values: any[] = []
     const parents: any[] = []
-    forEachSymbol(obj, (val, sym, parent) => {
+    forSymbols(obj, (val, sym, parent) => {
       symbols.push(sym)
       values.push(val)
       parents.push(parent)

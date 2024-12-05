@@ -7,9 +7,10 @@ you don't have to migrate from them
 | ------------------------------------------------- | --------------------------------------------- |
 | a == b                                            | areSimilar(a, b)                              |
 | a === b                                           | areSame(a, b)                                 |
-| arr.forEach(...)                                  | forEachItems(arr, ...) \| forEach(arr, ...)   |
-| for (const [k, v] of Object.entries(obj)) {...}   | forEachValues(obj, ...) \| forEach(obj, ...)  |
+| arr.forEach(...)                                  | forItems(arr, ...) \| forEach(arr, ...)       |
+| for (const [k, v] of Object.entries(obj)) {...}   | forValues(obj, ...) \| forEach(obj, ...)      |
 | structuredClone(data)                             | clone(data)                                   |
+| obj.hasOwnProperty(key)                           | hasOwn(obj, key)                              |
 
 ## [Jest](https://www.npmjs.com/package/jest)
 | jest                  | @websrhine/stdlib                |

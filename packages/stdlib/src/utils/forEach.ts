@@ -5,7 +5,7 @@ import { symbols } from '@/transformers'
 /**
  *
  */
-export const forEachItem = <T extends AnyArray>(
+export const forItems = <T extends AnyArray>(
   array: T,
   cb: FnIterate<T[number], number>,
 ) => {
@@ -16,7 +16,7 @@ export const forEachItem = <T extends AnyArray>(
 /**
  *
  */
-export const forEachValue = (
+export const forValues = (
   object: Record<CollectionKey, any>,
   cb: FnIterate<any, string>,
 ) => {
@@ -27,11 +27,11 @@ export const forEachValue = (
 /**
  *
  */
-export const forEachSymbol = (
+export const forSymbols = (
   object: AnyObject,
   cb: FnIterate<any, symbol>,
 ) => {
-  forEachItem(
+  forItems(
     symbols(object),
     symbol => cb(object[symbol], symbol, object),
   )
@@ -45,8 +45,8 @@ export const forEach = (
   cb: FnIterate<any, CollectionKey>,
 ) => {
   Array.isArray(collection)
-    ? forEachItem(collection, cb)
-    : forEachValue(collection, cb)
+    ? forItems(collection, cb)
+    : forValues(collection, cb)
 }
 
 function forEachDeepIterate(
