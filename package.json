@@ -28,6 +28,7 @@
     "@antfu/eslint-config": "^3.11.2",
     "@types/node": "^22.10.1",
     "consola": "^3.2.3",
+    "dependency-cruiser": "^16.7.0",
     "eslint": "^9.15.0",
     "eslint-plugin-jsdoc": "^50.6.0",
     "typedoc": "^0.27.1",
