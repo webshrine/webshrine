@@ -18,7 +18,7 @@ const DefaultSidebar: DefaultTheme.Sidebar = [
     // item('Matching'),
     // item('Guarding / Filtering'),
     // item('Loops'),
-    // item('Data transforming'),
+    item('Data transforming'),
     // item('Function wrapping'),
     item('Error handling'),
   ]),
