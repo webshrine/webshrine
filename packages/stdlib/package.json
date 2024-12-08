@@ -40,11 +40,11 @@
     "@types/lodash-es": "^4.17.12",
     "@webshrine/stdtyp": "link:..\\stdtyp",
     "cope": "^1.0.9",
-    "debounce": "^2.2.0",
     "defu": "^6.1.4",
     "fast-deep-equal": "^3.1.3",
     "klona": "^2.0.6",
     "lodash-es": "^4.17.21",
+    "perfect-debounce": "^1.0.0",
     "throttleit": "^2.1.0",
     "utility-types": "^3.11.0"
   },

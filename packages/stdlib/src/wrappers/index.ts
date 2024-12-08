@@ -1,12 +1,12 @@
 import type { Fn, FnAsyncPredicate, FnCompare, FnPredicate, FnWrapper } from '@webshrine/stdtyp'
-import _debounce from 'debounce'
+import { debounce as perfectDebounce } from 'perfect-debounce'
 import throttleit from 'throttleit'
 
 export {
   // memoize, // TODO: Find alternative package
 } from 'lodash-es'
 
-export const debounce = _debounce satisfies FnWrapper
+export const debounce = perfectDebounce satisfies FnWrapper
 export const throttle = throttleit satisfies FnWrapper
 
 /**
