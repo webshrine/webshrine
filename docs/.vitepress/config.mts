@@ -10,7 +10,16 @@ const DefaultSidebar: DefaultTheme.Sidebar = [
   sidebarItem('Guide', null, () => [
     item('Get Started', '/'),
   ]),
-  sidebarItemRootless('Basic aspects', null, () => [
+  // sidebarItemRootless('Concepts', null, () => [
+  //   item('Namings'),
+  // ]),
+  sidebarItemRootless('Aspects', null, () => [
+    // item('Common utils'),
+    // item('Matching'),
+    // item('Guarding / Filtering'),
+    // item('Loops'),
+    // item('Data transforming'),
+    // item('Function wrapping'),
     item('Error handling'),
   ]),
   sidebarItem('Migration', null, () => [
