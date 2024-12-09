@@ -142,8 +142,8 @@ More specific variants of `unique` function for working only with arrays or obje
 ```typescript
 const data = [1, 2, 2, 3, 4, 4, 5]
 
-const uniqueArr = uniqueItems(data) // Ok
-const uniqueObj = uniqueValues(data) // Not ok
+const uniqueArr = uniqueItems(data)
+const uniqueObj = uniqueValues(data) // [!code error]
 ```
 
 ### `uniqueItemsBy`, `uniqueValuesBy`
