@@ -8,7 +8,7 @@ The original function will only be called after `wait` milliseconds have elapsed
 
 This is useful for rate-limiting functions that are called frequently.
 
-```typescript
+```ts
 const update = () => {
   console.log('Window resized')
 }
@@ -24,7 +24,7 @@ The original function will be invoked at most once per every `wait` milliseconds
 
 This is useful for limiting the rate at which a function can fire.
 
-```typescript
+```ts
 const scrollHandler = () => {
   console.log('Window scrolled')
 }
@@ -38,9 +38,9 @@ Creates a function that is restricted to invoking the provided callback once.
 
 Repeat calls to the created function will return the value of the first call.
 
-```typescript
+```ts
 const createApiClient = () => {
-  console.log('Api client initialized')
+  console.info('Api client initialized')
   return {
     // ... implementation of the API client
   }
@@ -56,14 +56,14 @@ Creates a function that negates the result of the provided `predicate` function.
 
 Supports both synchronous and asynchronous predicates.
 
-```typescript
+```ts
 const isEven = n => n % 2 === 0
 const isOdd = negate(isEven)
 
 console.log(isEven(2)) // true
 console.log(isOdd(2)) // false
 ```
-```typescript
+```ts
 async function checkValid(data) {
   const api = useApi()
   return await api.validateData(data)
@@ -79,7 +79,7 @@ Creates a function that inverts the comparison result of the provided `compareFn
 
 Useful for invert sorting order.
 
-```typescript
+```ts
 const ascending = compareNumber
 const descending = invert(ascending)
 

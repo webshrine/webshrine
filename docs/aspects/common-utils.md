@@ -8,7 +8,7 @@ The `copy` function clones primitive values, plain objects, and arrays recursive
 
 It is optimized for basic cloning tasks and is faster than the more comprehensive `clone` function.
 
-```typescript
+```ts
 const original = {
   name: 'John Doe',
   age: 30,
@@ -31,7 +31,7 @@ It supports a wider range of data types, including custom classes, Date, RegExp,
 
 This function is more comprehensive but slower than the `copy` function.
 
-```typescript
+```ts
 const original = {
   name: 'John Doe',
   age: 30,

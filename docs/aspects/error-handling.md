@@ -32,16 +32,15 @@ if (parsingError)
   alert('failed to parse received data')
 ```
 
-## Examples
-### Default value
+## Default value
 You can use native syntax
 ```ts
 const [result = 'default value', syncParseErr] = cope(/* ... */)
 result // is always defined
 ```
 
-### Force execution
-You can use this util just to ignoring execution:
+## Force execution
+You can use this util just to ignoring fails of execution:
 ```ts
 // Some preparing execution
 cope(() => window.querySelector('#dynamic-element').scrollTo(123, 0))

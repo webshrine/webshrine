@@ -6,7 +6,7 @@ The picking functions are designed to extract specific key-value pairs from obje
 The `pick` function returns a new object containing only the specified keys from the input object.
 It implements the TypeScript `Pick` utility type.
 
-```typescript
+```ts
 const data = {
   name: 'John',
   age: 30,
@@ -20,7 +20,7 @@ const pickedData = pick(data, ['name', 'email'])
 ### `pickBy`
 The `pickBy` function returns a new object containing only the key-value pairs where the value satisfies the provided predicate function.
 
-```typescript
+```ts
 const data = {
   name: 'John',
   age: 30,
@@ -37,7 +37,7 @@ It implements the `PickDeep` utility type and executes recursively on nested col
 
 The `pickDeepBy` is the same, but works with a predicate function instead of key names a as `pickBy` function.
 
-```typescript
+```ts
 const data = {
   user: {
     name: 'John',
@@ -56,7 +56,7 @@ const pickedData = pickDeep(data, ['name', 'email'])
 ### `pickStrict`, `pickDeepStrict`
 The `pickStrict` and `pickDeepStrict` functions are similar to their non-strict counterparts but typings more strict, ensuring that the keys provided must exist in the object.
 
-```typescript
+```ts
 const data = {
   user: {
     name: 'John',
@@ -73,7 +73,7 @@ The omitting functions are designed to remove specific key-value pairs from obje
 ### `omit`
 The `omit` function returns a new object without the specified keys from the input object. It implements the TypeScript `Omit` utility type.
 
-```typescript
+```ts
 const data = {
   name: 'John',
   age: 30,
@@ -87,7 +87,7 @@ const omittedData = omit(data, ['name', 'email'])
 ### `omitBy`
 The `omitBy` function returns a new object without the key-value pairs where the value satisfies the provided predicate function.
 
-```typescript
+```ts
 const data = {
   name: 'John',
   age: 30,
@@ -107,7 +107,7 @@ The uniqueize functions are designed to remove duplicate items or values from ar
 ### `unique`
 Returns a new collection with only the unique items/values.
 
-```typescript
+```ts
 const uniqueArray = unique([1, 2, 2, 3, 4, 4, 5])
 // Output: [1, 2, 3, 4, 5]
 
@@ -124,7 +124,7 @@ const uniqueObject = unique({
 ### `uniqueBy`
 Returns a new collection with only the unique items/values, using a custom matcher function.
 
-```typescript
+```ts
 const arrayData = [
   '123',
   123,
@@ -139,7 +139,7 @@ const uniqueArrayBy = uniqueBy(arrayData, areEqual)
 ### `uniqueItems`, `uniqueValues`
 More specific variants of `unique` function for working only with arrays or objects.
 
-```typescript
+```ts
 const data = [1, 2, 2, 3, 4, 4, 5]
 
 const uniqueArr = uniqueItems(data)
