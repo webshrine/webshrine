@@ -19,7 +19,7 @@ const DefaultSidebar: DefaultTheme.Sidebar = [
     // item('Guarding / Filtering'),
     // item('Loops'),
     item('Data transforming'),
-    // item('Function wrapping'),
+    item('Function wrapping'),
     item('Error handling'),
   ]),
   sidebarItem('Migration', null, () => [
