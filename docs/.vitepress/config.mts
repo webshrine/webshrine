@@ -14,7 +14,7 @@ const DefaultSidebar: DefaultTheme.Sidebar = [
   //   item('Namings'),
   // ]),
   sidebarItemRootless('Aspects', null, () => [
-    // item('Common utils'),
+    item('Common utils'),
     // item('Matching'),
     // item('Guarding / Filtering'),
     // item('Loops'),
