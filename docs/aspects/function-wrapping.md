@@ -1,7 +1,7 @@
 # Function wrapping
 Function wrapping is a technique used to enhance or modify existing functions without altering their original implementation.
 
-## Debounce
+## `debounce`
 Creates a debounced version of the provided function.
 
 The original function will only be called after `wait` milliseconds have elapsed since the last time it was invoked.
@@ -17,7 +17,7 @@ const scheduleUpdate = debounce(update, 300)
 window.addEventListener('resize', scheduleUpdate)
 ```
 
-## Throttle
+## `throttle`
 Creates a throttled version of the provided function.
 
 The original function will be invoked at most once per every `wait` milliseconds.
@@ -33,7 +33,7 @@ const throttledScrollHandler = throttle(scrollHandler, 100)
 window.addEventListener('scroll', throttledScrollHandler)
 ```
 
-## Once
+## `once`
 Creates a function that is restricted to invoking the provided callback once.
 
 Repeat calls to the created function will return the value of the first call.
@@ -51,7 +51,7 @@ const api = useApi() // Logs: "Api client initialized"
 const api2 = useApi() // Returns the same instance as above
 ```
 
-## Negate
+## `negate`
 Creates a function that negates the result of the provided `predicate` function.
 
 Supports both synchronous and asynchronous predicates.
@@ -74,7 +74,7 @@ console.log(checkValid(validData)) // true
 console.log(checkInvalid(validData)) // false
 ```
 
-## Invert
+## `invert`
 Creates a function that inverts the comparison result of the provided `compareFn` function.
 
 Useful for invert sorting order.
