@@ -1,13 +1,9 @@
 import type { AnyArray, AnyObject, Collection, Falsy, Fn, FnGuard, Nullish, Numeric, Primitive } from '@webshrine/stdtyp'
 import {
-  isBoolean as lodashIsBoolean,
   isDate as lodashIsDate,
   // isEmpty as lodashIsEmpty,
-  isError as lodashIsError,
   isFunction as lodashIsFunction,
-  isNative as lodashIsNative,
   isObject as lodashIsObject,
-  isSymbol as lodashIsSymbol,
 } from 'lodash-es'
 
 import {
@@ -19,16 +15,16 @@ import {
 import { isPlainObject as _isPlainObject } from './isPlainObject'
 
 export const isArray = Array.isArray as FnGuard<AnyArray>
-export const isBoolean = lodashIsBoolean as FnGuard<boolean>
+export const isBoolean = (n => typeof n === 'boolean') as FnGuard<boolean>
 export const isDate = lodashIsDate as FnGuard<Date>
 export const isFunction = lodashIsFunction as FnGuard<Fn>
-export const isSymbol = lodashIsSymbol as FnGuard<symbol>
+export const isSymbol = (n => typeof n === 'symbol') as FnGuard<symbol>
 export const isFalsy = utIsFalsy as FnGuard<Falsy>
 export const isNullish = utIsNullish as FnGuard<Nullish>
 export const isPrimitive = utIsPrimitive as FnGuard<Primitive>
 // export const isEmpty = lodashIsEmpty // FIXME: broken after switch to lodash-es
-export const isError = lodashIsError as FnGuard<Error>
-export const isNative = lodashIsNative as FnGuard<Fn>
+// export const isError = lodashIsError as FnGuard<Error> // TODO: implement it on demand
+// export const isNative = lodashIsNative as FnGuard<Fn> // TODO: implement it on demand
 
 export const isObject = lodashIsObject as FnGuard<AnyObject>
 export const isPlainObject = _isPlainObject as FnGuard<AnyObject>
