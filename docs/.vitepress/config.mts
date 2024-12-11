@@ -1,4 +1,5 @@
 import type { DefaultTheme } from 'vitepress'
+import path from 'node:path'
 import { defineConfig } from 'vitepress'
 import { npmCommandsMarkdownPlugin } from 'vitepress-plugin-npm-commands'
 import { tabsMarkdownPlugin } from 'vitepress-plugin-tabs'
@@ -54,6 +55,13 @@ const config = defineConfig({
     config(md) {
       md.use(tabsMarkdownPlugin)
       md.use(npmCommandsMarkdownPlugin)
+    },
+  },
+  vite: {
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, '../../packages/stdlib/src'),
+      },
     },
   },
   themeConfig: {

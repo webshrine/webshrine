@@ -1,7 +1,6 @@
-/* eslint-disable antfu/no-import-dist */
-import type { Fn, FnWrapper } from '../../../packages/stdlib/dist'
+import type { Fn, FnWrapper } from '../../../packages/stdlib/src'
 import type { CallData, TimelineData } from './Timeline.vue'
-import { sleep, through } from '../../../packages/stdlib/dist'
+import { sleep, through } from '../../../packages/stdlib/src'
 
 /**
  *

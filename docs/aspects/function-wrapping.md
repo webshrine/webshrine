@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Timeline from '../.vitepress/components/Timeline.vue'
 import { createAsyncWrapperSimulator, generateRandomCallList } from '../.vitepress/components/helpers'
-import { debounce, sleep, throttle,  } from '../../packages/stdlib/dist'
+import { debounce, sleep, throttle,  } from '../../packages/stdlib/src'
 
 const calls = () => generateRandomCallList(50, 900)
 
