@@ -49,6 +49,7 @@ const ApiSidebar: DefaultTheme.Sidebar = [
 
 // https://vitepress.dev/reference/site-config
 const config = defineConfig({
+  ignoreDeadLinks: true, // FIXME: Research solution for root docs links
   title: `⛩️ ${capitalCase(PACKAGE.name)}`,
   description: PACKAGE.description,
   markdown: {
