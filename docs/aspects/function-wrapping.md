@@ -1,3 +1,37 @@
+<script setup lang="ts">
+import Timeline from '../.vitepress/components/Timeline.vue'
+import { createAsyncWrapperSimulator, generateRandomCallList } from '../.vitepress/components/helpers'
+import { debounce, sleep, throttle,  } from '../../packages/stdlib/dist'
+
+const calls = () => generateRandomCallList(50, 900)
+
+const asyncExecutor = (...args) => sleep(100).then(() => args)
+
+const debounceSimulatorBasic = createAsyncWrapperSimulator({
+  wrapper: fn => debounce(fn, 40),
+  getCalls: calls,
+  params: {title: 'Debounce sync'}
+})
+const debounceSimulatorAsync = createAsyncWrapperSimulator({
+  executor: asyncExecutor,
+  wrapper: fn => debounce(fn, 40),
+  getCalls: calls,
+  params: {title: 'Debounce async'}
+})
+
+const throttleSimulatorBasic = createAsyncWrapperSimulator({
+  wrapper: fn => throttle(fn, 40),
+  getCalls: calls,
+  params: {title: 'Throttle sync'}
+})
+const throttleSimulatorAsync = createAsyncWrapperSimulator({
+  executor: asyncExecutor,
+  wrapper: fn => throttle(fn, 40),
+  getCalls: calls,
+  params: {title: 'Throttle sync'}
+})
+</script>
+
 # Function wrapping
 Function wrapping is a technique used to enhance or modify existing functions without altering their original implementation.
 
@@ -17,6 +51,9 @@ const scheduleUpdate = debounce(update, 300)
 
 window.addEventListener('resize', scheduleUpdate)
 ```
+#### Simulation:
+<Timeline :get-data="debounceSimulatorBasic" />
+<Timeline :get-data="debounceSimulatorAsync" />
 
 ### `throttle`
 Creates a throttled version of the provided function.
@@ -33,6 +70,9 @@ const throttledScrollHandler = throttle(scrollHandler, 100)
 
 window.addEventListener('scroll', throttledScrollHandler)
 ```
+#### Simulation:
+<Timeline :get-data="throttleSimulatorBasic" />
+<Timeline :get-data="throttleSimulatorAsync" />
 
 ## Result value modifying
 ### `negate`

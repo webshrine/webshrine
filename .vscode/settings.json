@@ -78,5 +78,8 @@
   "[markdown]": {
     "files.trimTrailingWhitespace": false
   },
-  "git.followTagsWhenSync": true
+  "git.followTagsWhenSync": true,
+
+  // Vitepress
+  "vue.server.includeLanguages": ["vue", "markdown"]
 }
