@@ -52,8 +52,10 @@ const scheduleUpdate = debounce(update, 300)
 window.addEventListener('resize', scheduleUpdate)
 ```
 #### Simulation:
-<Timeline :get-data="debounceSimulatorBasic" />
-<Timeline :get-data="debounceSimulatorAsync" />
+<ClientOnly>
+  <Timeline :get-data="debounceSimulatorBasic" />
+  <Timeline :get-data="debounceSimulatorAsync" />
+</ClientOnly>
 
 ### `throttle`
 Creates a throttled version of the provided function.
@@ -71,8 +73,10 @@ const throttledScrollHandler = throttle(scrollHandler, 100)
 window.addEventListener('scroll', throttledScrollHandler)
 ```
 #### Simulation:
-<Timeline :get-data="throttleSimulatorBasic" />
-<Timeline :get-data="throttleSimulatorAsync" />
+<ClientOnly>
+  <Timeline :get-data="throttleSimulatorBasic" />
+  <Timeline :get-data="throttleSimulatorAsync" />
+</ClientOnly>
 
 ## Result value modifying
 ### `negate`
