@@ -33,14 +33,14 @@ if (parsingError)
 ```
 
 ## Default value
-You can use native syntax
+You can use native destructuring default syntax
 ```ts
 const [result = 'default value', syncParseErr] = cope(/* ... */)
 result // is always defined
 ```
 
 ## Force execution
-You can use this util just to ignoring fails of execution:
+You can use this util just to ignore fails of execution:
 ```ts
 // Some preparing execution
 cope(() => window.querySelector('#dynamic-element').scrollTo(123, 0))

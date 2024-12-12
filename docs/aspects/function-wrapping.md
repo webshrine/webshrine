@@ -28,7 +28,7 @@ const throttleSimulatorAsync = createAsyncWrapperSimulator({
   executor: asyncExecutor,
   wrapper: fn => throttle(fn, 40),
   getCalls: calls,
-  params: {title: 'Throttle sync'}
+  params: {title: 'Throttle async'}
 })
 </script>
 
