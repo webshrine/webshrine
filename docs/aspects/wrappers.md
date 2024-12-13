@@ -32,8 +32,9 @@ const throttleSimulatorAsync = createAsyncWrapperSimulator({
 })
 </script>
 
-# Function wrapping
-Function wrapping is a technique used to enhance or modify existing functions without altering their original implementation.
+# Wrappers
+Wrappers are functions that wrap other functions to add additional functionality or modify their behavior without changing their interface.
+Represented by type `FnWrapper`
 
 ## Async behaviour modifying
 ### `debounce`
