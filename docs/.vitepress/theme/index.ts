@@ -3,6 +3,7 @@ import { enhanceAppWithTabs } from 'vitepress-plugin-tabs/client'
 import DefaultTheme from 'vitepress/theme' // https://vitepress.dev/guide/custom-theme
 import { h } from 'vue'
 
+import ApiLink from '../components/ApiLink.vue'
 import './style.css'
 import './custom/index.css'
 
@@ -14,6 +15,7 @@ export default {
     })
   },
   enhanceApp({ app }) {
+    app.component('ApiLink', ApiLink)
     enhanceAppWithTabs(app)
   },
 } satisfies Theme
