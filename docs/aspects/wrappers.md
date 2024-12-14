@@ -34,7 +34,8 @@ const throttleSimulatorAsync = createAsyncWrapperSimulator({
 
 # Wrappers
 Wrappers are functions that wrap other functions to add additional functionality or modify their behavior without changing their interface.
-Represented by type `FnWrapper`
+
+Satisfies type <ApiLink name="FnWrapper"/>
 
 ## Async behaviour modifying
 ### `debounce`

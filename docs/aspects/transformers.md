@@ -1,4 +1,10 @@
 # Transformers
+Transformers are functions that transform input data into output data
+
+They are not mutates input data, but can return same nested values links to input contents
+
+Satisfies type <ApiLink name="FnTransform"/>
+
 ## Picking
 The picking functions are designed to extract specific key-value pairs from objects or nested collections based on provided criteria.
 
