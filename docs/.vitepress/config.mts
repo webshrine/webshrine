@@ -17,7 +17,7 @@ const DefaultSidebar: DefaultTheme.Sidebar = [
   sidebarItemRootless('Aspects', null, () => [
     item('Common utils'),
     // item('Matching'),
-    // item('Guarding / Filtering'),
+    item('Guards'),
     // item('Loops'),
     item('Transformers'),
     item('Wrappers'),
