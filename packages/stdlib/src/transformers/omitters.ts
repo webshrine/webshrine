@@ -22,7 +22,7 @@ export const omitBy = <Output extends AnyObject, Input extends AnyObject = AnyOb
  * Returns new object without specified keys.
  * - Implements `Omit` utility type from Typescript.
  */
-export const omit = <Input extends AnyObject, Key extends Keys<Input>>(
+export const omit = <Input extends AnyObject, Key extends Keys<Input> = Keys<Input>>(
   object: Input,
   keys: ReadonlyArray<MaybeLiteral<Key>>,
 ) => {
@@ -41,7 +41,7 @@ const omitDeepProcess = createDeepObjectTransformer(omit)
  * - Implements `OmitDeep` utility type from library.
  * - Executes recursively on nested collections.
  */
-export const omitDeep = <Input extends Collection, Key extends KeysDeep<Input>>(
+export const omitDeep = <Input extends Collection, Key extends KeysDeep<Input> = KeysDeep<Input>>(
   object: Input,
   keys: ReadonlyArray<MaybeLiteral<Key>>,
 ) => omitDeepProcess(object, keys) as OmitDeep<Input, Key>
@@ -62,7 +62,7 @@ export const omitDeepBy = <Input extends Collection, Output extends PartialDeep<
  * - Implements `Omit` utility type from Typescript.
  * - Controls that received keys list is exists.
  */
-export const omitStrict = <Input extends AnyObject, Key extends Keys<Input>>(
+export const omitStrict = <Input extends AnyObject, Key extends Keys<Input> = Keys<Input>>(
   object: Input,
   keys: ReadonlyArray<Key>,
 ) => omit(object, keys)
@@ -73,7 +73,7 @@ export const omitStrict = <Input extends AnyObject, Key extends Keys<Input>>(
  * - Executes recursively on nested collections.
  * - Controls that received keys list is exists.
  */
-export const omitDeepStrict = <Input extends Collection, Key extends KeysDeep<Input>>(
+export const omitDeepStrict = <Input extends Collection, Key extends KeysDeep<Input> = KeysDeep<Input>>(
   object: Input,
   keys: ReadonlyArray<Key>,
 ) => omitDeep(object, keys)
