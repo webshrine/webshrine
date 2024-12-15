@@ -8,8 +8,8 @@ import GeneratedApiSidebar from '../api/gen/typedoc-sidebar.json'
 import { capitalCase, item, sidebarItem, sidebarItemRootless } from './helpers.mts'
 
 const DefaultSidebar: DefaultTheme.Sidebar = [
-  sidebarItem('Guide', null, () => [
-    item('Get Started', '/'),
+  sidebarItemRootless('Guide', null, () => [
+    item('Get Started'),
   ]),
   // sidebarItemRootless('Concepts', null, () => [
   //   item('Namings'),
@@ -17,6 +17,7 @@ const DefaultSidebar: DefaultTheme.Sidebar = [
   sidebarItemRootless('Utils', null, () => [
     item('Common'),
     // item('Loops'),
+    item('Cloning'),
     item('Error handling'),
   ]),
   sidebarItemRootless('Aspects', null, () => [
