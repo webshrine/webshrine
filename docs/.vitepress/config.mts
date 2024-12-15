@@ -21,7 +21,7 @@ const DefaultSidebar: DefaultTheme.Sidebar = [
     item('Error handling'),
   ]),
   sidebarItemRootless('Aspects', null, () => [
-    // item('Matchers'),
+    item('Matchers'),
     item('Guards'),
     item('Transformers'),
     item('Wrappers'),
