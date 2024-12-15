@@ -28,7 +28,10 @@ export const through = <T>(arg: T) => arg
  */
 export const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
-export const hasOwn: FnPredicate<[object: AnyObject, key: string]> = Object.prototype.hasOwnProperty.call
+/**
+ * Checks if the object has own property with the specified key.
+ */
+export const hasOwn: FnPredicate<[object: AnyObject, key: string]> = (object, key) => Object.prototype.hasOwnProperty.call(object, key)
 
 // TODO: Think about it :D
 // export const sleepSync = (ms: number) => {
