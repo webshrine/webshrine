@@ -14,14 +14,16 @@ const DefaultSidebar: DefaultTheme.Sidebar = [
   // sidebarItemRootless('Concepts', null, () => [
   //   item('Namings'),
   // ]),
-  sidebarItemRootless('Aspects', null, () => [
-    item('Common utils'),
-    // item('Matching'),
-    item('Guards'),
+  sidebarItemRootless('Utils', null, () => [
+    item('Common'),
     // item('Loops'),
+    item('Error handling'),
+  ]),
+  sidebarItemRootless('Aspects', null, () => [
+    // item('Matchers'),
+    item('Guards'),
     item('Transformers'),
     item('Wrappers'),
-    item('Error handling'),
   ]),
   sidebarItem('Migration', null, () => [
     item('Associations'),
