@@ -9,7 +9,7 @@ import { capitalCase, item, sidebarItem, sidebarItemRootless } from './helpers.m
 
 const DefaultSidebar: DefaultTheme.Sidebar = [
   sidebarItemRootless('Guide', null, () => [
-    item('Get Started'),
+    item('Get Started', '/'),
   ]),
   // sidebarItemRootless('Concepts', null, () => [
   //   item('Namings'),
