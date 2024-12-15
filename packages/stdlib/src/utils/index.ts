@@ -1,3 +1,3 @@
 export * from './clone'
 export * from './common'
-export * from './forEach'
+export * from './loops'

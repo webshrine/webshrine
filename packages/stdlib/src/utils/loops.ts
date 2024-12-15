@@ -1,9 +1,9 @@
-import type { AnyArray, AnyObject, Collection, CollectionKey, FnIterate, FnIterateDeep, FnIterateTimes } from '@webshrine/stdtyp'
+import type { AnyArray, AnyObject, Collection, CollectionKey, FnIterate, FnIterateDeep, FnIterateTimes, FnTransformIterate, Keys } from '@webshrine/stdtyp'
 import { isCollection } from '@/guards'
 import { symbols } from '@/transformers'
 
 /**
- *
+ * Iterates over array items.
  */
 export const forItems = <T extends AnyArray>(
   array: T,
@@ -14,18 +14,18 @@ export const forItems = <T extends AnyArray>(
 }
 
 /**
- *
+ * Iterates over object values.
  */
 export const forValues = (
   object: Record<CollectionKey, any>,
   cb: FnIterate<any, string>,
 ) => {
-  for (const key in object)
+  for (const key of Object.keys(object))
     cb(object[key], key, object)
 }
 
 /**
- *
+ * Iterates over object symbol keys.
  */
 export const forSymbols = (
   object: AnyObject,
@@ -38,7 +38,7 @@ export const forSymbols = (
 }
 
 /**
- *
+ * Iterates over collection items.
  */
 export const forEach = (
   collection: Collection,
@@ -82,6 +82,44 @@ export function forEachDeep<T extends Collection>(
 ) {
   forEachDeepIterate(callback, data, 0)
 }
+
+/**
+ * Maps each item of array.
+ */
+export const mapItems = <T extends AnyArray, C extends FnTransformIterate<T[number], number, any>>(
+  array: T,
+  cb: C,
+): ReturnType<C>[] => {
+  const result = []
+  for (let index = 0, max = array.length; index < max; index++)
+    result[index] = cb(array[index], index, array)
+  return result
+}
+
+/**
+ * Maps each value of object.
+ */
+export const mapValues = <T extends Record<CollectionKey, any>, C extends FnTransformIterate<T[keyof T], Keys<T>, any>>(
+  object: T,
+  cb: C,
+) => {
+  const result: Record<string, any> = {}
+  for (const key of Object.keys(object))
+    result[key] = cb(object[key], key as Keys<T>, object)
+  return result as Record<keyof T, ReturnType<C>>
+}
+
+/**
+ * Maps over a collection.
+ */
+export const map = (
+  collection: Collection,
+  cb: FnTransformIterate<any, CollectionKey>,
+) => (
+  Array.isArray(collection)
+    ? mapItems(collection, cb)
+    : mapValues(collection, cb)
+)
 
 /**
  * Iterates over a given number of times, calling the provided callback function for each iteration.

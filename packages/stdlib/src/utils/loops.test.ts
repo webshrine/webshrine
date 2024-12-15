@@ -1,5 +1,16 @@
 import type { CollectionKey } from '@webshrine/stdtyp'
-import { forEach, forEachDeep, forItems, forSymbols, forValues } from './forEach'
+import { forEach, forEachDeep, forItems, forSymbols, forValues, map, mapItems, mapValues } from './loops'
+
+const ARR = [
+  '1',
+  '2',
+  '3',
+]
+const OBJ = {
+  a: 1,
+  b: '2',
+  c: true,
+}
 
 describe('forItems', () => {
   it('basic', () => {
@@ -149,5 +160,40 @@ describe('forEachDeep', () => {
       [6],
       6,
     ])
+  })
+})
+
+describe('mapItems', () => {
+  it('basic', () => {
+    expect(mapItems(ARR, item => +item)).toEqual([
+      1,
+      2,
+      3,
+    ])
+  })
+})
+
+describe('mapValues', () => {
+  it('basic', () => {
+    expect(mapValues(OBJ, item => `_${item}`)).toEqual({
+      a: '_1',
+      b: '_2',
+      c: '_true',
+    })
+  })
+})
+
+describe('map', () => {
+  it('basic', () => {
+    expect(map(ARR, item => +item)).toEqual([
+      1,
+      2,
+      3,
+    ])
+    expect(map(OBJ, item => `_${item}`)).toStrictEqual({
+      a: '_1',
+      b: '_2',
+      c: '_true',
+    })
   })
 })
