@@ -16,7 +16,7 @@ const DefaultSidebar: DefaultTheme.Sidebar = [
   // ]),
   sidebarItemRootless('Utils', null, () => [
     item('Common'),
-    // item('Loops'),
+    item('Loops'),
     item('Cloning'),
     item('Error handling'),
   ]),
