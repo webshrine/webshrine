@@ -30,7 +30,7 @@
     "utility-types": "^3.11.0"
   },
   "devDependencies": {
-    "@types/node": "^22.10.1",
-    "eslint": "^9.15.0"
+    "@types/node": "^22.10.2",
+    "eslint": "^9.17.0"
   }
 }
