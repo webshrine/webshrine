@@ -30,7 +30,7 @@
 - naming pattern 'reduce(Source)To(Target)' (e.g `reduceNumbersToSumNumber`)
 
 #### FnCompare
-- naming pattern 'compare(Name)' (e.g `compareNumber`)
+- naming pattern 'compare(Name)' (e.g `compareNumbers`)
 
 #### FnTransform
 - if it's a function, that executes recursively, should be named by '(name)Deep' pattern (e.g `omitDeep`)

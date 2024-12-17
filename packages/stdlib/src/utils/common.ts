@@ -16,7 +16,7 @@ export const noop = () => { }
  * @example
  * ```ts
  * const order: FnWrapper = isDesc ? inverse : through
- * const sorter = order(compareNumber)
+ * const sorter = order(compareNumbers)
  *
  * [1,3,2].sort(sorter)
  * ```

@@ -107,7 +107,7 @@ Creates a function that inverts the comparison result of the provided `compareFn
 Useful for invert sorting order.
 
 ```ts
-const ascending = compareNumber
+const ascending = compareNumbers
 const descending = invert(ascending)
 
 console.log([3, 1, 2].sort(ascending)) // [1, 2, 3]

@@ -34,7 +34,7 @@ This function returns the argument it received. It can be useful in some cases w
 
 ```ts
 const order: FnWrapper = isDesc ? inverse : through
-const sorter = order(compareNumber)
+const sorter = order(compareNumbers)
 
 SOME_DATA.sort(sorter)
 ```

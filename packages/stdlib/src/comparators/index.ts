@@ -7,7 +7,7 @@ export * from './helpers'
 /**
  *
  */
-export const compareNumber: FnCompare<number> = (a, b) => (
+export const compareNumbers: FnCompare<number> = (a, b) => (
   a > b
     ? CompareResult.A_IS_GREATER
     : a < b
@@ -18,25 +18,25 @@ export const compareNumber: FnCompare<number> = (a, b) => (
 /**
  *
  */
-export const compareNumberAbs: FnCompare<number> = (a, b) => compareNumber(Math.abs(a), Math.abs(b))
+export const compareNumbersAbs: FnCompare<number> = (a, b) => compareNumbers(Math.abs(a), Math.abs(b))
 
 /**
  *
  */
-export const compareArrayLength: FnCompare<AnyArray> = (a, b) => compareNumber(a.length, b.length)
+export const compareArrayLengths: FnCompare<AnyArray> = (a, b) => compareNumbers(a.length, b.length)
 
 /**
  *
  */
-export const compareString: FnCompare<string> = (a, b) => normalizeCompareResult(a.localeCompare(b))
+export const compareStrings: FnCompare<string> = (a, b) => normalizeCompareResult(a.localeCompare(b))
 
 /**
  *
  */
-export const compareDate: FnCompare<Date> = (a, b) => compareNumber(a.getTime(), b.getTime())
+export const compareDates: FnCompare<Date> = (a, b) => compareNumbers(a.getTime(), b.getTime())
 
-export const compareNumberReverse = invert(compareNumber)
-export const compareNumberAbsReverse = invert(compareNumberAbs)
-export const compareArrayLengthReverse = invert(compareArrayLength)
-export const compareStringReverse = invert(compareString)
-export const compareDateReverse = invert(compareDate)
+export const compareNumbersReverse = invert(compareNumbers)
+export const compareNumbersAbsReverse = invert(compareNumbersAbs)
+export const compareArrayLengthsReverse = invert(compareArrayLengths)
+export const compareStringsReverse = invert(compareStrings)
+export const compareDatesReverse = invert(compareDates)

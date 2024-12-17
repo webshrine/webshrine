@@ -47,7 +47,7 @@ export const negate = (<T extends FnPredicate | FnAsyncPredicate>(fn: T): T => {
 /**
  *  Creates a function that inverts comparison result of received comparing function.
  * @example
- * const ascending = compareNumber
+ * const ascending = compareNumbers
  * const descending = invert(ascending)
  *
  * [3, 1, 2].sort(ascending) // [1, 2, 3]
