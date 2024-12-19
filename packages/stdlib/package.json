@@ -27,14 +27,10 @@
   "scripts": {
     "test": "vitest --watch --typecheck",
     "test:coverage": "vitest --coverage",
-    "dev": "vite --host",
     "check_types": "tsc",
     "build_soft": "vite build",
     "build": "npm run check_types && vite build",
-    "bench": "vitest bench --watch",
-    "deps:check_updates": "ncu",
-    "deps:update": "ncu -u && pnpm i",
-    "release": "npm run build && ..."
+    "bench": "vitest bench --watch"
   },
   "dependencies": {
     "@types/lodash-es": "^4.17.12",
