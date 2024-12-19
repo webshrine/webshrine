@@ -6,7 +6,15 @@
   "license": "ISC",
   "keywords": [],
   "main": "./src/index.ts",
+  "peerDependencies": {
+    "@vueuse/core": "^12.0.0",
+    "vue": "^3.5.13"
+  },
   "dependencies": {
     "@webshrine/stdlib": "link:..\\stdlib"
+  },
+  "devDependencies": {
+    "@vueuse/core": "^12.0.0",
+    "vue": "^3.5.13"
   }
 }
