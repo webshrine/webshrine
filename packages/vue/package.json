@@ -1,11 +1,20 @@
 {
   "name": "@webshrine/vue",
+  "type": "module",
   "version": "1.0.0",
   "description": "",
   "author": "",
   "license": "ISC",
   "keywords": [],
   "main": "./src/index.ts",
+  "scripts": {
+    "test": "vitest --watch --typecheck",
+    "test:coverage": "vitest --coverage",
+    "check_types": "tsc",
+    "build_soft": "vite build",
+    "build": "npm run check_types && vite build",
+    "bench": "vitest bench --watch"
+  },
   "peerDependencies": {
     "@vueuse/core": "^12.0.0",
     "vue": "^3.5.13"
@@ -15,6 +24,8 @@
   },
   "devDependencies": {
     "@vueuse/core": "^12.0.0",
+    "vite": "^6.0.3",
+    "vitest": "^2.1.8",
     "vue": "^3.5.13"
   }
 }
