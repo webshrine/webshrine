@@ -37,12 +37,12 @@ export const once = (<T extends Fn>(fn: T): T => {
  * _.filter([1, 2, 3, 4, 5, 6], isOdd);
  * // => [1, 3, 5]
  */
-export const negate = (<T extends FnPredicate | FnAsyncPredicate>(fn: T): T => {
-  return ((...args: any[]) => {
+export const negate = (<T extends FnPredicate | FnAsyncPredicate>(fn: T): T => (
+  (...args: any[]) => {
     const result = fn(...args)
     return typeof result === 'boolean' ? !result : result.then(r => !r)
-  }) as T
-}) satisfies FnWrapper<FnPredicate | FnAsyncPredicate>
+  }
+) as T) satisfies FnWrapper<FnPredicate | FnAsyncPredicate>
 
 /**
  *  Creates a function that inverts comparison result of received comparing function.
