@@ -9,7 +9,7 @@ type ConcatTwoArrays<A extends AnyArray, B extends AnyArrayOptional> = B extends
  */
 export type Fn<
   Parameters extends AnyArrayOptional = AnyArrayOptional,
-  Result extends any | void = void,
+  Result = void,
   Context = undefined,
 > = Context extends undefined
   ? Parameters extends any[]
@@ -25,13 +25,13 @@ export type FnNullary<Result = void> = Fn<undefined, Result>
 /** Any function with parameters */
 export type FnParametrized<
   Parameters extends AnyArray = AnyArray,
-  Result extends any | void = void,
+  Result = void,
 > = Fn<Parameters, Result>
 
 export type FnMethod<
   Context,
   Parameters extends AnyArrayOptional = AnyArrayOptional,
-  Result extends any | void = void,
+  Result = void,
 > = Fn<Parameters, Result, Context>
 
 export type FnMethodPipe<
@@ -48,8 +48,9 @@ export type FnMethodPipe<
 /** Any async function */
 export type FnAsync<
   Parameters extends AnyArrayOptional = AnyArrayOptional,
-  Result extends any | void = void,
-> = Fn<Parameters, Promise<Result>>
+  Result = void,
+  Context = undefined,
+> = Fn<Parameters, Promise<Result>, Context>
 
 /** Any async function without parameters */
 export type FnAsyncNullary<Result = void> = FnAsync<undefined, Result>
@@ -116,10 +117,23 @@ export type FnTransformIterate<Input = any, Id extends PropertyKey = PropertyKey
 export type FnReduceIterate<Item = any, Id extends PropertyKey = PropertyKey, Result = any> = Fn<[previousValue: Result | undefined, ...IterateParameters<Item, Id>], Result>
 
 /** Wrapper function */
-export type FnWrapper<F extends Fn = Fn, Parameters extends AnyArrayOptional = AnyArrayOptional> =
+export type FnWrapper<
+  F extends Fn = Fn,
+  Parameters extends AnyArrayOptional = AnyArrayOptional,
+  Result = F,
+> =
   Parameters extends any[]
-  ? (func: F, ...args: Parameters) => F
-  : (func: F) => F
+  ? (func: F, ...args: Parameters) => Result
+  : (func: F) => Result
+
+// export type FnWrapperTransform<
+//   F extends Fn = Fn,
+//   Result = ReturnType<F>,
+//   Parameters extends AnyArrayOptional = AnyArrayOptional,
+// > =
+//   Parameters extends any[]
+//   ? (func: F, ...args: Parameters) => Result
+//   : (func: F) => Result
 
 // /** Mutating function */
 // export type FnMut<Target, Parameters extends AnyArrayOptional = AnyArrayOptional> =
