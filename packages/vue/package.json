@@ -5,6 +5,10 @@
   "description": "",
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webshrine/webshrine.git"
+  },
   "keywords": [],
   "main": "./src/index.ts",
   "scripts": {
