@@ -2,20 +2,29 @@ import { execSync } from 'node:child_process'
 import { PACKAGES } from '../constants'
 import { modifyJsonFile } from './helpers'
 
+function setVersionForDependencies(
+  targetPackage: Record<PropertyKey, any>,
+  dependenciesNames: Set<string>,
+  version: string,
+  category = 'dependencies',
+) {
+  if (!targetPackage[category])
+    return
+  for (const packageName of Object.keys(targetPackage[category])) {
+    if (dependenciesNames.has(packageName) && !targetPackage[category][packageName].startsWith('link:'))
+      targetPackage[category][packageName] = version
+  }
+}
+
 export function setVersionsForAllPackages(version: string) {
+  const packageFullNames = new Set(PACKAGES.map(p => p.fullname))
   PACKAGES.forEach(({ path }) => {
     modifyJsonFile(`${path}/package.json`, (srcData) => {
       srcData.version = version
 
-      for (const packageName in Object.keys(srcData.dependencies)) {
-        if (!PACKAGES.some(p => p.fullname === packageName))
-          continue
+      setVersionForDependencies(srcData, packageFullNames, version)
+      setVersionForDependencies(srcData, packageFullNames, version, 'peerDependencies')
 
-        if (srcData.dependencies[packageName].startsWith('link:'))
-          continue
-
-        srcData.dependencies[packageName] = version
-      }
       return srcData
     })
   })

@@ -1,6 +1,6 @@
 interface Package {
   name: string
-  fullname?: string
+  fullname: string
   path: string
 }
 
@@ -21,6 +21,7 @@ export const PACKAGES = [
   },
   {
     name: 'webshrine',
+    fullname: 'webshrine',
   },
 ].map<Package>((pkg) => {
   return {
