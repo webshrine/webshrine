@@ -6,6 +6,16 @@ export function setVersionsForAllPackages(version: string) {
   PACKAGES.forEach(({ path }) => {
     modifyJsonFile(`${path}/package.json`, (srcData) => {
       srcData.version = version
+
+      for (const packageName in Object.keys(srcData.dependencies)) {
+        if (!PACKAGES.some(p => p.name === packageName))
+          continue
+
+        if (srcData.dependencies[packageName].startsWith('link:'))
+          continue
+
+        srcData.dependencies[packageName] = version
+      }
       return srcData
     })
   })

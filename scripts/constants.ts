@@ -12,6 +12,12 @@ export const PACKAGES = [
   {
     name: 'stdtyp',
   },
+  {
+    name: 'stdfmt',
+  },
+  {
+    name: 'webshrine',
+  },
 ].map<Package>((pkg) => {
   return {
     ...pkg,
