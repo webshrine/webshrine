@@ -24,7 +24,8 @@
     "CHANGELOG.md",
     "LICENSE.md",
     "README.md",
-    "dist",
+    "index.d.ts",
+    "index.js",
     "package.json"
   ],
   "dependencies": {
