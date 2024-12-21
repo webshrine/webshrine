@@ -8,7 +8,7 @@ export function setVersionsForAllPackages(version: string) {
       srcData.version = version
 
       for (const packageName in Object.keys(srcData.dependencies)) {
-        if (!PACKAGES.some(p => p.name === packageName))
+        if (!PACKAGES.some(p => p.fullname === packageName))
           continue
 
         if (srcData.dependencies[packageName].startsWith('link:'))
