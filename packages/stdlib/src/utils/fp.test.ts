@@ -1,4 +1,3 @@
-import { pick } from '@/transformers'
 import { sleep } from '@/utils/common'
 import { compose, pipe, pre } from './fp'
 
