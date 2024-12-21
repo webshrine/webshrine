@@ -1,0 +1,47 @@
+{
+  "name": "@webshrine/stdfmt",
+  "type": "module",
+  "version": "0.0.2",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webshrine/webshrine.git"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
+  "files": [
+    "CHANGELOG.md",
+    "LICENSE.md",
+    "README.md",
+    "dist",
+    "package.json"
+  ],
+  "scripts": {
+    "test": "vitest --watch --typecheck",
+    "test:coverage": "vitest --coverage",
+    "check_types": "tsc",
+    "build_soft": "vite build",
+    "build": "npm run check_types && vite build",
+    "bench": "vitest bench --watch"
+  },
+  "dependencies": {
+    "@types/lodash-es": "^4.17.12",
+    "@webshrine/stdtyp": "link:..\\stdtyp",
+    "cope": "^1.0.9",
+    "defu": "^6.1.4",
+    "fast-deep-equal": "^3.1.3",
+    "klona": "^2.0.6",
+    "lodash-es": "^4.17.21",
+    "perfect-debounce": "^1.0.0",
+    "throttleit": "^2.1.0",
+    "utility-types": "^3.11.0"
+  }
+}

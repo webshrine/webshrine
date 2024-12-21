@@ -66,6 +66,7 @@
     "Primitivizable",
     "Recursor",
     "stddom",
+    "stdfmt",
     "stdlib",
     "stdtyp",
     "throttleit",
