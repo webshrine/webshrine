@@ -1,8 +1,8 @@
 import type { LibraryFormats } from 'vite'
 import path from 'node:path'
-import { visualizer } from 'rollup-plugin-visualizer'
+// import { visualizer } from 'rollup-plugin-visualizer'
 import { defineConfig } from 'vite'
-import dts from 'vite-plugin-dts'
+// import dts from 'vite-plugin-dts'
 import packageJson from './package.json'
 
 const LIB_NAME_SCOPED = packageJson.name
@@ -18,25 +18,25 @@ const fileName: Partial<Record<LibraryFormats, string>> = {
 const abs = (p: string) => path.resolve(__dirname, p)
 
 export default defineConfig({
-  plugins: [
-    dts({ entryRoot: 'src' }),
-  ],
+  // plugins: [
+  //   dts({ entryRoot: 'src' }),
+  // ],
   resolve: {
     alias: {
       '@': abs('src'),
     },
   },
   build: {
-    rollupOptions: {
-      plugins: [
-        // TODO: think about disabling it in ci building env
-        visualizer({
-          filename: 'bundle_visualized.html',
-          template: 'sunburst',
-          // open: true,
-        }),
-      ],
-    },
+    // rollupOptions: {
+    //   plugins: [
+    //     // TODO: think about disabling it in ci building env
+    //     visualizer({
+    //       filename: 'bundle_visualized.html',
+    //       template: 'sunburst',
+    //       // open: true,
+    //     }),
+    //   ],
+    // },
     lib: {
       entry: abs('src/index.ts'),
       name: LIB_NAME_CAMEL_CASE,
