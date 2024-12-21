@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import type { DefaultTheme } from 'vitepress'
+import GeneratedApiSidebar from '../api/gen/typedoc-sidebar.json'
 
 interface ItemLike {
   text: string
@@ -67,3 +68,9 @@ export function logPaths(title: string, items?: Array<ItemLike & { items?: ItemL
     }
   })
 }
+
+export const createApiSidebar = name => sidebarItem(
+  name,
+  { link: `api/gen/${name}/src` },
+  GeneratedApiSidebar.find(i => i.text === name)?.items?.[0].items || [],
+)

@@ -4,8 +4,7 @@ import { defineConfig } from 'vitepress'
 import { npmCommandsMarkdownPlugin } from 'vitepress-plugin-npm-commands'
 import { tabsMarkdownPlugin } from 'vitepress-plugin-tabs'
 import PACKAGE from '../../package.json'
-import GeneratedApiSidebar from '../api/gen/typedoc-sidebar.json'
-import { capitalCase, item, sidebarItem, sidebarItemRootless } from './helpers.mts'
+import { capitalCase, createApiSidebar, item, sidebarItem, sidebarItemRootless } from './helpers.mts'
 
 const DefaultSidebar: DefaultTheme.Sidebar = [
   sidebarItemRootless('Guide', null, () => [
@@ -46,8 +45,9 @@ const CodeStyleSidebar: DefaultTheme.Sidebar = [
 
 const ApiSidebar: DefaultTheme.Sidebar = [
   sidebarItem('Overview', { link: 'api' }, []),
-  sidebarItem('stdlib', { link: 'api/gen/stdlib/src' }, GeneratedApiSidebar.find(i => i.text === 'stdlib')?.items?.[0].items || []),
-  sidebarItem('stdtyp', { link: 'api/gen/stdtyp/src' }, GeneratedApiSidebar.find(i => i.text === 'stdtyp')?.items?.[0].items || []),
+  createApiSidebar('stdlib'),
+  createApiSidebar('stdtyp'),
+  createApiSidebar('stdfmt'),
 ]
 
 // https://vitepress.dev/reference/site-config

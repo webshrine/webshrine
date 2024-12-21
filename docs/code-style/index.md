@@ -32,6 +32,9 @@
 #### FnCompare
 - naming pattern 'compare(Name)' (e.g `compareNumbers`)
 
+<!-- #### FnFormat
+- naming pattern 'to(Name)' (e.g `toCamelCase`) -->
+
 #### FnTransform
 - if it's a function, that executes recursively, should be named by '(name)Deep' pattern (e.g `omitDeep`)
 - if it's a function, that accepts executor callback, should be named by '(name)By' pattern (e.g `omitBy`)

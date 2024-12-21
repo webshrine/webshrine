@@ -7,3 +7,4 @@ Whether you're looking to integrate, extend, or understand the inner workings of
 ## 🔍 Packages
 - [stdlib](/api/gen/stdlib/src/)
 - [stdtyp](/api/gen/stdtyp/src/)
+- [stdfmt](/api/gen/stdfmt/src/)
