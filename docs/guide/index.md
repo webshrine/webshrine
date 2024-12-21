@@ -13,10 +13,17 @@ WebShrine Stdlib is a powerful library that provides a wide range of functions, 
 
 ### Common usage
 ```bash
-npm i @webshrine/stdlib // [!=npm auto]
+npm i webshrine // [!=npm auto]
 ```
+It bundles `@webshrine/stdtyp`, `@webshrine/stdlib` and `@webshrine/stdfmt` packages
 
 ### Only types usage
 ```bash
 npm i -D @webshrine/stdtyp // [!=npm auto]
+```
+
+### Types and core usage
+```bash
+npm i -D @webshrine/stdtyp // [!=npm auto]
+npm i @webshrine/stdlib // [!=npm auto]
 ```
