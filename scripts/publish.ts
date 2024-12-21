@@ -3,7 +3,7 @@ import { consola } from 'consola'
 import { name as scope, version } from '../package.json'
 import { PACKAGES } from './constants'
 
-execSync('npm run build', { stdio: 'inherit' })
+execSync('pnpm run build', { stdio: 'inherit' })
 
 let command = 'npm publish --access public'
 

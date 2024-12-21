@@ -12,7 +12,7 @@
     "test:coverage": "vitest --coverage",
     "check_types": "tsc",
     "build_soft": "vite build",
-    "build": "npm run check_types && vite build",
+    "_build": "npm run check_types && vite build",
     "bench": "vitest bench --watch"
   },
   "peerDependencies": {
