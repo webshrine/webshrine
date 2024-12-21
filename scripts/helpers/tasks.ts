@@ -33,6 +33,8 @@ export function setVersionsForAllPackages(version: string) {
 export function gitCheckClean(ignore: string[]) {
   const status = execSync('git status --porcelain', { encoding: 'utf8' })
   const modifiedFiles = status.trim().split('\n').filter((line) => {
+    if (!line)
+      return false
     const [_, path] = line.trim().split(' ')
     return !ignore.includes(path)
   })
