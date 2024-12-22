@@ -64,13 +64,13 @@ importers:
         version: 4.3.0(@types/node@22.10.2)(rollup@4.29.1)(typescript@5.7.2)(vite@6.0.3(@types/node@22.10.2)(sass@1.83.0)(terser@5.37.0)(yaml@2.6.1))
       vitepress:
         specifier: ^1.5.0
-        version: 1.5.0(@algolia/client-search@4.24.0)(@types/node@22.10.2)(postcss@8.4.49)(qrcode@1.5.4)(sass@1.83.0)(search-insights@2.17.2)(terser@5.37.0)(typescript@5.7.2)
+        version: 1.5.0(@algolia/client-search@4.24.0)(@types/node@22.10.2)(change-case@5.4.4)(postcss@8.4.49)(qrcode@1.5.4)(sass@1.83.0)(search-insights@2.17.2)(terser@5.37.0)(typescript@5.7.2)
       vitepress-plugin-npm-commands:
         specifier: ^0.6.0
-        version: 0.6.0(vitepress-plugin-tabs@0.5.0(vitepress@1.5.0(@algolia/client-search@4.24.0)(@types/node@22.10.2)(postcss@8.4.49)(qrcode@1.5.4)(sass@1.83.0)(search-insights@2.17.2)(terser@5.37.0)(typescript@5.7.2))(vue@3.5.13(typescript@5.7.2)))(vitepress@1.5.0(@algolia/client-search@4.24.0)(@types/node@22.10.2)(postcss@8.4.49)(qrcode@1.5.4)(sass@1.83.0)(search-insights@2.17.2)(terser@5.37.0)(typescript@5.7.2))
+        version: 0.6.0(vitepress-plugin-tabs@0.5.0(vitepress@1.5.0(@algolia/client-search@4.24.0)(@types/node@22.10.2)(change-case@5.4.4)(postcss@8.4.49)(qrcode@1.5.4)(sass@1.83.0)(search-insights@2.17.2)(terser@5.37.0)(typescript@5.7.2))(vue@3.5.13(typescript@5.7.2)))(vitepress@1.5.0(@algolia/client-search@4.24.0)(@types/node@22.10.2)(change-case@5.4.4)(postcss@8.4.49)(qrcode@1.5.4)(sass@1.83.0)(search-insights@2.17.2)(terser@5.37.0)(typescript@5.7.2))
       vitepress-plugin-tabs:
         specifier: ^0.5.0
-        version: 0.5.0(vitepress@1.5.0(@algolia/client-search@4.24.0)(@types/node@22.10.2)(postcss@8.4.49)(qrcode@1.5.4)(sass@1.83.0)(search-insights@2.17.2)(terser@5.37.0)(typescript@5.7.2))(vue@3.5.13(typescript@5.7.2))
+        version: 0.5.0(vitepress@1.5.0(@algolia/client-search@4.24.0)(@types/node@22.10.2)(change-case@5.4.4)(postcss@8.4.49)(qrcode@1.5.4)(sass@1.83.0)(search-insights@2.17.2)(terser@5.37.0)(typescript@5.7.2))(vue@3.5.13(typescript@5.7.2))
       vitest:
         specifier: ^2.1.8
         version: 2.1.8(@types/node@22.10.2)(sass@1.83.0)(terser@5.37.0)
@@ -92,6 +92,9 @@ importers:
       '@webshrine/stdtyp':
         specifier: link:..\stdtyp
         version: link:../stdtyp
+      change-case:
+        specifier: ^5.4.4
+        version: 5.4.4
       cope:
         specifier: ^1.0.9
         version: 1.0.9(typescript@5.7.2)
@@ -1466,6 +1469,9 @@ packages:
   chalk@4.1.2:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
     engines: {node: '>=10'}
+
+  change-case@5.4.4:
+    resolution: {integrity: sha512-HRQyTk2/YPEkt9TnUPbOpr64Uw3KOicFWPVBb+xiHvd6eBx/qPr9xqfBFDT8P2vWsvvz4jbEkfDe71W3VyNu2w==}
 
   character-entities-html4@2.1.0:
     resolution: {integrity: sha512-1v7fgQRj6hnSwFpq1Eu0ynr/CDEw0rXo2B61qXrLNdHZmPKgb7fqS1a2JwF0rISo9q77jDI8VMEHoApn8qDoZA==}
@@ -4336,12 +4342,13 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@vueuse/integrations@11.1.0(focus-trap@7.6.0)(qrcode@1.5.4)(vue@3.5.13(typescript@5.7.2))':
+  '@vueuse/integrations@11.1.0(change-case@5.4.4)(focus-trap@7.6.0)(qrcode@1.5.4)(vue@3.5.13(typescript@5.7.2))':
     dependencies:
       '@vueuse/core': 11.1.0(vue@3.5.13(typescript@5.7.2))
       '@vueuse/shared': 11.1.0(vue@3.5.13(typescript@5.7.2))
       vue-demi: 0.14.10(vue@3.5.13(typescript@5.7.2))
     optionalDependencies:
+      change-case: 5.4.4
       focus-trap: 7.6.0
       qrcode: 1.5.4
     transitivePeerDependencies:
@@ -4519,6 +4526,8 @@ snapshots:
     dependencies:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
+
+  change-case@5.4.4: {}
 
   character-entities-html4@2.1.0: {}
 
@@ -6338,19 +6347,19 @@ snapshots:
       terser: 5.37.0
       yaml: 2.6.1
 
-  vitepress-plugin-npm-commands@0.6.0(vitepress-plugin-tabs@0.5.0(vitepress@1.5.0(@algolia/client-search@4.24.0)(@types/node@22.10.2)(postcss@8.4.49)(qrcode@1.5.4)(sass@1.83.0)(search-insights@2.17.2)(terser@5.37.0)(typescript@5.7.2))(vue@3.5.13(typescript@5.7.2)))(vitepress@1.5.0(@algolia/client-search@4.24.0)(@types/node@22.10.2)(postcss@8.4.49)(qrcode@1.5.4)(sass@1.83.0)(search-insights@2.17.2)(terser@5.37.0)(typescript@5.7.2)):
+  vitepress-plugin-npm-commands@0.6.0(vitepress-plugin-tabs@0.5.0(vitepress@1.5.0(@algolia/client-search@4.24.0)(@types/node@22.10.2)(change-case@5.4.4)(postcss@8.4.49)(qrcode@1.5.4)(sass@1.83.0)(search-insights@2.17.2)(terser@5.37.0)(typescript@5.7.2))(vue@3.5.13(typescript@5.7.2)))(vitepress@1.5.0(@algolia/client-search@4.24.0)(@types/node@22.10.2)(change-case@5.4.4)(postcss@8.4.49)(qrcode@1.5.4)(sass@1.83.0)(search-insights@2.17.2)(terser@5.37.0)(typescript@5.7.2)):
     dependencies:
       klona: 2.0.6
       npm-to-yarn: 2.2.1
-      vitepress: 1.5.0(@algolia/client-search@4.24.0)(@types/node@22.10.2)(postcss@8.4.49)(qrcode@1.5.4)(sass@1.83.0)(search-insights@2.17.2)(terser@5.37.0)(typescript@5.7.2)
-      vitepress-plugin-tabs: 0.5.0(vitepress@1.5.0(@algolia/client-search@4.24.0)(@types/node@22.10.2)(postcss@8.4.49)(qrcode@1.5.4)(sass@1.83.0)(search-insights@2.17.2)(terser@5.37.0)(typescript@5.7.2))(vue@3.5.13(typescript@5.7.2))
+      vitepress: 1.5.0(@algolia/client-search@4.24.0)(@types/node@22.10.2)(change-case@5.4.4)(postcss@8.4.49)(qrcode@1.5.4)(sass@1.83.0)(search-insights@2.17.2)(terser@5.37.0)(typescript@5.7.2)
+      vitepress-plugin-tabs: 0.5.0(vitepress@1.5.0(@algolia/client-search@4.24.0)(@types/node@22.10.2)(change-case@5.4.4)(postcss@8.4.49)(qrcode@1.5.4)(sass@1.83.0)(search-insights@2.17.2)(terser@5.37.0)(typescript@5.7.2))(vue@3.5.13(typescript@5.7.2))
 
-  vitepress-plugin-tabs@0.5.0(vitepress@1.5.0(@algolia/client-search@4.24.0)(@types/node@22.10.2)(postcss@8.4.49)(qrcode@1.5.4)(sass@1.83.0)(search-insights@2.17.2)(terser@5.37.0)(typescript@5.7.2))(vue@3.5.13(typescript@5.7.2)):
+  vitepress-plugin-tabs@0.5.0(vitepress@1.5.0(@algolia/client-search@4.24.0)(@types/node@22.10.2)(change-case@5.4.4)(postcss@8.4.49)(qrcode@1.5.4)(sass@1.83.0)(search-insights@2.17.2)(terser@5.37.0)(typescript@5.7.2))(vue@3.5.13(typescript@5.7.2)):
     dependencies:
-      vitepress: 1.5.0(@algolia/client-search@4.24.0)(@types/node@22.10.2)(postcss@8.4.49)(qrcode@1.5.4)(sass@1.83.0)(search-insights@2.17.2)(terser@5.37.0)(typescript@5.7.2)
+      vitepress: 1.5.0(@algolia/client-search@4.24.0)(@types/node@22.10.2)(change-case@5.4.4)(postcss@8.4.49)(qrcode@1.5.4)(sass@1.83.0)(search-insights@2.17.2)(terser@5.37.0)(typescript@5.7.2)
       vue: 3.5.13(typescript@5.7.2)
 
-  vitepress@1.5.0(@algolia/client-search@4.24.0)(@types/node@22.10.2)(postcss@8.4.49)(qrcode@1.5.4)(sass@1.83.0)(search-insights@2.17.2)(terser@5.37.0)(typescript@5.7.2):
+  vitepress@1.5.0(@algolia/client-search@4.24.0)(@types/node@22.10.2)(change-case@5.4.4)(postcss@8.4.49)(qrcode@1.5.4)(sass@1.83.0)(search-insights@2.17.2)(terser@5.37.0)(typescript@5.7.2):
     dependencies:
       '@docsearch/css': 3.6.2
       '@docsearch/js': 3.6.2(@algolia/client-search@4.24.0)(search-insights@2.17.2)
@@ -6363,7 +6372,7 @@ snapshots:
       '@vue/devtools-api': 7.6.4
       '@vue/shared': 3.5.12
       '@vueuse/core': 11.1.0(vue@3.5.13(typescript@5.7.2))
-      '@vueuse/integrations': 11.1.0(focus-trap@7.6.0)(qrcode@1.5.4)(vue@3.5.13(typescript@5.7.2))
+      '@vueuse/integrations': 11.1.0(change-case@5.4.4)(focus-trap@7.6.0)(qrcode@1.5.4)(vue@3.5.13(typescript@5.7.2))
       focus-trap: 7.6.0
       mark.js: 8.11.1
       minisearch: 7.1.0

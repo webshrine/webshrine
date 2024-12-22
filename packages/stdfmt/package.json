@@ -35,6 +35,7 @@
   "dependencies": {
     "@types/lodash-es": "^4.17.12",
     "@webshrine/stdtyp": "link:..\\stdtyp",
+    "change-case": "^5.4.4",
     "cope": "^1.0.9",
     "defu": "^6.1.4",
     "fast-deep-equal": "^3.1.3",
