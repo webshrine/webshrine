@@ -5,5 +5,6 @@ export default defineConfig({
   test: {
     alias: viteConfig.resolve?.alias,
     globals: true,
+    environment: 'happy-dom',
   },
 })
