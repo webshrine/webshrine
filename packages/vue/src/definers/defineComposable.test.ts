@@ -44,18 +44,27 @@ describe('defineComposable', () => {
     expect(spySingleton).toBeCalledTimes(1)
   })
 
-  it('flattens refs', () => {
+  it('flattens nested refs', () => {
     const useComposable = defineComposable({
-      flatten: true,
+      flat: true,
       setup() {
         return {
           a: ref(1),
           b: ref(2),
+          nested: {
+            c: ref(3),
+          },
         }
       },
     })
 
     const result = useComposable()
-    expect(result).toEqual({ a: 1, b: 2 })
+    expect(result).toEqual({
+      a: 1,
+      b: 2,
+      nested: {
+        c: 3,
+      },
+    })
   })
 })
