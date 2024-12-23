@@ -1,6 +1,6 @@
 import type { AnyArray, AnyObject, Collection, CollectionKey, FnIterate, FnIterateDeep, FnIterateTimes, FnTransformIterate, Keys } from '@webshrine/stdtyp'
-import { isCollection } from '@/guards'
-import { symbols } from '@/transformers'
+import { isCollection } from '../guards'
+import { symbols } from '../transformers'
 
 /**
  * Iterates over array items.

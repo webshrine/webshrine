@@ -7,9 +7,6 @@
     "rootDir": ".",
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "paths": {
-      "@/*": ["./src/*"]
-    },
     "resolveJsonModule": true,
     "types": ["vite/client", "vitest/globals", "node"],
     "strict": true,

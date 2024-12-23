@@ -1,5 +1,5 @@
-import { sleep } from '@/utils'
 import { negate, once } from '.'
+import { sleep } from '../utils'
 
 describe('once', () => {
   it('sync', () => {

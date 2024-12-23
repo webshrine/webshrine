@@ -1,5 +1,5 @@
 import type { AnyArray, AnyObject, Collection, CollectionKey, KeysDeep } from '@webshrine/stdtyp'
-import { forEachDeep, timesMap } from '@/utils'
+import { forEachDeep, timesMap } from '../utils'
 
 // TODO: Think about support Collection also
 

@@ -1,7 +1,8 @@
 /* eslint-disable jsdoc/require-jsdoc */
 import type { InjectionKey } from 'vue'
-import { useAsync, type UseAsyncReturn } from '@/composables/useAsync'
+import type { UseAsyncReturn } from './useAsync'
 import { inject } from 'vue'
+import { useAsync } from './useAsync'
 
 type InjectableSource<T> = InjectionKey<T> | string
 

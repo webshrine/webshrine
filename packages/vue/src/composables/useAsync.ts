@@ -1,5 +1,5 @@
-import type { AsyncSource } from '@/types/utilities'
 import type { Ref } from 'vue'
+import type { AsyncSource } from '../types/utilities'
 import { noop } from '@webshrine/stdlib'
 import { shallowRef } from 'vue'
 

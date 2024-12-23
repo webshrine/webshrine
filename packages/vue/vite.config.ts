@@ -21,11 +21,6 @@ export default defineConfig({
   // plugins: [
   //   dts({ entryRoot: 'src' }),
   // ],
-  resolve: {
-    alias: {
-      '@': abs('src'),
-    },
-  },
   build: {
     // rollupOptions: {
     //   plugins: [

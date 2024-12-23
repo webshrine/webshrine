@@ -1,5 +1,5 @@
 import type { AnyArray, FnCompare } from '@webshrine/stdtyp'
-import { invert } from '@/wrappers'
+import { invert } from '../wrappers'
 import { CompareResult, normalizeCompareResult } from './helpers'
 
 export * from './helpers'

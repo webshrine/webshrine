@@ -1,5 +1,5 @@
 import type { AnyObject, Collection, FnPredicateIterate, Keys, KeysDeep, MaybeLiteral, PartialDeep, PickDeep } from '@webshrine/stdtyp'
-import { hasOwn } from '@/utils'
+import { hasOwn } from '../utils'
 import { createDeepObjectTransformer } from './helpers'
 
 /**

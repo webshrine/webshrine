@@ -1,5 +1,5 @@
 import type { AnyArray, AnyObject, Collection, FnTransform } from '@webshrine/stdtyp'
-import { isCollection } from '@/guards'
+import { isCollection } from '../guards'
 
 /**
  * @private

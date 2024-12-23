@@ -1,5 +1,5 @@
 import type { AnyArray, AnyObject, Collection, FnMatch } from '@webshrine/stdtyp'
-import { areSame } from '@/matchers'
+import { areSame } from '../matchers'
 
 /**
  * Returns a new array with only the unique items, uniqueness is determined by received `matcher` function.

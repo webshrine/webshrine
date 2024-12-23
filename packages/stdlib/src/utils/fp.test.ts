@@ -1,4 +1,4 @@
-import { sleep } from '@/utils/common'
+import { sleep } from './common'
 import { compose, pipe, pre } from './fp'
 
 describe('pre', () => {

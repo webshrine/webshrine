@@ -61,13 +61,6 @@ const config = defineConfig({
       md.use(npmCommandsMarkdownPlugin)
     },
   },
-  vite: {
-    resolve: {
-      alias: {
-        '@': path.resolve(__dirname, '../../packages/stdlib/src'),
-      },
-    },
-  },
   themeConfig: {
     search: {
       provider: 'local',
