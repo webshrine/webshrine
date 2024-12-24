@@ -1,3 +1,4 @@
+import type { MaybePromise } from '@webshrine/stdtyp'
 import type { Ref } from 'vue'
 import type { AsyncSource } from '../types/utilities'
 import { noop } from '@webshrine/stdlib'
@@ -5,41 +6,21 @@ import { shallowRef } from 'vue'
 
 export interface UseAsyncReturn<Data, Params extends any[]> {
   readonly value: Data
-  isReady: Ref<boolean>
-  isLoading: Ref<boolean>
+  isPending: Ref<boolean>
   error: Ref<unknown>
   execute: (...args: Params) => Promise<Data>
 }
 
-export interface UseAsyncOptions<D = any> {
-  /**
-   * Execute the promise right after the function is invoked.
-   * Will apply the delay if any.
-   *
-   * When set to false, you will need to execute it manually.
-   * @default true
-   */
+export type UseAsyncOptions<D = any> = {
   immediate?: boolean
-
-  /**
-   * Callback when success is caught.
-   */
-  onSuccess?: (data: D) => void
-
-  /**
-   * Callback when error is caught.
-   */
-  onError?: (e: unknown) => void
-
-  /**
-   * Sets the state to initialState before executing the promise.
-   *
-   * This can be useful when calling the execute function more than once (for
-   * example, to refresh data). When set to false, the current state remains
-   * unchanged until the promise resolves.
-   * @default true
-   */
   resetOnExecute?: boolean
+  onSuccess?: (data: D) => void
+  onError?: (e: unknown) => void
+} | {
+  immediate?: boolean
+  resetOnExecute?: boolean
+  onSuccess?: (data: D) => void
+  onError?: (e: unknown) => void
 }
 
 /**
@@ -54,48 +35,45 @@ export function useAsync<Data, Params extends any[] = []>(
     immediate = true,
     resetOnExecute = true,
     onSuccess = noop,
-    onError = noop,
+    onError,
   } = options
   const state = shallowRef(initialState)
-  const isReady = shallowRef(false)
-  const isLoading = shallowRef(false)
+  const isPending = shallowRef(false)
   const error = shallowRef<unknown | undefined>(undefined)
-
-  const callback = (typeof source === 'function' ? source : () => source) as (...args: Params) => Data
+  const callback: (...args: Params) => MaybePromise<Data> = typeof source === 'function' ? source : () => source
 
   async function execute(...args: Params) {
     if (resetOnExecute)
       state.value = initialState
     error.value = undefined
-    isReady.value = false
-    isLoading.value = true
+    isPending.value = true
 
     try {
-      const data = await callback(...args)
-      state.value = data
-      isReady.value = true
-      onSuccess(data)
+      onSuccess(state.value = await callback(...args))
     }
     catch (e) {
       error.value = e
-      onError(e)
+      if (onError)
+        onError(e)
+      else
+        throw e
     }
     finally {
-      isLoading.value = false
+      isPending.value = false
     }
 
     return state.value as Data
   }
 
   if (immediate)
+    // @ts-expect-error FIXME: find solution for parametrized callbacks
     execute()
 
   return {
     get value() {
       return state.value
     },
-    isReady,
-    isLoading,
+    isPending,
     error,
     execute,
   }
