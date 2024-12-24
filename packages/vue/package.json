@@ -1,7 +1,7 @@
 {
   "name": "@webshrine/vue",
   "type": "module",
-  "version": "1.0.0",
+  "version": "0.0.11",
   "description": "",
   "author": "",
   "license": "ISC",
@@ -21,8 +21,8 @@
   },
   "peerDependencies": {
     "@vueuse/core": "^12.0.0",
-    "@webshrine/stdlib": "0.0.10",
-    "@webshrine/stdtyp": "0.0.10",
+    "@webshrine/stdlib": "0.0.11",
+    "@webshrine/stdtyp": "0.0.11",
     "vue": "^3.5.13"
   },
   "devDependencies": {
