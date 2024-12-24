@@ -20,6 +20,10 @@ export const PACKAGES = [
     fullname: '@webshrine/stdfmt',
   },
   {
+    name: 'vue',
+    fullname: '@webshrine/vue',
+  },
+  {
     name: 'webshrine',
     fullname: 'webshrine',
   },
