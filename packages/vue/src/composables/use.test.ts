@@ -40,4 +40,20 @@ describe('use', () => {
     })
     expect(wrapper.text()).toBe('777')
   })
+
+  it('symbol source: inject(source)', () => {
+    const wrapper = mount({
+      setup() {
+        const sym = Symbol('')
+        provide(sym, 777)
+        return () => h({
+          setup() {
+            const foo = use<number>(sym)
+            return () => `${foo}`
+          },
+        })
+      },
+    })
+    expect(wrapper.text()).toBe('777')
+  })
 })
