@@ -28,6 +28,7 @@
 
 #### FnReduce
 - naming pattern 'reduce(Source)To(Target)' (e.g `reduceNumbersToSumNumber`)
+- if return one of collection items, must be named by `find(Target)` (e.g. `findMaxNumber`)
 
 #### FnCompare
 - naming pattern 'compare(Name)' (e.g `compareNumbers`)
