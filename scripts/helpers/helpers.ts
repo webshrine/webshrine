@@ -5,3 +5,5 @@ export function modifyJsonFile(path: string, cd: (data: Record<PropertyKey, any>
   const modified = cd(packageJson)
   writeFileSync(path, `${JSON.stringify(modified, null, 2)}\n`)
 }
+
+export const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1)

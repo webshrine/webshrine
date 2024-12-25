@@ -1,6 +1,7 @@
 import type { JSDocableNode } from 'ts-morph'
 import * as path from 'node:path'
 import { Project, SyntaxKind } from 'ts-morph'
+import { capitalize } from './helpers/helpers'
 
 const project = new Project()
 project.addSourceFilesAtPaths([
@@ -37,7 +38,7 @@ function setJSDocTag(node: JSDocableNode, tagName: string, text: string) {
 }
 
 project.getSourceFiles().forEach((sourceFile) => {
-  const category = path.basename(path.dirname(sourceFile.getFilePath()))
+  const category = capitalize(path.basename(path.dirname(sourceFile.getFilePath())))
 
   sourceFile.forEachChild((node) => {
     if (isJSDocableNode(node))
