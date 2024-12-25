@@ -1,5 +1,6 @@
 /**
  * Creates controllable autoincrement variable
+ * @category Classes
  */
 export class Autoincrement {
   value!: number
@@ -30,9 +31,7 @@ export class Autoincrement {
   }
 }
 
-/**
- *
- */
+/** @category Classes */
 export class AutoincrementMap<Key> {
   map = new Map<Key, Autoincrement>()
 

@@ -1,15 +1,27 @@
 import type { FnNullary } from '.'
 
-/** Allows `T` to be `T` or `null` */
+/**
+ * Allows `T` to be `T` or `null`
+ * @category Utilities
+ */
 export type Nullable<T> = T | null
 
-/** Allows `T` to be `T` or `Promise<T>` */
+/**
+ * Allows `T` to be `T` or `Promise<T>`
+ * @category Utilities
+ */
 export type MaybePromise<T> = T | Promise<T>
 
-/** Allows `T` to be `T` or `() => T` */
+/**
+ * Allows `T` to be `T` or `() => T`
+ * @category Utilities
+ */
 export type MaybeReturned<T> = T | FnNullary<T>
 
-/** Allows `T` to be `T` or `T[]` */
+/**
+ * Allows `T` to be `T` or `T[]`
+ * @category Utilities
+ */
 export type MaybeArray<T> = T | T[]
 
 /**
@@ -19,6 +31,7 @@ export type MaybeArray<T> = T | T[]
  * type MaybeSomeLiterals = MaybeLiteral<SomeLiterals>
  * const literal1: MaybeSomeLiterals = 'a' // ok
  * const literal2: MaybeSomeLiterals = 'other literal' // still ok and IDE can suggest source literals
+ * @category Utilities
  */
 export type MaybeLiteral<T extends PropertyKey> = T | (string & {})
 

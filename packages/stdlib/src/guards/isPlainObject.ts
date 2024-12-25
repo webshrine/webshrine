@@ -7,6 +7,7 @@
  * [[Prototype]] of null.
  *
  * Note: This method assumes objects created by the Object constructor have no inherited enumerable properties.
+ * @category Guards
  */
 export function isPlainObject(value: unknown): boolean {
   if (value === null || typeof value !== 'object')

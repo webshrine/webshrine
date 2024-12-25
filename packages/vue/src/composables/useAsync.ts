@@ -4,6 +4,7 @@ import type { AsyncSource } from '../types/utilities'
 import { noop } from '@webshrine/stdlib'
 import { shallowRef } from 'vue'
 
+/** @category Composables */
 export interface UseAsyncReturn<Data, Params extends any[]> {
   readonly value: Data
   isPending: Ref<boolean>
@@ -11,6 +12,7 @@ export interface UseAsyncReturn<Data, Params extends any[]> {
   execute: (...args: Params) => Promise<Data>
 }
 
+/** @category Composables */
 export type UseAsyncOptions<D = any> = {
   immediate?: boolean
   resetOnExecute?: boolean
@@ -25,6 +27,7 @@ export type UseAsyncOptions<D = any> = {
 
 /**
  * A composable function that helps with managing async operations.
+ * @category Composables
  */
 export function useAsync<Data, Params extends any[] = []>(
   source: AsyncSource<Data> | ((...args: Params) => Promise<Data>),

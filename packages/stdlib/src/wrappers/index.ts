@@ -6,12 +6,16 @@ export {
   // memoize, // TODO: Find alternative package
 } from 'lodash-es'
 
+/** @category Wrappers */
 export const debounce = perfectDebounce satisfies FnWrapper
+
+/** @category Wrappers */
 export const throttle = throttleit satisfies FnWrapper
 
 /**
  * Creates a function that is restricted to invoking func once. Repeat calls to the function return the value
  * of the first call. The func is invoked with the this binding and arguments of the created function.
+ * @category Wrappers
  */
 export const once = (<T extends Fn>(fn: T): T => {
   let wasCalled = false
@@ -36,6 +40,7 @@ export const once = (<T extends Fn>(fn: T): T => {
  *
  * _.filter([1, 2, 3, 4, 5, 6], isOdd);
  * // => [1, 3, 5]
+ * @category Wrappers
  */
 export const negate = (<T extends FnPredicate | FnAsyncPredicate>(fn: T): T => (
   (...args: any[]) => {
@@ -52,5 +57,6 @@ export const negate = (<T extends FnPredicate | FnAsyncPredicate>(fn: T): T => (
  *
  * [3, 1, 2].sort(ascending) // [1, 2, 3]
  * [3, 1, 2].sort(descending) // [3, 2, 1]
+ * @category Wrappers
  */
 export const invert = <T>(compareFn: FnCompare<T>): FnCompare<T> => (a, b) => compareFn(b, a)

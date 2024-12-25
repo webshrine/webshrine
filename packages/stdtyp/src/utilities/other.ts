@@ -1,5 +1,6 @@
 import type { AnyArrayOptional, AnyObject, CollectionKey, Decrement } from '..'
 
+/** @category Utilities */
 export type Collection<
   Item = any,
   Key extends CollectionKey = CollectionKey,
@@ -8,6 +9,7 @@ export type Collection<
 /**
  * General parameters of iteration function
  * If `Id` wasn't provided, returns universal iterate parameters
+ * @category Utilities
  */
 export type IterateParameters<
   Item = any,
@@ -15,20 +17,25 @@ export type IterateParameters<
   ParentObject extends Collection = Collection<Item, CollectionKey>,
 > = [value: Item, key: Key, parent: ParentObject]
 
+/** @category Utilities */
 export type Constructor<
   Instance = any,
   Parameters extends AnyArrayOptional = AnyArrayOptional,
 > = Parameters extends any[]
   ? { new(...args: Parameters): Instance }
   : { new(): Instance }
+
+/** @category Utilities */
 export type NullaryConstructor<Instance> = Constructor<Instance>
 
 // type PrefixKeys<Prefix extends string, T extends AnyRecord> = {
 //   [K in keyof T as `${Prefix}${string & K}`]: T[K]
 // }
 
+/** @category Utilities */
 type IfString<Value, Then = Value, Else = never> = Value extends string ? Then : Else
 
+/** @category Utilities */
 type StringifyKey<K extends PropertyKey> = K extends string
   ? K
   : K extends number ? `${K}` : never
@@ -36,10 +43,14 @@ type StringifyKey<K extends PropertyKey> = K extends string
 /**
  * Return all keys of `T`, converting number keys to strings and ignore Symbol keys
  * Instead of `keyof T`, returns only strings and stringified numbers
+ * @category Utilities
  */
 export type Keys<T extends AnyObject> = StringifyKey<keyof T>
 
-/** The same as `Keys<T>`, but recursively for all nested objects */
+/**
+ * The same as `Keys<T>`, but recursively for all nested objects
+ * @category Utilities
+ */
 export type KeysDeep<T extends Collection, Depth extends number = 20> = Depth extends -1
   ? never
   : T extends ReadonlyArray<infer I>
@@ -48,6 +59,7 @@ export type KeysDeep<T extends Collection, Depth extends number = 20> = Depth ex
   ? StringifyKey<D> | KeysDeep<Extract<T[D], Collection>, Decrement[Depth]>
   : never
 
+/** @category Utilities */
 type OmitDeepRecursor<T, K extends string> =
   T extends ReadonlyArray<infer I>
   ? Array<OmitDeepRecursor<I, K>>
@@ -55,8 +67,10 @@ type OmitDeepRecursor<T, K extends string> =
   ? { [P in Exclude<keyof T, K>]: OmitDeepRecursor<T[P], K> }
   : T
 
+/** @category Utilities */
 export type OmitDeep<T extends Collection, K extends string> = OmitDeepRecursor<T, K>
 
+/** @category Utilities */
 type PickDeepRecursor<T, K extends string> =
   T extends ReadonlyArray<infer I>
   ? Array<PickDeepRecursor<I, K>>
@@ -64,8 +78,10 @@ type PickDeepRecursor<T, K extends string> =
   ? { [P in Extract<keyof T, K>]: PickDeepRecursor<T[P], K> }
   : T
 
+/** @category Utilities */
 export type PickDeep<T extends Collection, K extends string> = PickDeepRecursor<T, K>
 
+/** @category Utilities */
 export type Paths<T extends AnyObject> = {
   [K in keyof T]: K extends string
   ? T[K] extends AnyObject ? `${K}.${IfString<Paths<T[K]>>}` : K
@@ -79,6 +95,7 @@ export type Paths<T extends AnyObject> = {
 //   ? F extends string ? `${F}${P}${Join<R, P>}` : `${F}${P}`
 //   : never
 
+/** @category Utilities */
 export type Split<T extends string, Separator extends string> =
   string extends T ? string[] :
   T extends '' ? [] :

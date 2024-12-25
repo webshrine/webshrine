@@ -6,6 +6,7 @@ export * from 'cope'
  * A no-operation function that returns undefined regardless of the arguments it receives.
  *
  * Uses as mock in rare cases to satisfy types and decrease the amount of code.
+ * @category Utils
  */
 export const noop = () => { }
 
@@ -20,16 +21,16 @@ export const noop = () => { }
  *
  * [1,3,2].sort(sorter)
  * ```
+ * @category Utils
  */
 export const through = <T>(arg: T) => arg
 
-/**
- *
- */
+/** @category Utils */
 export const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
 /**
  * Checks if the object has own property with the specified key.
+ * @category Utils
  */
 export const hasOwn: FnPredicate<[object: AnyObject, key: string]> = (object, key) => Object.prototype.hasOwnProperty.call(object, key)
 

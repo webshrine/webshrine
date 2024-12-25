@@ -14,6 +14,7 @@ import {
  * areSame(1, 1); // => true
  * areSame(1, '1'); // => false
  * areSame({}, {}); // => false
+ * @category Matchers
  */
 export const areSame: FnMatch = (a, b) => a === b
 
@@ -24,6 +25,7 @@ export const areSame: FnMatch = (a, b) => a === b
  * areSimilar(1, 1); // => true
  * areSimilar(1, '1'); // => true
  * areSimilar({}, {}); // => false
+ * @category Matchers
  */
 export const areSimilar: FnMatch = (a, b) => a == b
 
@@ -40,6 +42,7 @@ export const areSimilar: FnMatch = (a, b) => a == b
  * areSameValueZero('a', 'a'); // => true
  * areSameValueZero('a', Object('a')); // => false
  * areSameValueZero(NaN, NaN); // => true
+ * @category Matchers
  */
 export const areSameValueZero: FnMatch = eq
 
@@ -58,5 +61,6 @@ export const areSameValueZero: FnMatch = eq
  *
  * areEqual(object, other); // => true
  * object === other; // => false
+ * @category Matchers
  */
 export const areEqual: FnMatch = fastDeepEqual

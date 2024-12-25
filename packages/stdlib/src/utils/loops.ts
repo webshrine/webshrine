@@ -4,6 +4,7 @@ import { symbols } from '../transformers'
 
 /**
  * Iterates over array items.
+ * @category Utils
  */
 export const forItems = <T extends AnyArray>(
   array: T,
@@ -15,6 +16,7 @@ export const forItems = <T extends AnyArray>(
 
 /**
  * Iterates over object values.
+ * @category Utils
  */
 export const forValues = (
   object: Record<CollectionKey, any>,
@@ -26,6 +28,7 @@ export const forValues = (
 
 /**
  * Iterates over object symbol keys.
+ * @category Utils
  */
 export const forSymbols = (
   object: AnyObject,
@@ -39,6 +42,7 @@ export const forSymbols = (
 
 /**
  * Iterates over collection items.
+ * @category Utils
  */
 export const forEach = (
   collection: Collection,
@@ -49,6 +53,7 @@ export const forEach = (
     : forValues(collection, cb)
 }
 
+/** @category Utils */
 function forEachDeepIterate(
   callback: FnIterateDeep<any, CollectionKey>,
   node: Collection | any,
@@ -75,6 +80,7 @@ function forEachDeepIterate(
  * forEachDeep(obj, (value, key, parent, level) => {
  *   ...Will iterate keys: a, b, ba, c, 0, caa, 1, cab
  * })
+ * @category Utils
  */
 export function forEachDeep<T extends Collection>(
   data: T,
@@ -85,6 +91,7 @@ export function forEachDeep<T extends Collection>(
 
 /**
  * Maps each item of array.
+ * @category Utils
  */
 export const mapItems = <T extends AnyArray, C extends FnTransformIterate<T[number], number, any>>(
   array: T,
@@ -98,6 +105,7 @@ export const mapItems = <T extends AnyArray, C extends FnTransformIterate<T[numb
 
 /**
  * Maps each value of object.
+ * @category Utils
  */
 export const mapValues = <T extends Record<CollectionKey, any>, C extends FnTransformIterate<T[keyof T], Keys<T>, any>>(
   object: T,
@@ -111,6 +119,7 @@ export const mapValues = <T extends Record<CollectionKey, any>, C extends FnTran
 
 /**
  * Maps over a collection.
+ * @category Utils
  */
 export const map = (
   collection: Collection,
@@ -130,6 +139,7 @@ export const map = (
  * // => '№1 #0 of 3'
  * // => '№2 #1 of 3'
  * // => '№3 #2 of 3'
+ * @category Utils
  */
 export function times(count: number, callback: FnIterateTimes) {
   for (let index = 0; index < count; index++)
@@ -142,6 +152,7 @@ export function times(count: number, callback: FnIterateTimes) {
  * @example
  * timesMap(3, (number, index, count) => `№${number} #${index} of ${count}`)
  * // => ['№1 #0 of 3', '№2 #1 of 3', '№3 #2 of 3']
+ * @category Utils
  */
 export function timesMap<T extends FnIterateTimes<any>>(
   count: number,

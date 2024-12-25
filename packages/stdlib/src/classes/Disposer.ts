@@ -1,6 +1,4 @@
-/**
- *
- */
+/** @category Classes */
 export class Disposer implements Disposable {
   /** Ctor. */
   constructor(

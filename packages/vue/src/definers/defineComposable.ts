@@ -3,9 +3,13 @@ import type { UnwrapNestedRefs } from 'vue'
 import { once, pipe, through } from '@webshrine/stdlib'
 import { reactive } from 'vue'
 
+/** @category Definers */
 type ComposableInstance = AnyObject
+
+/** @category Definers */
 type ComposableSetup = Fn<AnyArrayOptional, ComposableInstance>
 
+/** @category Definers */
 interface DefineComposableOptions {
 
   /** Flattens refs in the result of the setup, keeping reactivity */
@@ -17,11 +21,13 @@ interface DefineComposableOptions {
   setup: ComposableSetup
 }
 
+/** @category Definers */
 const flatter = <S extends DefineComposableOptions['setup']>(setup: S) =>
   (...args: Parameters<S>) => reactive(setup(...args)) as UnwrapNestedRefs<ReturnType<S>>
 
 /**
  * Creates composable function with declarative control of behaviour.
+ * @category Definers
  */
 export function defineComposable<O extends DefineComposableOptions>(
   options: O,

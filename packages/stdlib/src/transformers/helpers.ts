@@ -3,6 +3,7 @@ import { isCollection } from '../guards'
 
 /**
  * @private
+ * @category Transformers
  */
 export const createDeepObjectTransformer = <T extends FnTransform<AnyObject, AnyObject, AnyArray>>(
   transformer: T,

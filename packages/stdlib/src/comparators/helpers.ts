@@ -1,5 +1,6 @@
 import type { CompareResultValue } from '@webshrine/stdtyp'
 
+/** @category Comparators */
 export const enum CompareResult {
   EQUAL = 0,
   A_IS_GREATER = 1,
@@ -9,6 +10,7 @@ export const enum CompareResult {
 /**
  * Converts any number to `CompareResultValue` value, using the number sign.
  * @returns CompareResultValue
+ * @category Comparators
  */
 export function normalizeCompareResult(value: number): CompareResultValue {
   return value > 0
@@ -21,6 +23,7 @@ export function normalizeCompareResult(value: number): CompareResultValue {
 /**
  * The same as `normalizeCompareResult`, but also converts boolean values.
  * @returns CompareResultValue
+ * @category Comparators
  */
 export function toCompareResult(value: number | boolean): CompareResultValue {
   return typeof value === 'boolean'
