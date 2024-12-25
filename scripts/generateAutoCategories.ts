@@ -1,12 +1,15 @@
 import type { JSDocableNode } from 'ts-morph'
 import * as path from 'node:path'
+import consola from 'consola'
 import { Project, SyntaxKind } from 'ts-morph'
+import { PACKAGES } from './constants'
 import { capitalize } from './helpers/helpers'
 
 const project = new Project()
+
 project.addSourceFilesAtPaths([
-  './packages/stdlib/src/**/*.ts',
-  '!./packages/stdlib/src/**/*.test.ts',
+  ...PACKAGES.map(({ name }) => `./packages/${name}/src/**/*.ts`),
+  '!./packages/**/*.test.ts',
 ] as const)
 
 const kindsToCategorize = [
@@ -48,4 +51,4 @@ project.getSourceFiles().forEach((sourceFile) => {
   sourceFile.saveSync()
 })
 
-console.log('JSDoc @category tags updated.')
+consola.success('JSDoc @category tags updated')
