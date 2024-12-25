@@ -20,6 +20,7 @@
     "docs:preview": "npm run docs:prepare && vitepress preview docs",
     "deps:check_updates": "ncu && ncu -ws",
     "deps:update": "ncu -u && ncu -ws -u && pnpm i",
+    "script:generateAutoCategories": "bun scripts/generateAutoCategories.ts",
     "version:commit": "bun scripts/commitVersion.ts",
     "git:push_all": "git push origin main && git push origin --tags",
     "ci:publish": "bun scripts/publish.ts"
@@ -37,6 +38,7 @@
     "rollup-plugin-visualizer": "^5.12.0",
     "sass": "^1.83.0",
     "terser": "^5.37.0",
+    "ts-morph": "^24.0.0",
     "typedoc": "^0.27.5",
     "typedoc-plugin-markdown": "^4.3.2",
     "typedoc-vitepress-theme": "^1.1.1",
