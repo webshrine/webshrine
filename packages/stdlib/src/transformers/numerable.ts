@@ -1,13 +1,5 @@
 import type { Lengthy, Numeric } from '@webshrine/stdtyp'
-
-/** @category Transformers */
-const clampBase = <T extends Numeric>(numeric: T, min: T, max: T): T => (
-  numeric > max
-    ? max
-    : numeric < min
-      ? min
-      : numeric
-)
+import { clampBase, maxNumeric, minNumeric } from './numerable.helpers'
 
 /**
  * Clamps a number between a minimum and maximum value.
@@ -31,20 +23,17 @@ export const clamp = <T extends Numeric>(numeric: T, min: Numeric, max: Numeric)
     : clampBigInt(numeric, BigInt(min), BigInt(max))
 ) as T
 
-/** @category Transformers */
-const minBase = <T extends Numeric>(numeric1: T, numeric2: T): T => numeric1 > numeric2 ? numeric2 : numeric1
-
 /**
  * Returns the minimal one of two numbers.
  * @category Transformers
  */
-export const minNumber = minBase<number>
+export const minNumber = minNumeric<number>
 
 /**
  * Returns the minimal one of two bigints.
  * @category Transformers
  */
-export const minBigInt = minBase<bigint>
+export const minBigInt = minNumeric<bigint>
 
 /**
  * Returns the shortest Lengthy value.
@@ -60,20 +49,17 @@ export const min = <T extends Numeric | Lengthy>(numerable1: T, numerable2: T): 
   switch (typeof numerable1) {
     case 'number':
     case 'bigint':
-      return minBase(numerable1, numerable2 as typeof numerable1) as T
+      return minNumeric(numerable1, numerable2 as typeof numerable1) as T
     default:
       return shortest(numerable1, numerable2 as Lengthy) as T
   }
 }
 
 /** @category Transformers */
-const maxBase = <T extends Numeric>(numeric1: T, numeric2: T): T => numeric1 < numeric2 ? numeric2 : numeric1
+export const maxNumber = maxNumeric<number>
 
 /** @category Transformers */
-export const maxNumber = maxBase<number>
-
-/** @category Transformers */
-export const maxBigInt = maxBase<bigint>
+export const maxBigInt = maxNumeric<bigint>
 
 /**
  * Returns the longest Lengthy value.
@@ -89,7 +75,7 @@ export const max = <T extends Numeric | Lengthy>(numerable1: T, numerable2: T): 
   switch (typeof numerable1) {
     case 'number':
     case 'bigint':
-      return maxBase(numerable1, numerable2 as typeof numerable1) as T
+      return maxNumeric(numerable1, numerable2 as typeof numerable1) as T
     default:
       return longest(numerable1, numerable2 as Lengthy) as T
   }
