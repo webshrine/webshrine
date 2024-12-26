@@ -59,9 +59,8 @@ export const shortest = <T extends Lengthy>(lengthy1: T, lengthy2: T): T => leng
 export const min = <T extends Numeric | Lengthy>(numerable1: T, numerable2: T): T => {
   switch (typeof numerable1) {
     case 'number':
-      return minNumber(numerable1, numerable2 as number) as T
     case 'bigint':
-      return minBigInt(numerable1, numerable2 as bigint) as T
+      return minBase(numerable1, numerable2 as typeof numerable1) as T
     default:
       return shortest(numerable1, numerable2 as Lengthy) as T
   }
@@ -89,9 +88,8 @@ export const longest = <T extends Lengthy>(lengthy1: T, lengthy2: T): T => lengt
 export const max = <T extends Numeric | Lengthy>(numerable1: T, numerable2: T): T => {
   switch (typeof numerable1) {
     case 'number':
-      return maxNumber(numerable1, numerable2 as number) as T
     case 'bigint':
-      return maxBigInt(numerable1, numerable2 as bigint) as T
+      return maxBase(numerable1, numerable2 as typeof numerable1) as T
     default:
       return longest(numerable1, numerable2 as Lengthy) as T
   }
