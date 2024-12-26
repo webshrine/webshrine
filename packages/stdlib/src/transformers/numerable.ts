@@ -72,6 +72,7 @@ const maxBase = <T extends Numeric>(numeric1: T, numeric2: T): T => numeric1 < n
 
 /** @category Transformers */
 export const maxNumber = maxBase<number>
+
 /** @category Transformers */
 export const maxBigInt = maxBase<bigint>
 
