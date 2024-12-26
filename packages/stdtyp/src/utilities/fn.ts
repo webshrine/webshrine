@@ -169,7 +169,7 @@ export type FnTransformIterate<Input = any, Id extends PropertyKey = PropertyKey
  * Reduce iteration function
  * @category Utilities
  */
-export type FnReduceIterate<Item = any, Id extends PropertyKey = PropertyKey, Result = any> = Fn<[previousValue: Result | undefined, ...IterateParameters<Item, Id>], Result>
+export type FnReduceIterate<Item = any, Id extends PropertyKey = PropertyKey, Result = Item> = Fn<[previousValue: Result | undefined, ...IterateParameters<Item, Id>], Result>
 
 /**
  * Wrapper function
