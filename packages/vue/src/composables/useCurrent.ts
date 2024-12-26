@@ -1,5 +1,3 @@
-/**
- * @category Composables
- */
+/** @category Composables */
 export function useCurrent() {
 }
