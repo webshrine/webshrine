@@ -88,3 +88,8 @@ export interface SerializableToPrimitive {
 //  * #interface #molecule
 //  */
 // export interface NativeObject extends SerializableToString, Valuable { }
+
+/** @category Interfaces */
+export interface Lengthy {
+  length: number
+}
