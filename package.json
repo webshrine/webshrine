@@ -21,7 +21,7 @@
     "deps:check_updates": "ncu && ncu -ws",
     "deps:update": "ncu -u && ncu -ws -u && pnpm i",
     "script:generateAutoCategories": "bun scripts/generateAutoCategories.ts && npm run docs:prepare",
-    "script:script": "bun scripts/commitVersion.ts",
+    "script:commitVersion": "bun scripts/commitVersion.ts",
     "git:push_all": "git push origin main && git push origin --tags",
     "ci:publish": "bun scripts/publish.ts"
   },
