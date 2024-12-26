@@ -12,6 +12,8 @@ These tables provided to show associations of similar patterns
 | uniq(...)       | uniqueItems(...) \| unique(...)        |
 | negate(...)     | negate(...)                            |
 | times(...)      | times(...) | timesMap(...)             |
+| clamp(...)      | clamp(...) | clampNumber(...)          |
+| identity(...)   | through(...)                           |
 <!-- |                 |                                        | -->
 
 ## [Utility types](https://www.npmjs.com/package/utility-types)
