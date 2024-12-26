@@ -1,31 +1,35 @@
-import type { FnReduceIterate } from '@webshrine/stdtyp'
+import type { FnReduceIterate, Lengthy, Numeric } from '@webshrine/stdtyp'
+import { longest, shortest } from '../transformers'
+import { maxNumeric, minNumeric } from '../transformers/numerable.helpers'
+
+const maxLengthy: Lengthy = { length: Infinity }
+const minLengthy: Lengthy = { length: 0 }
 
 /** @category Reducers */
-export const reduceNumbersToSumNumber: FnReduceIterate<number> = (acc = 0, value) => acc + value
+export const reduceNumbersToSumNumber: FnReduceIterate<number, number> = (acc = 0, value) => acc + value
 
 /** @category Reducers */
-export const reduceDatesToSumDate: FnReduceIterate<Date> = (acc, value) => {
-  if (acc) {
-    acc.setTime(acc.getTime() + value.getTime())
-    return acc
-  }
-  return new Date(value)
-}
+export const findMaxNumeric = (
+  <T extends Numeric>(acc: T | undefined, value: T) => maxNumeric(value, acc ?? value)
+) satisfies FnReduceIterate<Numeric, number>
 
 /** @category Reducers */
-export const findMaxNumber: FnReduceIterate<number> = (acc, value) => Math.max(acc ?? value, value)
+export const findMinNumeric = (
+  <T extends Numeric>(acc: T | undefined, value: T) => minNumeric(value, acc ?? value)
+) satisfies FnReduceIterate<Numeric, number>
 
 /** @category Reducers */
-export const findMinNumber: FnReduceIterate<number> = (acc, value) => Math.min(acc ?? value, value)
+export const findMaxLength: FnReduceIterate<Lengthy, number, number> = (acc, value) => maxNumeric(value.length, acc ?? value.length)
 
 /** @category Reducers */
-export const findMaxStringLength: FnReduceIterate<string, number> = (acc, value) => Math.max(acc ?? value.length, value.length)
+export const findMinLength: FnReduceIterate<Lengthy, number, number> = (acc, value) => minNumeric(value.length, acc ?? value.length)
 
 /** @category Reducers */
-export const findMinStringLength: FnReduceIterate<string, number> = (acc, value) => Math.min(acc ?? value.length, value.length)
+export const findLongest = (
+  <T extends Lengthy>(acc = minLengthy as T, value: T): T => longest<T>(value, acc)
+) satisfies FnReduceIterate<Lengthy>
 
 /** @category Reducers */
-export const findLongestString: FnReduceIterate<string> = (acc = '', value) => (acc.length > value.length) ? acc : value
-
-/** @category Reducers */
-export const findShortestString: FnReduceIterate<string> = (acc, value) => (acc !== undefined && acc.length < value.length) ? acc : value
+export const findShortest = (
+  <T extends Lengthy>(acc = maxLengthy as T, value: T): T => shortest<T>(value, acc)
+) satisfies FnReduceIterate<Lengthy>
