@@ -1,5 +1,5 @@
 // Interfaces
-import type { Primitive, ToPrimitiveHint } from './aliases'
+import type { Primitive, ToPrimitiveHint } from '../aliases'
 
 /**
  * Defines a type that can be serialised to a string
@@ -15,7 +15,7 @@ import type { Primitive, ToPrimitiveHint } from './aliases'
  * ```
  *
  * #interface #atom #serialisation
- * @category Src
+ * @category Interfaces
  */
 export interface SerializableToString {
   toString: () => string
@@ -35,7 +35,7 @@ export interface SerializableToString {
  * ```
  *
  * #interface #atom #serialisation
- * @category Src
+ * @category Interfaces
  */
 export interface SerializableToJSON {
   toJSON: () => string
@@ -46,7 +46,7 @@ export interface SerializableToJSON {
  * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/valueOf
  *
  * #interface #atom #serialisation
- * @category Src
+ * @category Interfaces
  */
 export interface Valuable<Value> {
   valueOf: () => Value
@@ -76,7 +76,7 @@ export interface Valuable<Value> {
  * ```
  *
  * #interface #atom #serialisation
- * @category Src
+ * @category Interfaces
  */
 export interface SerializableToPrimitive {
 
