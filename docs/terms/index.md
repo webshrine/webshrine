@@ -6,6 +6,7 @@
 ## Common
 - `Collection` - array or object of items
 - `Numeric` - unified type of any primitive number
+- `Lengthy` - any object with length property
 - `Transformer` - fn kind, that changes received value interpretation
 - `Wrapper` - fn kind, that wraps received callback and extends logics
 - `Path` - keys chain, united by dots, that addresses nested collection item position
