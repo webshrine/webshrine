@@ -65,3 +65,25 @@ export enum KeyboardKeyCodes {
   NumLock = 144,
   NumpadEqual = 12,
 }
+
+interface IHandlerOptions {
+  stop?: boolean
+  stopImmediate?: boolean
+  prevent?: boolean
+}
+
+/**
+ *
+ */
+export const handler = <E extends Event>(callback, options: IHandlerOptions) => {
+  return (event: E) => {
+    callback()
+
+    if (options.stop)
+      event.stopPropagation()
+    if (options.stopImmediate)
+      event.stopPropagation()
+    if (options.prevent)
+      event.preventDefault()
+  }
+}
