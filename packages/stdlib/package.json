@@ -32,9 +32,11 @@
     "build": "npm run check_types && vite build",
     "bench": "vitest bench --watch"
   },
+  "peerDependencies": {
+    "@webshrine/stdtyp": "0.0.14"
+  },
   "dependencies": {
     "@types/lodash-es": "^4.17.12",
-    "@webshrine/stdtyp": "link:..\\stdtyp",
     "cope": "^1.0.9",
     "defu": "^6.1.4",
     "fast-deep-equal": "^3.1.3",
@@ -43,5 +45,8 @@
     "perfect-debounce": "^1.0.0",
     "throttleit": "^2.1.0",
     "utility-types": "^3.11.0"
+  },
+  "devDependencies": {
+    "@webshrine/stdtyp": "link:..\\stdtyp"
   }
 }

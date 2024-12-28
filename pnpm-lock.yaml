@@ -86,9 +86,6 @@ importers:
       '@types/lodash-es':
         specifier: ^4.17.12
         version: 4.17.12
-      '@webshrine/stdtyp':
-        specifier: link:..\stdtyp
-        version: link:../stdtyp
       change-case:
         specifier: ^5.4.4
         version: 5.4.4
@@ -116,15 +113,16 @@ importers:
       utility-types:
         specifier: ^3.11.0
         version: 3.11.0
+    devDependencies:
+      '@webshrine/stdtyp':
+        specifier: link:..\stdtyp
+        version: link:../stdtyp
 
   packages/stdlib:
     dependencies:
       '@types/lodash-es':
         specifier: ^4.17.12
         version: 4.17.12
-      '@webshrine/stdtyp':
-        specifier: link:..\stdtyp
-        version: link:../stdtyp
       cope:
         specifier: ^1.0.9
         version: 1.0.9(typescript@5.7.2)
@@ -149,6 +147,10 @@ importers:
       utility-types:
         specifier: ^3.11.0
         version: 3.11.0
+    devDependencies:
+      '@webshrine/stdtyp':
+        specifier: link:..\stdtyp
+        version: link:../stdtyp
 
   packages/stdtyp:
     dependencies:
