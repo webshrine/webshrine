@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { isReadonly, ref } from 'vue'
 import { defineComposable } from './defineComposable'
 
 describe('defineComposable', () => {
@@ -66,5 +66,56 @@ describe('defineComposable', () => {
         c: 3,
       },
     })
+  })
+
+  it('makes instance readonly', () => {
+    const useComposable = defineComposable({
+      readonly: true,
+      setup() {
+        return {
+          a: ref(1),
+          b: ref(2),
+          nested: {
+            c: ref(3),
+          },
+        }
+      },
+    })
+
+    const result = useComposable()
+    expect(result).toEqual({
+      a: ref(1),
+      b: ref(2),
+      nested: {
+        c: ref(3),
+      },
+    })
+    expect(isReadonly(result)).toBe(true)
+  })
+
+  it('makes instance readonly and flattens it', () => {
+    const useComposable = defineComposable({
+      flat: true,
+      readonly: true,
+      setup() {
+        return {
+          a: ref(1),
+          b: ref(2),
+          nested: {
+            c: ref(3),
+          },
+        }
+      },
+    })
+
+    const result = useComposable()
+    expect(result).toEqual({
+      a: 1,
+      b: 2,
+      nested: {
+        c: 3,
+      },
+    })
+    expect(isReadonly(result)).toBe(true)
   })
 })
