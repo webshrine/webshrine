@@ -1,7 +1,7 @@
 {
   "name": "webshrine",
   "type": "module",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "",
   "author": "",
   "license": "ISC",
@@ -29,8 +29,8 @@
     "package.json"
   ],
   "dependencies": {
-    "@webshrine/stdfmt": "0.0.15",
-    "@webshrine/stdlib": "0.0.15",
-    "@webshrine/stdtyp": "0.0.15"
+    "@webshrine/stdfmt": "0.0.16",
+    "@webshrine/stdlib": "0.0.16",
+    "@webshrine/stdtyp": "0.0.16"
   }
 }
