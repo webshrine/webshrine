@@ -33,7 +33,7 @@ export const omit = <Input extends AnyObject, Key extends Keys<Input> = Keys<Inp
   for (const key of keys)
     delete result[key]
 
-  return result
+  return result as Omit<Input, Key>
 }
 
 /** @category Transformers */

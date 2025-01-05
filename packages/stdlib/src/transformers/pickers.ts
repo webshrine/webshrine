@@ -38,7 +38,7 @@ export const pick = <Input extends AnyObject, Key extends Keys<Input> = Keys<Inp
       result[key] = object[key]
   }
 
-  return result
+  return result as Pick<Input, Key>
 }
 
 /** @category Transformers */
