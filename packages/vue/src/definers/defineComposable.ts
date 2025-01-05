@@ -5,7 +5,7 @@ import { once, pipe, through } from '@webshrine/stdlib'
 import { reactive, readonly, shallowReadonly } from 'vue'
 
 /** @category Definers */
-interface DefineComposableOptions {
+export interface DefineComposableOptions {
 
   /** Flattens refs in the result of the setup, keeping reactivity */
   flat?: boolean
