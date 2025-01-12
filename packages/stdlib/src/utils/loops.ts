@@ -110,7 +110,7 @@ export const mapItems = <T extends AnyArray, C extends FnTransformIterate<T[numb
 export const mapValues = <T extends Record<CollectionKey, any>, C extends FnTransformIterate<T[keyof T], Keys<T>, any>>(
   object: T,
   cb: C,
-) => {
+) => { // TODO: Implement result type
   const result: Record<string, any> = {}
   for (const key of Object.keys(object))
     result[key] = cb(object[key], key as Keys<T>, object)
@@ -124,11 +124,60 @@ export const mapValues = <T extends Record<CollectionKey, any>, C extends FnTran
 export const map = (
   collection: Collection,
   cb: FnTransformIterate<any, CollectionKey>,
-) => (
+) => ( // TODO: Implement result type
   Array.isArray(collection)
     ? mapItems(collection, cb)
     : mapValues(collection, cb)
 )
+
+/**
+ * Maps over an array and filters out undefined items.
+ * @category Utils
+ */
+export const filterMapItems = <T extends AnyArray, C extends FnTransformIterate<T[number], number, any>>(
+  array: T,
+  cb: C,
+): Exclude<ReturnType<C>, undefined>[] => {
+  const result = []
+
+  for (let index = 0, max = array.length; index < max; index++) {
+    const value = cb(array[index], index, array)
+    if (value !== undefined)
+      result.push(value)
+  }
+
+  return result
+}
+
+/**
+ * Maps over an object and filters out undefined values.
+ * @category Utils
+ */
+export const filterMapValues = <T extends Record<CollectionKey, any>, C extends FnTransformIterate<T[keyof T], Keys<T>, any>>(
+  object: T,
+  cb: C,
+): Record<CollectionKey, any> => { // TODO: Implement result type
+  const result: Record<string, any> = {}
+  for (const key of Object.keys(object)) {
+    const value = cb(object[key], key as Keys<T>, object)
+    if (value !== undefined)
+      result[key] = value
+  }
+  return result as Record<keyof T, ReturnType<C>>
+}
+
+/**
+ * Maps over a collection and filters out undefined items/values.
+ * @category Utils
+ */
+export const filterMap = <T extends Collection, C extends FnTransformIterate<any, CollectionKey>>(
+  collection: T,
+  cb: C,
+) => (
+  Array.isArray(collection)
+    ? filterMapItems(collection, cb)
+    : filterMapValues(collection, cb)
+) as T extends ReadonlyArray<infer I> ? ReturnType<typeof filterMapItems<I[], C>> : ReturnType<typeof filterMapValues<T, C>>
 
 /**
  * Iterates over a given number of times, calling the provided callback function for each iteration.
