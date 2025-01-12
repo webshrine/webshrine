@@ -112,17 +112,17 @@ const omittedData = omitBy(data, value => typeof value === 'string')
 ### `omitDeep`, `omitDeepBy`, `omitStrict`, `omitDeepStrict`
 All these functions are implements similar behaviour like in set of `pick*` functions, but main transform logics is omitting.
 
-## Uniqueize
-The uniqueize functions are designed to remove duplicate items or values from arrays or objects based on provided criteria. This section explains how each function works and provides usage examples.
+## Deduplication
+The dedupe functions are designed to remove duplicate items or values from arrays or objects based on provided criteria. This section explains how each function works and provides usage examples.
 
-### `unique`
-Returns a new collection with only the unique items/values.
+### `dedupe`
+Returns a new collection without duplicated items/values.
 
 ```ts
-const uniqueArray = unique([1, 2, 2, 3, 4, 4, 5])
+const dedupeArray = dedupe([1, 2, 2, 3, 4, 4, 5])
 // Output: [1, 2, 3, 4, 5]
 
-const uniqueObject = unique({
+const dedupeObject = dedupe({
   a: '123',
   b: '123',
   c: 123,
@@ -132,8 +132,11 @@ const uniqueObject = unique({
 // Output: { a: '123', c: 123, obj_1: { a: 1 }, obj_2: { a: 1 } }
 ```
 
-### `uniqueBy`
-Returns a new collection with only the unique items/values, using a custom matcher function.
+### `dedupeItems`, `dedupeValues`
+More specific variants of `dedupe` function for working only with arrays or objects.
+
+### `dedupeBy`
+Returns a new collection without duplicated items/values, using a custom matcher function.
 
 ```ts
 const arrayData = [
@@ -143,22 +146,12 @@ const arrayData = [
   { a: 1 },
 ]
 
-const uniqueArrayBy = uniqueBy(arrayData, areEqual)
+const dedupeArrayBy = dedupeBy(arrayData, areEqual)
 // Output: [ '123', 123, { a: 1 } ]
 ```
 
-### `uniqueItems`, `uniqueValues`
-More specific variants of `unique` function for working only with arrays or objects.
-
-```ts
-const data = [1, 2, 2, 3, 4, 4, 5]
-
-const uniqueArr = uniqueItems(data)
-const uniqueObj = uniqueValues(data) // [!code error]
-```
-
-### `uniqueItemsBy`, `uniqueValuesBy`
-More specific variants of `uniqueBy` function for working only with arrays or objects.
+### `dedupeItemsBy`, `dedupeValuesBy`
+More specific variants of `dedupeBy` function for working only with arrays or objects.
 
 ## Numberable
 The numberable transformers

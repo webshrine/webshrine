@@ -9,7 +9,7 @@ These tables provided to show associations of similar patterns
 | omit(...)       | omit(clone(...))                       |
 | pick(...)       | pick(clone(...))                       |
 | cloneDeep(...)  | clone(...) \| copy(...)                |
-| uniq(...)       | uniqueItems(...) \| unique(...)        |
+| uniq(...)       | dedupeItems(...) \| dedupe(...)        |
 | negate(...)     | negate(...)                            |
 | times(...)      | times(...) | timesMap(...)             |
 | clamp(...)      | clamp(...) | clampNumber(...)          |
