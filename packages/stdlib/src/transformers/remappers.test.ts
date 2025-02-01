@@ -1,5 +1,5 @@
 import { describe } from 'vitest'
-import { remap } from './remappers'
+import { remap, remapBy } from './remappers'
 
 const DATA = {
   num: 0,
@@ -63,12 +63,27 @@ describe('remap', () => {
   it('basic', () => {
     expect(
       remap(DATA, {
-        'bul': ''
+        num: 'number',
+        bul: 'boolean',
       }),
     ).toEqual({
-      // [Symbol.iterator]: 12313
-      num: 0,
-      str: 'lvl 1',
+      number: DATA.num,
+      str: DATA.str,
+      boolean: DATA.bul,
+      obj: DATA.obj,
+    })
+  })
+})
+
+describe('remapBy', () => {
+  it('basic', () => {
+    expect(
+      remapBy(DATA, (_, key) => key.includes('u') ? `_${key}` : key),
+    ).toEqual({
+      _num: DATA.num,
+      str: DATA.str,
+      _bul: DATA.bul,
+      obj: DATA.obj,
     })
   })
 })
