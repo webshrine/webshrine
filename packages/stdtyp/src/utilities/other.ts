@@ -1,4 +1,4 @@
-import type { AnyArrayOptional, AnyObject, CollectionKey, Decrement } from '..'
+import type { AnyArrayOptional, AnyObject, CollectionKey, Decrement, OmitByValueExact } from '..'
 
 /** @category Utilities */
 export type Collection<
@@ -100,6 +100,12 @@ export type Split<T extends string, Separator extends string> =
   string extends T ? string[] :
   T extends '' ? [] :
   T extends `${infer T}${Separator}${infer U}` ? [T, ...Split<U, Separator>] : [T]
+
+
+/** @category Utilities */
+export type Remap<T extends AnyObject, M extends { readonly [K in Extract<keyof T, string>]?: string }> = Omit<T, keyof M> & OmitByValueExact<{
+  [K in keyof M as Extract<M[K], string>]: K extends keyof T ? T[K] : never;
+}, never>
 
 export type {
   Assign,
