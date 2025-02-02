@@ -66,6 +66,8 @@
     "omitters",
     "Primitivizable",
     "Recursor",
+    "remapper",
+    "remappers",
     "stddom",
     "stdfmt",
     "stdlib",
