@@ -24,8 +24,8 @@ const data = {
   email: 'john@example.com'
 }
 
-const pickedData = pick(data, ['name', 'email'])
-// Output: { name: 'John', email: 'john@example.com' }
+pick(data, ['name', 'email'])
+// => { name: 'John', email: 'john@example.com' }
 ```
 
 ### `pickBy`
@@ -38,8 +38,8 @@ const data = {
   email: 'john@example.com'
 }
 
-const pickedData = pickBy(data, value => typeof value === 'string')
-// Output: { name: 'John', email: 'john@example.com' }
+pickBy(data, value => typeof value === 'string')
+// => { name: 'John', email: 'john@example.com' }
 ```
 
 ### `pickDeep`, `pickDeepBy`
@@ -60,8 +60,8 @@ const data = {
   }
 }
 
-const pickedData = pickDeep(data, ['name', 'email'])
-// Output: { user: { name: 'John', contact: { email: 'john@example.com' } } }
+pickDeep(data, ['name', 'email'])
+// => { user: { name: 'John', contact: { email: 'john@example.com' } } }
 ```
 
 ### `pickStrict`, `pickDeepStrict`
@@ -75,7 +75,7 @@ const data = {
   }
 }
 
-const pickedData = pickStrict(data, ['contact']) // TSC Error
+pickStrict(data, ['contact']) // TSC Error
 ```
 
 ## Omitting
@@ -91,8 +91,7 @@ const data = {
   email: 'john@example.com'
 }
 
-const omittedData = omit(data, ['name', 'email'])
-// Output: { age: 30 }
+omit(data, ['name', 'email']) // => { age: 30 }
 ```
 
 ### `omitBy`
@@ -105,12 +104,46 @@ const data = {
   email: 'john@example.com'
 }
 
-const omittedData = omitBy(data, value => typeof value === 'string')
-// Output: { age: 30 }
+omitBy(data, value => typeof value === 'string')
+// => { age: 30 }
 ```
 
 ### `omitDeep`, `omitDeepBy`, `omitStrict`, `omitDeepStrict`
 All these functions are implements similar behaviour like in set of `pick*` functions, but main transform logics is omitting.
+
+## Remapping
+
+### `remap`
+Returns a new object with keys renamed according to the provided remapping object.
+Implements the <ApiLink name="Remap"/> type utility.
+
+```ts
+const source = {
+  firstName: 'John',
+  lastName: 'Doe',
+}
+
+remap(source, {
+  firstName: 'first_name',
+  lastName: 'last_name',
+} as const)
+// => { first_name: 'John', last_name: 'Doe' }
+```
+
+### `remapBy`
+Returns a new object with keys renamed by applying a transformation function to each key-value pair.
+
+```ts
+const originalObject = {
+  first_name: 'John',
+  last_name: 'Doe',
+}
+
+const remapToKebabCase = (value, key) => key.split('_').join('-')
+
+remapBy(originalObject, remapToKebabCase)
+// => { 'first-name': 'John', 'last-name': 'Doe' }
+```
 
 ## Deduplication
 The dedupe functions are designed to remove duplicate items or values from arrays or objects based on provided criteria. This section explains how each function works and provides usage examples.
@@ -120,7 +153,7 @@ Returns a new collection without duplicated items/values.
 
 ```ts
 const dedupeArray = dedupe([1, 2, 2, 3, 4, 4, 5])
-// Output: [1, 2, 3, 4, 5]
+// => [1, 2, 3, 4, 5]
 
 const dedupeObject = dedupe({
   a: '123',
@@ -129,7 +162,7 @@ const dedupeObject = dedupe({
   obj_1: { a: 1 },
   obj_2: { a: 1 },
 })
-// Output: { a: '123', c: 123, obj_1: { a: 1 }, obj_2: { a: 1 } }
+// => { a: '123', c: 123, obj_1: { a: 1 }, obj_2: { a: 1 } }
 ```
 
 ### `dedupeItems`, `dedupeValues`
@@ -146,15 +179,15 @@ const arrayData = [
   { a: 1 },
 ]
 
-const dedupeArrayBy = dedupeBy(arrayData, areEqual)
-// Output: [ '123', 123, { a: 1 } ]
+dedupeBy(arrayData, areEqual)
+// => [ '123', 123, { a: 1 } ]
 ```
 
 ### `dedupeItemsBy`, `dedupeValuesBy`
 More specific variants of `dedupeBy` function for working only with arrays or objects.
 
 ## Numberable
-The numberable transformers
+The transformers for number, bigint and `Lengthy` objects.
 
 ### `min`, `max`
 These functions is a unified utilities that returns the minimal/maximal value between two inputs, which can be either number, bigint or Lengthy objects.
