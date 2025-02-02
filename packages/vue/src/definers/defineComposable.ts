@@ -22,9 +22,11 @@ export interface DefineComposableOptions {
 const flatten = <S extends DefineComposableOptions['setup']>(setup: S) =>
   (...args: Parameters<S>) => reactive(setup(...args)) as UnwrapNestedRefs<ReturnType<S>>
 
+/** @category Definers */
 const flattenReadonly = <S extends DefineComposableOptions['setup']>(setup: S) =>
   (...args: Parameters<S>) => readonly(setup(...args)) as DeepReadonly<UnwrapNestedRefs<ReturnType<S>>>
 
+/** @category Definers */
 const readonlyShallow = <S extends DefineComposableOptions['setup']>(setup: S) =>
   (...args: Parameters<S>) => shallowReadonly(setup(...args)) as Readonly<ReturnType<S>>
 
