@@ -65,7 +65,7 @@ describe('remap', () => {
       remap(DATA, {
         num: 'number',
         bul: 'boolean',
-      }),
+      } as const),
     ).toEqual({
       number: DATA.num,
       str: DATA.str,

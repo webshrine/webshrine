@@ -1,4 +1,4 @@
-import type { AnyObject, FnTransform, Keys, MaybeLiteral } from '@webshrine/stdtyp'
+import type { AnyObject, FnTransform, Keys, MaybeLiteral, OmitByValueExact } from '@webshrine/stdtyp'
 import { hasOwn } from '../utils'
 
 /** @category Transformers */
@@ -7,29 +7,36 @@ const unsafeMutRenameKey = (target: AnyObject, oldKey: string, newKey: string) =
   delete target[oldKey]
 }
 
+export type Remap<T extends AnyObject, M extends { readonly [K in Extract<keyof T, string>]?: string }> = Omit<T, keyof M> & OmitByValueExact<{
+  [K in keyof M as Extract<M[K], string>]: K extends keyof T ? T[K] : never;
+}, never>
+
 /**
- * Returns new object by specified keys.
- * - Implements `Pick` Typescript utility.
+ * Returns new object with renamed keys.
+ * - Implements `Remap` Typescript utility.
  * @category Transformers
  */
-export const remap = <Input extends AnyObject, Key extends Keys<Input> = Keys<Input>>(
+export const remap = <
+  Input extends AnyObject,
+  // Table extends Record<MaybeLiteral<Keys<Input>>, string>,
+  Table extends { readonly [K in keyof Input]?: string },
+// Table extends { [K in keyof Input]?: string }
+>(
   object: Input,
-  keysRemapping: Record<MaybeLiteral<Key>, string>,
+  keysRemapping: Table,
 ) => {
-  type Table = typeof keysRemapping
   const result = { ...object }
 
   for (const [oldKey, newKey] of Object.entries(keysRemapping)) {
-    if (hasOwn(result, oldKey))
+    if (newKey && hasOwn(result, oldKey))
       unsafeMutRenameKey(result, oldKey, newKey)
   }
 
-  return result as Omit<Input, Extract<keyof Table, string>> & {
-    // [K in keyof ]
-  }
+  return result as Remap<Input, Table>
 }
 
 /**
+ * Returns new object with renamed by `remapper` keys.
  * @category Transformers
  */
 export const remapBy = <Input extends AnyObject, Key extends Keys<Input> = Keys<Input>>(
