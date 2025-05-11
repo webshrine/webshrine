@@ -93,3 +93,8 @@ export interface SerializableToPrimitive {
 export interface Lengthy {
   length: number
 }
+
+/** @category Interfaces */
+export interface Sized {
+  size: number
+}

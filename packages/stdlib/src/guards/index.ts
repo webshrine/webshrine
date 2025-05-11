@@ -1,4 +1,4 @@
-import type { AnyArray, AnyObject, Collection, Falsy, Fn, FnGuard, Nullish, Numeric, Primitive } from '@webshrine/stdtyp'
+import type { AnyArray, AnyObject, Collection, Falsy, Fn, FnGuard, Lengthy, Nullish, Numeric, Primitive, Sized } from '@webshrine/stdtyp'
 import {
   isDate as lodashIsDate,
   // isEmpty as lodashIsEmpty,
@@ -160,3 +160,9 @@ export const isStringNumberableAnyLiteral = ((s: string) => isStringNumberableDe
 
 /** @category Guards */
 export const isStringDate = ((s: string) => !Number.isNaN(Date.parse(s))) as FnGuard<string>
+
+/** @category Guards */
+export const isLengthy = ((s: any) => typeof s === 'object' && 'length' in s) as FnGuard<Lengthy>
+
+/** @category Guards */
+export const isSized = ((s: any) => typeof s === 'object' && 'size' in s) as FnGuard<Sized>
