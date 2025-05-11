@@ -1,7 +1,7 @@
 {
   "name": "@webshrine/stdlib",
   "type": "module",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "private": false,
   "repository": {
     "type": "git",
@@ -33,7 +33,7 @@
     "bench": "vitest bench --watch"
   },
   "peerDependencies": {
-    "@webshrine/stdtyp": "0.0.20"
+    "@webshrine/stdtyp": "0.0.21"
   },
   "dependencies": {
     "@types/lodash-es": "^4.17.12",
