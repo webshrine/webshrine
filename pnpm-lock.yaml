@@ -123,9 +123,6 @@ importers:
       '@types/lodash-es':
         specifier: ^4.17.12
         version: 4.17.12
-      cope:
-        specifier: ^1.0.9
-        version: 1.0.9(typescript@5.7.2)
       defu:
         specifier: ^6.1.4
         version: 6.1.4

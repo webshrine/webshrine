@@ -1,6 +1,5 @@
 import type { AnyObject, FnPredicate } from '@webshrine/stdtyp'
 
-export * from 'cope'
 
 /**
  * A no-operation function that returns undefined regardless of the arguments it receives.
