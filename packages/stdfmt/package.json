@@ -1,7 +1,7 @@
 {
   "name": "@webshrine/stdfmt",
   "type": "module",
-  "version": "0.0.21",
+  "version": "0.1.0",
   "private": false,
   "repository": {
     "type": "git",
@@ -33,7 +33,7 @@
     "bench": "vitest bench --watch"
   },
   "peerDependencies": {
-    "@webshrine/stdtyp": "0.0.21"
+    "@webshrine/stdtyp": "0.1.0"
   },
   "dependencies": {
     "@types/lodash-es": "^4.17.12",
