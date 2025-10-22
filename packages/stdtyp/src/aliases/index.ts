@@ -44,7 +44,7 @@ export type CollectionKey = number | string
  * - `a` < `b` = `-1`
  * - `a` > `b` = `1`
  * - `a` = `b` = `0`
- * @see CompareFn
+ * @see FnCompare
  * @example
  * function compare(a: number, b: number): CompareResultValue { ... }
  * const sorted = [3,1,2].sort(compare)

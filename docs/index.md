@@ -19,15 +19,15 @@ hero:
 
 features:
   - title: Feature Rich
-    details: 200+ functions for you to choose from
+    # details: 200+ functions for you to choose from
     icon: 🎛
   - title: Type Strong
-    details: Written in TypeScript, with full TS docs
+    # details: Written in TypeScript, with full TS docs
     icon: 🦾
   - title: Fully tree shakeable
-    details: Only take what you want
+    # details: Only take what you want
     icon: ⚡
   - title: Interactive demos
-    details: Documentation of functions also come with interactive demos!
+    # details: Documentation of functions also come with interactive demos!
     icon: 🎪
 ---

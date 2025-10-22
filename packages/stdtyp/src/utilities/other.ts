@@ -144,18 +144,3 @@ export type {
   Writable,
   WritableKeys,
 } from 'utility-types'
-
-// export type IBuilder<Context, Methods extends Record<string, AnyArrayOptional>> = {
-//   [K in keyof Methods]: FnMethodPipe<Context, Methods[K]
-//   // build: FnNullary<Context>>
-// }
-
-// class Bil implements IBuilder<Bil, { 'asd': [any, number], 'acd': [string] }> {
-//   acd = (parameters_0, asd) => {
-//     return this
-//   }
-
-//   build() {
-//     return this
-//   }
-// }

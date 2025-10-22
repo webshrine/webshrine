@@ -1,5 +1,4 @@
 import type { DefaultTheme } from 'vitepress'
-import path from 'node:path'
 import { defineConfig } from 'vitepress'
 import { npmCommandsMarkdownPlugin } from 'vitepress-plugin-npm-commands'
 import { tabsMarkdownPlugin } from 'vitepress-plugin-tabs'
@@ -17,7 +16,6 @@ const DefaultSidebar: DefaultTheme.Sidebar = [
     item('Common'),
     item('Loops'),
     item('Cloning'),
-    item('Error handling'),
   ]),
   sidebarItemRootless('Aspects', null, () => [
     item('Matchers'),
