@@ -22,16 +22,34 @@ export type Fn<
   : (this: Context) => Result
 
 /**
- * Any function without parameters
+ * Nullary function, a function without parameters
  * @category Utilities
  */
-export type FnNullary<Result = void> = Fn<undefined, Result>
+export type Fn0<Result = void> = () => Result
 
 /**
- * Any function with parameters
+ * Unary function, a function with one parameter
  * @category Utilities
  */
-export type FnParametrized<
+export type Fn1<P1 extends any, Result = void> = (a: P1) => Result
+
+/**
+ * Binary function, a function with two parameters
+ * @category Utilities
+ */
+export type Fn2<A extends any, B extends any, Result = void> = (a: A, b: B) => Result
+
+/**
+ * Ternary function, a function with three parameters
+ * @category Utilities
+ */
+export type Fn3<A extends any, B extends any, C extends any, Result = void> = (a: A, b: B, c: C) => Result
+
+/**
+ * N-ary function, a function with an arbitrary count of parameters
+ * @category Utilities
+ */
+export type FnN<
   Parameters extends AnyArray = AnyArray,
   Result = void,
 > = Fn<Parameters, Result>
@@ -69,7 +87,7 @@ export type FnAsync<
  * Any async function without parameters
  * @category Utilities
  */
-export type FnAsyncNullary<Result = void> = FnAsync<undefined, Result>
+export type FnAsync0<Result = void> = FnAsync<undefined, Result>
 
 /** @category Utilities */
 export type FnAsyncProcedure<Parameters extends AnyArrayOptional = AnyArrayOptional> = FnAsync<Parameters, void>
@@ -93,13 +111,13 @@ export type FnPredicate<Parameters extends AnyArrayOptional = AnyArrayOptional> 
  * Binary function that returns boolean
  * @category Utilities
  */
-export type FnMatch<A = any, B = A> = FnPredicate<[a: A, b: B]>
+export type FnMatch<A extends any, B = A> = Fn2<A, B, boolean>
 
 /**
  * Comparison function that returns `-1 | 0 | 1` as result
  * @category Utilities
  */
-export type FnCompare<Value = any> = FnParametrized<[a: Value, b: Value], -1 | 0 | 1>
+export type FnCompare<Value = any> = Fn2<Value, Value, -1 | 0 | 1>
 
 /**
  * Transforming function
@@ -109,13 +127,13 @@ export type FnTransform<
   Input = any,
   Output = Input,
   Parameters extends AnyArrayOptional = undefined,
-> = FnParametrized<ConcatTwoArrays<[input: Input], Parameters>, Output>
+> = FnN<ConcatTwoArrays<[input: Input], Parameters>, Output>
 
 /**
- * Summarizer funcConcatTwoArrays
+ * Reducer function
  * @category Utilities
  */
-export type FnReduce<Input = any, Result = any> = FnParametrized<[a: Input, b: Input], Result>
+export type FnReduce<Input = any, Result = any> = Fn2<Input, Input, Result>
 
 /**
  * General iteration function
@@ -135,7 +153,7 @@ export type FnIterate<
 export type FnIterateTimes<Result = void> = (number: number, index: number, count: number) => Result
 
 /** @category Utilities */
-export type FnIterateDeep<
+export type FnIterateCollection<
   Item = any,
   Id = PropertyKey,
   ParentObject = AnyObject | AnyArray | undefined,

@@ -1,4 +1,4 @@
-import type { FnNullary } from '.'
+import type { Fn0 } from '.'
 
 /**
  * Allows `T` to be `T` or `null`
@@ -16,7 +16,7 @@ export type MaybePromise<T> = T | Promise<T>
  * Allows `T` to be `T` or `() => T`
  * @category Utilities
  */
-export type MaybeReturned<T> = T | FnNullary<T>
+export type MaybeReturned<T> = T | Fn0<T>
 
 /**
  * Allows `T` to be `T` or `T[]`
