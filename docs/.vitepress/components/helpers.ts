@@ -1,4 +1,4 @@
-import type { Fn, FnWrapper } from '../../../packages/stdlib/src'
+import type { Fn, FnWrapper } from '../../../packages/stdtyp/src'
 import type { CallData, TimelineData } from './Timeline.vue'
 import { sleep, through } from '../../../packages/stdlib/src'
 

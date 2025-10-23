@@ -7,7 +7,8 @@
 - `Collection` - array or object of items
 - `Numeric` - unified type of any primitive number
 - `Lengthy` - any object with length property
-- `Transformer` - fn kind, that changes received value interpretation
+- `Choosers` - fn kind, that returns one of received arguments
+- `Shapers` - fn kind, that changes received data form
 - `Wrapper` - fn kind, that wraps received callback and extends logics
 - `Path` - keys chain, united by dots, that addresses nested collection item position
 - `Key` - keys of object

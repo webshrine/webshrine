@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { PropType } from 'vue'
 import { defineComponent, h } from 'vue'
-import LINKS from '../../api/gen/names-to-links.json'
+import * as LINKS from '../../api/gen/names-to-links.json'
 
 export default defineComponent({
   name: 'ApiLink',
@@ -13,7 +13,7 @@ export default defineComponent({
   },
   setup(props) {
     return () => h('a', {
-      class: 'api-link',
+      // class: 'api-link',
       href: LINKS[props.name],
     }, [
       props.name,
@@ -22,6 +22,3 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss">
-.api-link {}
-</style>

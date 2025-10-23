@@ -19,9 +19,10 @@ const DefaultSidebar: DefaultTheme.Sidebar = [
   ]),
   sidebarItemRootless('Aspects', null, () => [
     item('Matchers'),
-    item('Guards'),
-    item('Transformers'),
+    item('Shapers'),
+    item('Choosers'),
     item('Wrappers'),
+    item('Guards'),
   ]),
   sidebarItem('Migration', null, () => [
     item('Associations'),

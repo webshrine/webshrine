@@ -2,8 +2,12 @@
   "include": [
     "./**/*.ts",
     "./**/*.vue",
-    "./**/*.md"
+    "./**/*.md",
+    "./**/*.json"
   ],
+  "compilerOptions": {
+    "resolveJsonModule": true
+  },
   "vueCompilerOptions": {
     "vitePressExtensions": [".md"]
   }
