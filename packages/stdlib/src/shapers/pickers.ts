@@ -1,10 +1,10 @@
 import type { AnyObject, Collection, FnPredicateIterate, Keys, KeysDeep, MaybeLiteral, PartialDeep, PickDeep } from '@webshrine/stdtyp'
 import { hasOwn } from '../utils'
-import { createDeepObjectTransformer } from './helpers'
+import { createDeepObjectShaper } from './helpers'
 
 /**
  * Returns new object by specified keys, returned by `predicate`.
- * @category Transformers
+ * @category Shapers
  */
 export const pickBy = <Input extends AnyObject, Output extends Partial<Input> = Partial<Input>>(
   object: Input,
@@ -24,7 +24,7 @@ export const pickBy = <Input extends AnyObject, Output extends Partial<Input> = 
 /**
  * Returns new object by specified keys.
  * - Implements `Pick` Typescript utility.
- * @category Transformers
+ * @category Shapers
  */
 export const pick = <Input extends AnyObject, Key extends Keys<Input> = Keys<Input>>(
   object: Input,
@@ -41,27 +41,27 @@ export const pick = <Input extends AnyObject, Key extends Keys<Input> = Keys<Inp
   return result as Pick<Input, Key>
 }
 
-/** @category Transformers */
-const pickDeepProcess = createDeepObjectTransformer(pick)
+/** @category Shapers */
+const pickDeepProcess = createDeepObjectShaper(pick)
 
 /**
  * Returns new object by specified keys.
  * - Implements `PickDeep` utility type from library.
  * - Executes recursively on nested collections.
- * @category Transformers
+ * @category Shapers
  */
 export const pickDeep = <Input extends Collection, Key extends KeysDeep<Input> = KeysDeep<Input>>(
   object: Input,
   keys: ReadonlyArray<MaybeLiteral<Key>>,
 ) => pickDeepProcess(object, keys) as PickDeep<Input, Key>
 
-/** @category Transformers */
-const pickDeepByProcess = createDeepObjectTransformer(pickBy)
+/** @category Shapers */
+const pickDeepByProcess = createDeepObjectShaper(pickBy)
 
 /**
  * Returns new object by specified keys, returned by `predicate`.
  * - Executes recursively on nested collections.
- * @category Transformers
+ * @category Shapers
  */
 export const pickDeepBy = <Input extends Collection, Output extends PartialDeep<Input> = PartialDeep<Input>>(
   object: Input,
@@ -72,7 +72,7 @@ export const pickDeepBy = <Input extends Collection, Output extends PartialDeep<
  * Returns new object by specified keys.
  * - Implements `Pick` utility type from Typescript.
  * - Controls that received keys list is exists.
- * @category Transformers
+ * @category Shapers
  */
 export const pickStrict = <Input extends AnyObject, Key extends Keys<Input> = Keys<Input>>(
   object: Input,
@@ -84,7 +84,7 @@ export const pickStrict = <Input extends AnyObject, Key extends Keys<Input> = Ke
  * - Implements `PickDeep` utility type from library.
  * - Executes recursively on nested collections.
  * - Controls that received keys list is exists.
- * @category Transformers
+ * @category Shapers
  */
 export const pickDeepStrict = <Input extends Collection, Key extends KeysDeep<Input> = KeysDeep<Input>>(
   object: Input,

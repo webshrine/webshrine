@@ -3,7 +3,7 @@ import { areSame } from '../matchers'
 
 /**
  * Returns a new array without duplicates, duplicates are determined by received `matcher` function.
- * @category Transformers
+ * @category Shapers
  */
 export const dedupeItemsBy = <T extends AnyArray>(array: T, matcher: FnMatch<T[number]>): T => (
   array.reduce<T>((acc, item) => {
@@ -17,7 +17,7 @@ export const dedupeItemsBy = <T extends AnyArray>(array: T, matcher: FnMatch<T[n
 
 /**
  * Returns a new array without duplicates, duplicates are determined by received `matcher` function.
- * @category Transformers
+ * @category Shapers
  */
 export const dedupeValuesBy = <T extends AnyObject>(object: T, matcher: FnMatch<T[keyof T]>): Partial<T> => (
   Object.entries(object)
@@ -32,25 +32,25 @@ export const dedupeValuesBy = <T extends AnyObject>(object: T, matcher: FnMatch<
 
 /**
  * Returns a new array without duplicated items.
- * @category Transformers
+ * @category Shapers
  */
 export const dedupeItems = <T extends AnyArray>(array: T): T => [...new Set(array)] as T
 
 /**
  * Returns a new object without duplicated values.
- * @category Transformers
+ * @category Shapers
  */
 export const dedupeValues = <T extends AnyObject>(object: T): Partial<T> => dedupeValuesBy(object, areSame)
 
 /**
  * Returns a new collection without duplicated items/values.
- * @category Transformers
+ * @category Shapers
  */
 export const dedupe = (collection: Collection) => Array.isArray(collection) ? dedupeItems(collection) : dedupeValues(collection)
 
 /**
  * Returns a new collection without duplicated items/values, but using a custom matcher function.
- * @category Transformers
+ * @category Shapers
  */
 export const dedupeBy = <T extends Collection>(
   collection: T,

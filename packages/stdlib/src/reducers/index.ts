@@ -1,6 +1,6 @@
 import type { FnReduceIterate, Lengthy, Numeric } from '@webshrine/stdtyp'
-import { longest, shortest } from '../transformers'
-import { maxNumeric, minNumeric } from '../transformers/numerable.helpers'
+import { maxNumeric, minNumeric } from '../choosers/index.helpers'
+import { longest, shortest } from '../choosers'
 
 /** @category Reducers */
 const maxLengthy: Lengthy = { length: Infinity }

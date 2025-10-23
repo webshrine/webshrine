@@ -120,10 +120,10 @@ export type FnMatch<A extends any, B = A> = Fn2<A, B, boolean>
 export type FnCompare<Value = any> = Fn2<Value, Value, -1 | 0 | 1>
 
 /**
- * Transforming function
+ * Shape function
  * @category Utilities
  */
-export type FnTransform<
+export type FnShape<
   Input = any,
   Output = Input,
   Parameters extends AnyArrayOptional = undefined,
@@ -134,6 +134,12 @@ export type FnTransform<
  * @category Utilities
  */
 export type FnReduce<Input = any, Result = any> = Fn2<Input, Input, Result>
+
+/**
+ * Chooser function
+ * @category Utilities
+ */
+export type FnChoose<Input = any> = Fn2<Input, Input, Input>
 
 /**
  * General iteration function
@@ -178,10 +184,10 @@ export type FnProcedureIterate<Item = any, Id extends PropertyKey = PropertyKey>
 export type FnPredicateIterate<Item = any, Id extends PropertyKey = PropertyKey> = FnIterate<Item, Id, boolean>
 
 /**
- * Transform iteration function
+ * Shape iteration function
  * @category Utilities
  */
-export type FnTransformIterate<Input = any, Id extends PropertyKey = PropertyKey, Output = Input> = FnIterate<Input, Id, Output>
+export type FnShapeIterate<Input = any, Id extends PropertyKey = PropertyKey, Output = Input> = FnIterate<Input, Id, Output>
 
 /**
  * Reduce iteration function
@@ -202,7 +208,7 @@ export type FnWrapper<
   ? (func: F, ...args: Parameters) => Result
   : (func: F) => Result
 
-// export type FnWrapperTransform<
+// export type FnWrapperShape<
 //   F extends Fn = Fn,
 //   Result = ReturnType<F>,
 //   Parameters extends AnyArrayOptional = AnyArrayOptional,
@@ -227,4 +233,4 @@ export type FnGuard<Target> = (value: any) => value is Target
  * Formatter function
  * @category Utilities
  */
-export type FnFormat<Input, Output> = FnTransform<Readonly<Input>, Output | null>
+export type FnFormat<Input, Output> = FnShape<Readonly<Input>, Output | null>

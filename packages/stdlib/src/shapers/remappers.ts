@@ -1,7 +1,7 @@
-import type { AnyObject, FnTransform, Keys, Remap } from '@webshrine/stdtyp'
+import type { AnyObject, FnShape, Keys, Remap } from '@webshrine/stdtyp'
 import { hasOwn } from '../utils'
 
-/** @category Transformers */
+/** @category Shapers */
 const unsafeMutRenameKey = (target: AnyObject, oldKey: string, newKey: string) => {
   target[newKey] = target[oldKey]
   delete target[oldKey]
@@ -10,7 +10,7 @@ const unsafeMutRenameKey = (target: AnyObject, oldKey: string, newKey: string) =
 /**
  * Returns new object with renamed keys.
  * - Implements `Remap` Typescript utility.
- * @category Transformers
+ * @category Shapers
  */
 export const remap = <
   Input extends AnyObject,
@@ -31,11 +31,11 @@ export const remap = <
 
 /**
  * Returns new object with renamed by `remapper` keys.
- * @category Transformers
+ * @category Shapers
  */
 export const remapBy = <Input extends AnyObject, Key extends Keys<Input> = Keys<Input>>(
   object: Input,
-  remapper: FnTransform<Input[Key], string, [Key, Input]>,
+  remapper: FnShape<Input[Key], string, [Key, Input]>,
 ) => {
   const result = { ...object }
 

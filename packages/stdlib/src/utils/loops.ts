@@ -1,6 +1,6 @@
-import type { AnyArray, AnyObject, Collection, CollectionKey, FnIterate, FnIterateDeep, FnIterateTimes, FnTransformIterate, Keys } from '@webshrine/stdtyp'
+import type { AnyArray, AnyObject, Collection, CollectionKey, FnIterate, FnIterateDeep, FnIterateTimes, FnShapeIterate, Keys } from '@webshrine/stdtyp'
 import { isCollection } from '../guards'
-import { symbols } from '../transformers'
+import { symbols } from '../shapers'
 
 /**
  * Iterates over array items.
@@ -93,7 +93,7 @@ export function forEachDeep<T extends Collection>(
  * Maps each item of array.
  * @category Utils
  */
-export const mapItems = <T extends AnyArray, C extends FnTransformIterate<T[number], number, any>>(
+export const mapItems = <T extends AnyArray, C extends FnShapeIterate<T[number], number, any>>(
   array: T,
   cb: C,
 ): ReturnType<C>[] => {
@@ -107,7 +107,7 @@ export const mapItems = <T extends AnyArray, C extends FnTransformIterate<T[numb
  * Maps each value of object.
  * @category Utils
  */
-export const mapValues = <T extends Record<CollectionKey, any>, C extends FnTransformIterate<T[keyof T], Keys<T>, any>>(
+export const mapValues = <T extends Record<CollectionKey, any>, C extends FnShapeIterate<T[keyof T], Keys<T>, any>>(
   object: T,
   cb: C,
 ) => { // TODO: Implement result type
@@ -123,7 +123,7 @@ export const mapValues = <T extends Record<CollectionKey, any>, C extends FnTran
  */
 export const map = (
   collection: Collection,
-  cb: FnTransformIterate<any, CollectionKey>,
+  cb: FnShapeIterate<any, CollectionKey>,
 ) => ( // TODO: Implement result type
   Array.isArray(collection)
     ? mapItems(collection, cb)
@@ -134,7 +134,7 @@ export const map = (
  * Maps over an array and filters out undefined items.
  * @category Utils
  */
-export const filterMapItems = <T extends AnyArray, C extends FnTransformIterate<T[number], number, any>>(
+export const filterMapItems = <T extends AnyArray, C extends FnShapeIterate<T[number], number, any>>(
   array: T,
   cb: C,
 ): Exclude<ReturnType<C>, undefined>[] => {
@@ -153,7 +153,7 @@ export const filterMapItems = <T extends AnyArray, C extends FnTransformIterate<
  * Maps over an object and filters out undefined values.
  * @category Utils
  */
-export const filterMapValues = <T extends Record<CollectionKey, any>, C extends FnTransformIterate<T[keyof T], Keys<T>, any>>(
+export const filterMapValues = <T extends Record<CollectionKey, any>, C extends FnShapeIterate<T[keyof T], Keys<T>, any>>(
   object: T,
   cb: C,
 ): Record<CollectionKey, any> => { // TODO: Implement result type
@@ -170,7 +170,7 @@ export const filterMapValues = <T extends Record<CollectionKey, any>, C extends 
  * Maps over a collection and filters out undefined items/values.
  * @category Utils
  */
-export const filterMap = <T extends Collection, C extends FnTransformIterate<any, CollectionKey>>(
+export const filterMap = <T extends Collection, C extends FnShapeIterate<any, CollectionKey>>(
   collection: T,
   cb: C,
 ) => (

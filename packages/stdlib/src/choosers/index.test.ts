@@ -1,4 +1,4 @@
-import { clamp, clampBigInt, clampNumber, longest, max, maxBigInt, maxNumber, min, minBigInt, minNumber, shortest } from './numerable'
+import { clamp, clampBigInt, clampNumber, longest, max, maxBigInt, maxNumber, min, minBigInt, minNumber, shortest } from '.'
 
 describe('clamp', () => {
   function suitNumbers(fn: any) {

@@ -1,9 +1,9 @@
 import type { AnyObject, Collection, FnPredicateIterate, Keys, KeysDeep, MaybeLiteral, OmitDeep, PartialDeep } from '@webshrine/stdtyp'
-import { createDeepObjectTransformer } from './helpers'
+import { createDeepObjectShaper } from './helpers'
 
 /**
  * Returns new object without specified keys, returned by `predicate`.
- * @category Transformers
+ * @category Shapers
  */
 export const omitBy = <Output extends AnyObject, Input extends AnyObject = AnyObject>(
   object: Input,
@@ -22,7 +22,7 @@ export const omitBy = <Output extends AnyObject, Input extends AnyObject = AnyOb
 /**
  * Returns new object without specified keys.
  * - Implements `Omit` utility type from Typescript.
- * @category Transformers
+ * @category Shapers
  */
 export const omit = <Input extends AnyObject, Key extends Keys<Input> = Keys<Input>>(
   object: Input,
@@ -36,27 +36,27 @@ export const omit = <Input extends AnyObject, Key extends Keys<Input> = Keys<Inp
   return result as Omit<Input, Key>
 }
 
-/** @category Transformers */
-const omitDeepProcess = createDeepObjectTransformer(omit)
+/** @category Shapers */
+const omitDeepProcess = createDeepObjectShaper(omit)
 
 /**
  * Returns new object without specified keys.
  * - Implements `OmitDeep` utility type from library.
  * - Executes recursively on nested collections.
- * @category Transformers
+ * @category Shapers
  */
 export const omitDeep = <Input extends Collection, Key extends KeysDeep<Input> = KeysDeep<Input>>(
   object: Input,
   keys: ReadonlyArray<MaybeLiteral<Key>>,
 ) => omitDeepProcess(object, keys) as OmitDeep<Input, Key>
 
-/** @category Transformers */
-const omitDeepByProcess = createDeepObjectTransformer(omitBy)
+/** @category Shapers */
+const omitDeepByProcess = createDeepObjectShaper(omitBy)
 
 /**
  * Returns new object without specified keys, returned by `predicate`.
  * - Executes recursively on nested collections.
- * @category Transformers
+ * @category Shapers
  */
 export const omitDeepBy = <Input extends Collection, Output extends PartialDeep<Input> = PartialDeep<Input>>(
   object: Input,
@@ -67,7 +67,7 @@ export const omitDeepBy = <Input extends Collection, Output extends PartialDeep<
  * Returns new object without specified keys.
  * - Implements `Omit` utility type from Typescript.
  * - Controls that received keys list is exists.
- * @category Transformers
+ * @category Shapers
  */
 export const omitStrict = <Input extends AnyObject, Key extends Keys<Input> = Keys<Input>>(
   object: Input,
@@ -79,7 +79,7 @@ export const omitStrict = <Input extends AnyObject, Key extends Keys<Input> = Ke
  * - Implements `OmitDeep` utility type from library.
  * - Executes recursively on nested collections.
  * - Controls that received keys list is exists.
- * @category Transformers
+ * @category Shapers
  */
 export const omitDeepStrict = <Input extends Collection, Key extends KeysDeep<Input> = KeysDeep<Input>>(
   object: Input,
